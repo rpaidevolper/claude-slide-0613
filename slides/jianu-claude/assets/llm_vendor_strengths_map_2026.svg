@@ -1,0 +1,90 @@
+<svg viewBox="0 0 1280 830" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','Microsoft JhengHei','PingFang TC','Heiti TC',sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#021245"/>
+      <stop offset="1" stop-color="#011c67"/>
+    </linearGradient>
+    <style>
+      .ink{fill:#F3F7FF;} .muted{fill:#9FB0D8;} .teal{fill:#7AFFF5;}
+      .vname{font-size:21px;font-weight:700;fill:#F3F7FF;}
+      .vmodel{font-size:13.5px;fill:#9FB0D8;}
+      .txt{font-size:14.5px;fill:#E6ECFB;}
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1280" height="830" fill="url(#bg)"/>
+
+  <!-- Header -->
+  <text x="56" y="64" class="teal" font-size="15" font-weight="700" letter-spacing="3">各家大語言模型廠商・優勢地圖</text>
+  <text x="54" y="114" class="ink" font-size="36" font-weight="800">沒有最強的 AI，只有最<tspan class="teal">適合這個任務</tspan>的 AI</text>
+  <text x="56" y="148" class="muted" font-size="16">客觀比較各廠的「結構性強項」與「最適任務」　|　整理時間：2026 年 6 月</text>
+
+  <!-- Column headers -->
+  <text x="88" y="190" class="muted" font-size="12" font-weight="700" letter-spacing="1">廠商 / 旗艦模型</text>
+  <text x="400" y="190" class="muted" font-size="12" font-weight="700" letter-spacing="1">核心強項</text>
+  <text x="812" y="190" class="muted" font-size="12" font-weight="700" letter-spacing="1">最適合的任務</text>
+  <line x1="56" y1="200" x2="1224" y2="200" stroke="#7AFFF5" stroke-opacity="0.18" stroke-width="1"/>
+
+  <!-- Row 1 Anthropic -->
+  <g>
+    <rect x="56" y="212" width="1168" height="100" rx="12" fill="#FFFFFF" fill-opacity="0.055"/>
+    <rect x="56" y="218" width="6" height="88" rx="3" fill="#D88A66"/>
+    <text x="88" y="254" class="vname">Anthropic</text>
+    <text x="88" y="282" class="vmodel">Claude · Opus 4.8</text>
+    <text x="400" y="254" class="txt">代理式編程、長時間自主任務</text>
+    <text x="400" y="282" class="txt">高可靠度（會主動標記自身錯誤）、知識工作</text>
+    <text x="812" y="254" class="txt">軟體開發、大型程式碼遷移</text>
+    <text x="812" y="282" class="txt">要求低出錯率的自動化工作流程</text>
+  </g>
+
+  <!-- Row 2 OpenAI -->
+  <g>
+    <rect x="56" y="326" width="1168" height="100" rx="12" fill="#FFFFFF" fill-opacity="0.055"/>
+    <rect x="56" y="332" width="6" height="88" rx="3" fill="#19C39C"/>
+    <text x="88" y="368" class="vname">OpenAI</text>
+    <text x="88" y="396" class="vmodel">GPT-5.5</text>
+    <text x="400" y="368" class="txt">通用能力全面、工具與電腦操作</text>
+    <text x="400" y="396" class="txt">深度研究、資料分析、生態系與外掛最成熟</text>
+    <text x="812" y="368" class="txt">通用助理、跨工具的整合工作流程</text>
+    <text x="812" y="396" class="txt">廣泛的日常與專業任務</text>
+  </g>
+
+  <!-- Row 3 Google -->
+  <g>
+    <rect x="56" y="440" width="1168" height="100" rx="12" fill="#FFFFFF" fill-opacity="0.055"/>
+    <rect x="56" y="446" width="6" height="88" rx="3" fill="#5B9BFF"/>
+    <text x="88" y="482" class="vname">Google</text>
+    <text x="88" y="510" class="vmodel">Gemini 3.1 Pro／3.5</text>
+    <text x="400" y="482" class="txt">原生多模態（文字／圖／影音／PDF）</text>
+    <text x="400" y="510" class="txt">超長脈絡、深整 Google 生態、性價比高</text>
+    <text x="812" y="482" class="txt">多模態分析、與 Workspace／Search 整合</text>
+    <text x="812" y="510" class="txt">大規模且成本敏感的應用</text>
+  </g>
+
+  <!-- Row 4 xAI -->
+  <g>
+    <rect x="56" y="554" width="1168" height="100" rx="12" fill="#FFFFFF" fill-opacity="0.055"/>
+    <rect x="56" y="560" width="6" height="88" rx="3" fill="#AEB6C4"/>
+    <text x="88" y="596" class="vname">xAI</text>
+    <text x="88" y="624" class="vmodel">Grok 4.x</text>
+    <text x="400" y="596" class="txt">即時資訊（串接 X 與網路即時資料）</text>
+    <text x="400" y="624" class="txt">回答直接、對爭議話題較少迴避</text>
+    <text x="812" y="596" class="txt">即時新聞與趨勢、社群輿情分析</text>
+    <text x="812" y="624" class="txt">需要「當下」資訊的查詢</text>
+  </g>
+
+  <!-- Row 5 Open weights -->
+  <g>
+    <rect x="56" y="668" width="1168" height="100" rx="12" fill="#FFFFFF" fill-opacity="0.055"/>
+    <rect x="56" y="674" width="6" height="88" rx="3" fill="#B79CFF"/>
+    <text x="88" y="704" class="vname">開源權重模型</text>
+    <text x="88" y="732" class="vmodel">DeepSeek V4／Qwen／Kimi 等</text>
+    <text x="400" y="704" class="txt">權重可下載、可自架與微調</text>
+    <text x="400" y="732" class="txt">成本約為閉源 1／10、資料可留在本地</text>
+    <text x="812" y="704" class="txt">私有部署、資料敏感與合規場景</text>
+    <text x="812" y="732" class="txt">大量低成本推論、客製化微調</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="56" y="804" class="muted" font-size="12.5">註：模型版本與跑分排名幾乎每月更迭，本頁聚焦各廠「結構性強項」而非單一時點的分數；實務上請依任務試跑驗證。</text>
+</svg>
