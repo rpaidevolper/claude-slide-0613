@@ -185,12 +185,7 @@ const DotBullet = ({ text }: { text: string }) => (
 // Key insight box — 51px teal text
 const KeyInsight = ({ text }: { text: string }) => (
   <div style={{ marginTop: 'auto', paddingTop: 22, alignSelf: 'flex-start' }}>
-    <div style={{
-      background: 'rgba(0,229,192,0.18)', border: '1px solid rgba(0,229,192,0.45)',
-      borderRadius: 8, padding: '16px 30px',
-    }}>
-      <span style={{ fontSize: 42, fontWeight: 700, color: teal }}>{text}</span>
-    </div>
+    <span style={{ fontSize: 42, fontWeight: 700, color: teal }}>{text}</span>
   </div>
 );
 
@@ -557,7 +552,6 @@ const GoodBad2: Page = () => (
           <ExCard type="good" text="學測數學目標 12 級現在 10 級，機率統計失分最多，請出五題中等難度並告訴我每題考的概念。" />
         </div>
       </div>
-      <KeyInsight text="好的問題自帶「聽眾、起點、目標、形式」" />
     </CA>
   </BG>
 );
@@ -573,10 +567,6 @@ const FourQ: Page = () => (
       <Bullet n="2" title="我要什麼？" body="我真正想解決的問題、想達到的目標" />
       <Bullet n="3" title="有什麼限制？" body="時間、長度、聽眾、能力範圍" />
       <Bullet n="4" title="要什麼形式？" body="我想要的產出長相（簡報／練習題／步驟／比喻）" />
-      <div style={{ marginTop: 'auto', background: 'rgba(0,229,192,0.18)', border: '1px solid rgba(0,229,192,0.45)', borderRadius: 8, padding: '14px 28px', display: 'inline-block' }}>
-        {/* @slide-comment id="c-3c606fc4" ts="2026-06-02T15:32:40.076Z" text="eyJub3RlIjoi56e76Zmk6YCZ5YCL5Y2A5aGKIn0" */}
-        <span style={{ fontSize: 42, fontWeight: 700, color: teal }}>想清楚這四題，好的 Prompt 自己就寫出來了</span>
-      </div>
     </CA>
   </BG>
 );
@@ -615,6 +605,48 @@ const Practice: Page = () => (
       </div>
       <div style={{ marginTop: 14, fontSize: 39, color: white }}>
         對方能看懂你卡在哪嗎？那就是一個好 Prompt。
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 13b 互動練習 · 填寫範例 ───────────────────────────────────────────────────
+const PracticeExample: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="單元 02 · 填寫範例" />
+      <H2>看看別人怎麼填</H2>
+      <TealBar />
+      <div style={{ fontSize: 42, color: white, lineHeight: 1.5, marginBottom: 20 }}>
+        以「兩週後地理段考」為例，把四欄填出來，就能組成一段好 Prompt。
+      </div>
+      <div style={{ border: '1px solid rgba(255,255,255,0.30)', borderRadius: 10, overflow: 'hidden' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', background: 'rgba(0,229,192,0.22)' }}>
+          <div style={{ padding: '14px 16px', fontSize: 36, fontWeight: 700, color: white, borderRight: '1px solid rgba(255,255,255,0.2)' }}>我是誰</div>
+          <div style={{ padding: '14px 16px', fontSize: 36, fontWeight: 700, color: white, borderRight: '1px solid rgba(255,255,255,0.2)' }}>我要什麼</div>
+          <div style={{ padding: '14px 16px', fontSize: 36, fontWeight: 700, color: white, borderRight: '1px solid rgba(255,255,255,0.2)' }}>有什麼限制</div>
+          <div style={{ padding: '14px 16px', fontSize: 36, fontWeight: 700, color: white }}>要什麼形式</div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)' }}>
+          <div style={{ padding: '20px 16px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.45 }}>
+            高一升高二，地理段考目前只能拿 65 分。
+          </div>
+          <div style={{ padding: '20px 16px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.45 }}>
+            把「東南亞氣候與季風」這一章從不懂變成能應用。
+          </div>
+          <div style={{ padding: '20px 16px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.45 }}>
+            兩週後考試、每天最多 30 分鐘、課本看過但記不住。
+          </div>
+          <div style={{ padding: '20px 16px', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.45 }}>
+            三層筆記：核心概念 → 真實例子 → 3 題練習附解析。
+          </div>
+        </div>
+      </div>
+      <div style={{ marginTop: 18, padding: '18px 22px', background: 'rgba(0,229,192,0.12)', border: '1px solid rgba(0,229,192,0.40)', borderRadius: 10 }}>
+        <div style={{ fontSize: 30, color: teal, fontWeight: 700, letterSpacing: '0.05em', marginBottom: 8 }}>組合成一段 Prompt</div>
+        <div style={{ fontSize: 33, color: white, lineHeight: 1.5 }}>
+          「我是高一升高二，地理段考只能拿 65 分。請幫我把『東南亞氣候與季風』這章從不懂變成能應用 — 我兩週後考試、每天只有 30 分鐘。請用三層筆記呈現：核心概念、真實例子、3 題練習附解析。」
+        </div>
       </div>
     </CA>
   </BG>
@@ -791,6 +823,89 @@ const ReverseEng: Page = () => (
   </BG>
 );
 
+// ── 21a IG Reels Skill 範例（給下一頁拆解用）────────────────────────────────
+const ReelsSkillExample: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="單元 03 · 範例 Skill" />
+      <H2 style={{ fontSize: 84 }}>一個真正的「IG Reels」Skill 長這樣</H2>
+      <TealBar />
+      <div style={{ fontSize: 36, color: white, lineHeight: 1.45, marginBottom: 14 }}>
+        把它當成一份「專家手冊」 — 下一頁我們會把它拆開來看。
+      </div>
+      <div style={{
+        background: 'rgba(0,15,55,0.78)', border: '1px solid rgba(0,229,192,0.40)',
+        borderRadius: 10, padding: '22px 28px', flex: 1,
+        fontFamily: '"JetBrains Mono","Menlo","Consolas",monospace',
+        color: white, fontSize: 25, lineHeight: 1.55, overflow: 'hidden',
+      }}>
+        <div style={{ color: 'rgba(255,255,255,0.45)', marginBottom: 10 }}># reels-builder.md</div>
+        <div style={{ color: teal, fontWeight: 700, marginTop: 6 }}>## When to use this skill</div>
+        <div style={{ marginLeft: 14 }}>要做一支會被看完的 IG Reels 短影音時。</div>
+
+        <div style={{ color: teal, fontWeight: 700, marginTop: 14 }}>## Hard rules</div>
+        <div style={{ marginLeft: 14 }}>- 前 3 秒一定要有 hook，否則人會滑掉</div>
+        <div style={{ marginLeft: 14 }}>- 每片段不超過 2 秒就要切換鏡頭</div>
+        <div style={{ marginLeft: 14 }}>- 字幕必須對齊音樂節拍（不是「貼著就好」）</div>
+        <div style={{ marginLeft: 14 }}>- 結尾留 cliffhanger，引導留言或下集</div>
+
+        <div style={{ color: teal, fontWeight: 700, marginTop: 14 }}>## Procedure</div>
+        <div style={{ marginLeft: 14 }}>1. 先寫 3 秒 hook 句（疑問 / 反差 / 數字）</div>
+        <div style={{ marginLeft: 14 }}>2. 列分鏡：每 2 秒一個畫面，總長 ≤ 15 秒</div>
+        <div style={{ marginLeft: 14 }}>3. 拍素材：每鏡頭至少 3 個 take</div>
+        <div style={{ marginLeft: 14 }}>4. 剪輯：對齊 BPM 切點，字幕配色高反差</div>
+        <div style={{ marginLeft: 14 }}>5. 結尾 1 秒留白＋一句 cliffhanger 文案</div>
+
+        <div style={{ color: teal, fontWeight: 700, marginTop: 14 }}>## Don't</div>
+        <div style={{ marginLeft: 14 }}>- 不要把長影片硬剪短當 Reels</div>
+        <div style={{ marginLeft: 14 }}>- 不要用平拍 + 平剪 — 完播率會直接掉</div>
+      </div>
+      <div style={{ marginTop: 14, fontSize: 30, color: 'rgba(255,255,255,0.6)' }}>
+        ↑ Skill 把專家的「眉角」變成可重複的步驟　→ 下一頁示範怎麼拆解它
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 21b 逆向工程 · 填寫範例 ───────────────────────────────────────────────────
+const ReverseEngExample: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="單元 03 · 填寫範例" />
+      <H2>把上一頁的 Skill 拆給你看</H2>
+      <TealBar />
+      <div style={{ fontSize: 39, color: white, lineHeight: 1.5, marginBottom: 18 }}>
+        用同一張四欄表，把剛剛那份 IG Reels Skill 解讀回「外行能懂的入門知識」—
+      </div>
+      <div style={{ border: '1px solid rgba(255,255,255,0.28)', borderRadius: 10, overflow: 'hidden', flex: 1 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', background: 'rgba(0,229,192,0.22)' }}>
+          <div style={{ padding: '12px 14px', fontSize: 33, fontWeight: 700, color: white, borderRight: '1px solid rgba(255,255,255,0.2)' }}>我選的領域</div>
+          <div style={{ padding: '12px 14px', fontSize: 33, fontWeight: 700, color: white, borderRight: '1px solid rgba(255,255,255,0.2)' }}>Skill 規定哪些步驟</div>
+          <div style={{ padding: '12px 14px', fontSize: 33, fontWeight: 700, color: white, borderRight: '1px solid rgba(255,255,255,0.2)' }}>它假設你先懂什麼</div>
+          <div style={{ padding: '12px 14px', fontSize: 33, fontWeight: 700, color: white }}>我學到的入門知識</div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)' }}>
+          <div style={{ padding: '20px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.5 }}>
+            做 IG Reels 短影音 — 從零開始拍一支會被看完的影片。
+          </div>
+          <div style={{ padding: '20px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.5 }}>
+            ① 前 3 秒一定要有 hook<br/>② 每片段不超過 2 秒切換<br/>③ 字幕對齊音樂節拍<br/>④ 結尾留 cliffhanger
+          </div>
+          <div style={{ padding: '20px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.5 }}>
+            IG 演算法看重「完播率」、看得懂節奏感是什麼、會用基本剪輯 App。
+          </div>
+          <div style={{ padding: '20px 14px', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.5 }}>
+            短片不是「縮短長片」；節奏是設計出來的，不是天然的 — 這也是高手用 AI 的方法。
+          </div>
+        </div>
+      </div>
+      <div style={{ marginTop: 14, fontSize: 33, color: 'rgba(255,255,255,0.6)' }}>
+        ✓ 一張表就把「外行→入門」的距離縮短　✓ 重點不是答案，是「拆解這個動作」本身
+      </div>
+    </CA>
+  </BG>
+);
+
 // ── 22 單元 3 帶走 ────────────────────────────────────────────────────────────
 const Recap03: Page = () => (
   <BG>
@@ -933,6 +1048,57 @@ const Relay1: Page = () => (
   </BG>
 );
 
+// ── 27b 第一棒 · 填寫範例 ─────────────────────────────────────────────────────
+const Relay1Example: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="單元 04 · 第一棒 · 填寫範例" />
+      <H2>填出來大概會長這樣</H2>
+      <TealBar />
+      <div style={{ fontSize: 39, color: white, lineHeight: 1.5, marginBottom: 18 }}>
+        以下是示範 — 不是標準答案，重點是「具體 + 有畫面」。
+      </div>
+      <div style={{ border: '1px solid rgba(255,255,255,0.28)', borderRadius: 10, overflow: 'hidden', flex: 1 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr 1fr', background: 'rgba(0,229,192,0.22)' }}>
+          <div style={{ padding: '12px 14px', fontSize: 33, fontWeight: 700, color: white, borderRight: '1px solid rgba(255,255,255,0.2)' }}>#</div>
+          <div style={{ padding: '12px 14px', fontSize: 33, fontWeight: 700, color: white, borderRight: '1px solid rgba(255,255,255,0.2)' }}>一句話描述</div>
+          <div style={{ padding: '12px 14px', fontSize: 33, fontWeight: 700, color: white }}>為什麼外人記得住</div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr 1fr' }}>
+          <div style={{ padding: '18px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 42, fontWeight: 700, color: teal }}>①</div>
+          <div style={{ padding: '18px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.45 }}>
+            制服是水手領 + 紅領結，全嘉義只有我們這樣穿。
+          </div>
+          <div style={{ padding: '18px 14px', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.45 }}>
+            從遠遠就能一眼分辨出是嘉女學生 — 是「視覺辨識度」。
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr 1fr' }}>
+          <div style={{ padding: '18px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 42, fontWeight: 700, color: teal }}>②</div>
+          <div style={{ padding: '18px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.45 }}>
+            校園裡那棵百年榕樹，每屆畢業班都在那拍班照。
+          </div>
+          <div style={{ padding: '18px 14px', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.45 }}>
+            是橫跨數十屆校友的共同畫面 — 一張照片就把時間串起來。
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr 1fr' }}>
+          <div style={{ padding: '18px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 42, fontWeight: 700, color: teal }}>③</div>
+          <div style={{ padding: '18px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.45 }}>
+            每年高一全年級上阿里山，學長姐教唱校歌看日出。
+          </div>
+          <div style={{ padding: '18px 14px', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.45 }}>
+            「上山唱校歌」這件事外人沒聽過 — 是專屬故事點。
+          </div>
+        </div>
+      </div>
+      <div style={{ marginTop: 12, fontSize: 33, color: 'rgba(255,255,255,0.6)' }}>
+        ✓ 都是具體的場景與物件　✗ 沒有「優秀、團結、認真」這種形容詞
+      </div>
+    </CA>
+  </BG>
+);
+
 // ── 28 第二棒 ─────────────────────────────────────────────────────────────────
 const Relay2: Page = () => (
   <BG>
@@ -965,11 +1131,11 @@ const Relay3: Page = () => (
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 22, marginTop: 16 }}>
         <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.28)', borderRadius: 10, padding: '14px 18px' }}>
           <div style={{ fontSize: 36, fontWeight: 700, color: teal, marginBottom: 6 }}>產出選項</div>
-          <div style={{ fontSize: 36, color: white }}>簡報 · 可互動單頁網站</div>
+          <div style={{ fontSize: 36, color: white }}>簡報 / 可互動單頁網站</div>
         </div>
         <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.28)', borderRadius: 10, padding: '14px 18px' }}>
           <div style={{ fontSize: 36, fontWeight: 700, color: teal, marginBottom: 6 }}>備用方案</div>
-          <div style={{ fontSize: 36, color: white }}>額度不足 → 用講師示範帳號接續</div>
+          <div style={{ fontSize: 36, color: white }}>額度不足 → 繼續使用其他組員的額度來做產出，要記得把計劃書跟簡報都一併附上</div>
         </div>
       </div>
     </CA>
@@ -1088,9 +1254,9 @@ const ThreeDemo: Page = () => (
       <Eyebrow text="單元 05 · Demo（約 12 分鐘）" />
       <H2>三個動手示範</H2>
       <TealBar />
-      <Bullet n="1" title="整理報告（4 min）" body="給一批檔名雜亂的學生報告 → Cowork 統一檔名、按班級分類，自己一個一個處理" />
-      <Bullet n="2" title="抓網站做 Excel（5 min）" body="請 Cowork 打開「台灣醫療創新整合平台」，蒐集特定資料，匯總成 Excel 報表" />
-      <Bullet n="3" title="查大學錄取分數（3 min）" body="查詢大學資工系錄取分數，整理成對照表 — 選填志願超有用" />
+      <Bullet n="1" title="整理報告" body="給一批檔名雜亂的學生報告 → Cowork 統一檔名、按班級分類，自己一個一個處理" />
+      <Bullet n="2" title="取得學測歷屆考題" body="請 Cowork 打開大考中心網站，下載歷屆考題並解析" />
+      <Bullet n="3" title="查大學錄取分數" body="查詢大學資工系錄取分數，整理成對照表 — 選填志願超有用" />
       <KeyInsight text="看的時候注意：它「自己分步驟」把整件事做完 — 這就是 Agent" />
     </CA>
   </BG>
@@ -1154,9 +1320,7 @@ const HonestQ: Page = () => (
           <p style={{ fontSize: 57, fontWeight: 700, color: white, margin: 0, lineHeight: 1.4 }}>
             如果 AI 能寫出比你更好的作文、<br/>解出比你更難的數學題——
           </p>
-          <p style={{ fontSize: 63, fontWeight: 900, color: teal, margin: '18px 0 0', lineHeight: 1.3 }}>
-            那我們為什麼還要讀書？
-          </p>
+          <p style={{ fontSize: 63, fontWeight: 900, color: teal, margin: '18px 0 0', lineHeight: 1.3 }}>那我們為什麼還要學習？</p>
         </div>
         <div style={{ fontSize: 42, color: white, lineHeight: 1.55 }}>
           在便條紙上誠實寫下你的真實想法，再找旁邊同學講一分鐘。
@@ -1250,6 +1414,9 @@ const Recap06: Page = () => (
       <DotBullet text="AI 放大的是你腦袋裡的東西。" />
       <DotBullet text="學科知識給你「判斷 AI 對不對」的能力 — 這比任何時候都重要。" />
       <DotBullet text="持續學習：動手用、追更新、找同伴、保持判斷。" />
+      <div style={{ marginTop: 'auto', paddingTop: 14, fontSize: 30, color: 'rgba(255,255,255,0.40)', borderTop: '1px solid rgba(255,255,255,0.10)', textAlign: 'right' }}>
+        下一頁是舉例 →
+      </div>
     </CA>
   </BG>
 );
@@ -1330,7 +1497,7 @@ const Closing: Page = () => (
       <div style={{ fontSize: 36, color: teal, fontWeight: 700, letterSpacing: '0.2em', marginBottom: 26 }}>SLIDO Q&A</div>
       <h1 style={{ fontSize: 120, fontWeight: 900, color: white, margin: 0, lineHeight: 1.08 }}>你的問題，現在問</h1>
       <div style={{ height: 5, width: 110, background: teal, borderRadius: 2, margin: '22px 0 18px' }}/>
-      <p style={{ fontSize: 51, color: white, margin: '0 0 44px', fontWeight: 400 }}>Slido 代碼：（待填）</p>
+      <p style={{ fontSize: 51, color: white, margin: '0 0 44px', fontWeight: 400 }}>{''}</p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
         <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.30)', borderRadius: 8, padding: '14px 24px', display: 'inline-block', alignSelf: 'flex-start' }}>
           <span style={{ fontSize: 39, color: white, fontWeight: 600 }}>沒有最強的 AI，只有最適合的</span>
@@ -1355,10 +1522,10 @@ export const meta: SlideMeta = {
 export default [
   Cover,
   Sec01, AiMap, VendorMap, WhyClaude, ClaudeModes, Recap01,
-  Sec02, PromptMyth, GoodBad1, GoodBad2, FourQ, Practice, Recap02,
+  Sec02, PromptMyth, GoodBad1, GoodBad2, FourQ, Practice, PracticeExample, Recap02,
   Break1,
-  Sec03, Keywords, TokenCost, ModelDiff, McpSkill, ReverseEng, Recap03,
-  Sec04, MissionBrief, PlanFirst, Relay, Relay1, Relay2, Relay3, ShareRecap, Recap04,
+  Sec03, Keywords, TokenCost, ModelDiff, McpSkill, ReverseEng, ReelsSkillExample, ReverseEngExample, Recap03,
+  Sec04, MissionBrief, PlanFirst, Relay, Relay1, Relay1Example, Relay2, Relay3, ShareRecap, Recap04,
   Break2,
   Sec05, CoworkVsChat, AssistantScene, ThreeDemo, ScheduleTask, Recap05,
   Sec06, HonestQ, Amplify, LearnPath, CoLearn, Recap06,
