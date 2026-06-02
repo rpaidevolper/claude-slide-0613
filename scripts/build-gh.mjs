@@ -1,6 +1,6 @@
 import { createViteConfig } from '@open-slide/core/vite';
 import { mergeConfig, build } from 'vite';
-import { copyFileSync } from 'fs';
+import { copyFileSync, readFileSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
 
 const cwd = process.cwd();
@@ -35,3 +35,12 @@ await build(config);
 
 copyFileSync(resolve(cwd, 'public/404.html'), resolve(cwd, 'dist/404.html'));
 console.log('Copied 404.html to dist/');
+
+// Inject a tiny script into index.html that strips a trailing `index.html`
+// from the URL before React Router initializes — so visiting
+// `/claude-slide-0613/index.html` works the same as `/claude-slide-0613/`.
+const indexPath = resolve(cwd, 'dist/index.html');
+const html = readFileSync(indexPath, 'utf8');
+const stripScript = `<script>(function(){var p=location.pathname;if(/\\/index\\.html$/.test(p)){history.replaceState(null,'',p.replace(/index\\.html$/,'')+location.search+location.hash);}})();</script>`;
+writeFileSync(indexPath, html.replace('</head>', stripScript + '</head>'));
+console.log('Injected index.html strip script');
