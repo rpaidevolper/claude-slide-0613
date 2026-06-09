@@ -474,17 +474,17 @@ const WhyClaude: Page = () => (
 );
 
 // ── 06 Claude 三大模式 ────────────────────────────────────────────────────────
-const ModeCard = ({ icon, label, title, desc, where }: {
-  icon: string; label: string; title: string; desc: string; where: string;
+const ModeCard = ({ icon, label, subtitle, children, footer }: {
+  icon: string; label: string; subtitle: string; children: ReactNode; footer: string;
 }) => (
-  <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.28)', borderRadius: 12, padding: '26px 22px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-    <div style={{ fontSize: 64, lineHeight: 1 }}>{icon}</div>
+  <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.22)', borderRadius: 12, padding: '28px 26px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+    <div style={{ fontSize: 56, lineHeight: 1 }}>{icon}</div>
     <div>
-      <span style={{ fontSize: 51, fontWeight: 800, color: teal }}>{label}</span>
-      <span style={{ fontSize: 45, color: white, fontWeight: 600 }}>{title}</span>
+      <span style={{ fontSize: 52, fontWeight: 800, color: teal, display: 'block', marginBottom: 4 }}>{label}</span>
+      <span style={{ fontSize: 34, color: teal, fontWeight: 600 }}>{subtitle}</span>
     </div>
-    <div style={{ fontSize: 39, color: white, lineHeight: 1.45, flex: 1 }}>{desc}</div>
-    <div style={{ fontSize: 33, color: white, opacity: 0.9, borderTop: '1px solid rgba(255,255,255,0.18)', paddingTop: 10 }}>{where}</div>
+    <div style={{ flex: 1, fontSize: 33, color: white, lineHeight: 1.55, display: 'flex', flexDirection: 'column', gap: 6 }}>{children}</div>
+    <div style={{ fontSize: 34, fontWeight: 700, color: teal, borderTop: '1px solid rgba(255,255,255,0.18)', paddingTop: 12 }}>{footer}</div>
   </div>
 );
 
@@ -552,14 +552,27 @@ const ClaudeModes: Page = () => (
   <BG>
     <CA>
       <Eyebrow text="單元 01" />
-      <H2>一個 Claude，多種身分</H2>
+      <H2>Claude Desktop 功能模組</H2>
       <TealBar />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 28, flex: 1 }}>
-        <ModeCard icon="" label="Chat" title="　對話" desc="你的隨身顧問。問問題、討論、寫東西、做專題規劃。" where="今天單元 2、4 主場" />
-        <ModeCard icon="" label="Cowork" title="　協作" desc="你的數位助理。整理檔案、操作瀏覽器、做簡報、設定期任務。" where="今天單元 5 主場" />
-        <ModeCard icon="" label="Code" title="　程式" desc="你的工程師。寫程式、建工具、自動化流程。" where="進階延伸" />
+        <ModeCard icon="" label="Chat" subtitle="最通用的雲端助理" footer="=> 需求討論、諮商">
+          <div>- 介面最單純，就是對話框</div>
+          <div>- 完全依賴雲端環境</div>
+        </ModeCard>
+        <ModeCard icon="" label="Cowork" subtitle="萬能的職場助手" footer="=> 爬網站文章、回覆貼文">
+          <div>- 可以操作電腦內檔案</div>
+          <div>- 可以用操控 Chrome 瀏覽器畫面</div>
+          <div>- 可以一次運作好幾個工作</div>
+          <div>- 有 project 功能可以分類管理</div>
+        </ModeCard>
+        <ModeCard icon="" label="Code" subtitle="專業的開發者" footer="=> 開發網站">
+          <div>- 可以操作電腦內檔案</div>
+          <div>- 有整合版本控制系統（Git）</div>
+          <div>- 支援 plan mode（會先撰寫計劃書，再進行任務）</div>
+          <div>- 更高的權限控管需求</div>
+          <div>- 之後更好銜接到 Claude Code CLI</div>
+        </ModeCard>
       </div>
-      <KeyInsight text="Chat 動嘴・Cowork 動手・Code 蓋房子" />
     </CA>
   </BG>
 );
@@ -818,6 +831,45 @@ const Keywords: Page = () => (
   </BG>
 );
 
+// ── 17a-0a Prompt 痛點 · 情境一句話 ─────────────────────────────────────────
+const PromptPain: Page = () => (
+  <BG>
+    <CA style={{ justifyContent: 'center' }}>
+      <Eyebrow text="單元 03" />
+      <H2>AI 可不可以記性好一點？</H2>
+      <TealBar />
+      <div style={{ fontSize: 56, color: white, lineHeight: 1.55, fontWeight: 600, marginTop: 24 }}>
+        你磨好的那份 Prompt，平常其實活在備忘錄、Notion、或某個舊對話裡 — 每次想用，都要先翻出來。
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 17a-0b Prompt 痛點 · 三個實際情境 ───────────────────────────────────────
+const PromptPainExamples: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="單元 03" />
+      <H2>只能靠複製貼上了嗎？</H2>
+      <TealBar />
+      <div style={{ fontSize: 38, color: 'rgba(255,255,255,0.75)', lineHeight: 1.45, marginBottom: 28 }}>
+        當你還是「自己保管 Prompt」的時候，這些事每天都在發生：
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+        <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 10, padding: '22px 28px', fontSize: 40, color: white }}>
+          每開一個新對話，都得翻出來複製貼上
+        </div>
+        <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 10, padding: '22px 28px', fontSize: 40, color: white }}>
+          換裝置、換瀏覽器就找不到，或不是最新版
+        </div>
+        <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 10, padding: '22px 28px', fontSize: 40, color: white }}>
+          想跟同學或同事分享同一套標準，只能丟檔案、各自貼
+        </div>
+      </div>
+    </CA>
+  </BG>
+);
+
 // ── 17a Skills 是什麼？ ──────────────────────────────────────────────────────
 const SkillIntro: Page = () => (
   <BG>
@@ -849,6 +901,36 @@ const SkillIntro: Page = () => (
         </div>
         <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 10, padding: '18px 26px', fontSize: 38, color: white }}>
           多份 Skill 可以組合，打造屬於你的 AI 工作流
+        </div>
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 17a-2 Skill 安全警告 ────────────────────────────────────────────────────
+const SkillWarning: Page = () => (
+  <BG>
+    <CA style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 56 }}>
+        <svg width="320" height="320" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          {/* rays */}
+          <g stroke="#ff6b35" strokeWidth="10" strokeLinecap="round">
+            <line x1="100" y1="10"  x2="100" y2="42" />
+            <line x1="55"  y1="22"  x2="68"  y2="50" />
+            <line x1="145" y1="22"  x2="132" y2="50" />
+            <line x1="22"  y1="55"  x2="50"  y2="68" />
+            <line x1="178" y1="55"  x2="150" y2="68" />
+          </g>
+          {/* dome */}
+          <path d="M 50 130 Q 50 60 100 60 Q 150 60 150 130 Z" fill="#ff6b35" />
+          {/* highlight */}
+          <path d="M 120 70 Q 134 90 130 128 L 122 128 Q 126 92 114 74 Z" fill="#ffffff" opacity="0.85" />
+          {/* base */}
+          <rect x="42" y="130" width="116" height="26" rx="6" fill="#7a86c9" />
+          <rect x="42" y="130" width="116" height="8" rx="4" fill="#5d6bb5" />
+        </svg>
+        <div style={{ fontSize: 72, color: white, fontWeight: 800, lineHeight: 1.5, textAlign: 'center', letterSpacing: '0.02em' }}>
+          安裝網路上別人提供的 Skill 之前<br />請檢查裡面的內容
         </div>
       </div>
     </CA>
@@ -1771,7 +1853,7 @@ export default [
   Sec01, AiMap, AiReflect, VendorMap, WhyClaude, ClaudeArch, ClaudeModes, Recap01,
   Sec02, PromptMyth, GoodBad1, GoodBad2, FourQ, Practice, PracticeExample, Recap02,
   Break1,
-  Sec03, Keywords, SkillIntro, TokenCostIntro, TokenCost, TokenCostCase, ModelDiff, McpSkill, ReverseEng, ReelsSkillExample, ReverseEngExample, Recap03,
+  Sec03, Keywords, PromptPain, PromptPainExamples, SkillIntro, SkillWarning, TokenCostIntro, TokenCost, TokenCostCase, ModelDiff, McpSkill, ReverseEng, ReelsSkillExample, ReverseEngExample, Recap03,
   Sec04, MissionBrief, PlanFirst, Relay, Relay1, Relay1Example, Relay2, Relay3, ShareRecap, Recap04,
   Break2,
   Sec05, CoworkVsChat, AssistantScene, ThreeDemo, ScheduleTask, Recap05,
