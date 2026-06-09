@@ -1,6 +1,19 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 # open-slide — Agent Guide
 
 You are authoring **slides** in this repo. Every slide is arbitrary React code that you write.
+
+## Commands
+
+```bash
+pnpm dev          # start dev server with hot reload
+pnpm build        # static bundle for deployment
+pnpm preview      # preview the built bundle locally
+pnpm sync:skills  # pull latest skill definitions from @open-slide/core
+```
 
 ## Hard rules
 
@@ -9,6 +22,25 @@ You are authoring **slides** in this repo. Every slide is arbitrary React code t
 - Put slide-specific images/videos/fonts under `slides/<id>/assets/`. For assets reused across decks or themes (logos, avatars), use the global `assets/` folder and import via `@assets/...`.
 - Do **not** touch `package.json`, `open-slide.config.ts`, or other slides.
 - Do not add dependencies. Use only `react` and standard web APIs.
+
+## Slide file contract
+
+Every `slides/<id>/index.tsx` must:
+
+```tsx
+import type { Page, SlideMeta } from '@open-slide/core';
+
+const Cover: Page = () => (
+  <div style={{ width: '100%', height: '100%' }}>…</div>
+);
+
+export const meta: SlideMeta = { title: 'My slide' };
+export default [Cover] satisfies Page[];
+```
+
+- Canvas is fixed **1920 × 1080 px** — use absolute pixel values, not `vw`/`vh`.
+- Optionally export `design: DesignSystem` from the same file to define the slide's palette, fonts, and type scale.
+- Optionally export `transition: SlideTransition` for page transition style.
 
 ## Which skill to use
 

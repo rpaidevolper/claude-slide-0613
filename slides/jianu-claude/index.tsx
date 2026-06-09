@@ -1,6 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react';
 import type { DesignSystem, Page, SlideMeta, SlideTransition } from '@open-slide/core';
 import { useSlidePageNumber } from '@open-slide/core';
+import aiCostNews from './assets/ai-cost-news.png';
 
 // ─── Design System ───────────────────────────────────────────────────────────
 export const design: DesignSystem = {
@@ -286,7 +287,7 @@ const AiMap: Page = () => (
       <TealBar />
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, flex: 1 }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <div style={{ fontSize: 48, fontWeight: 700, color: teal }}>你寫下的工具</div>
+          <div style={{ fontSize: 48, fontWeight: 700, color: teal }}>你常用的工具</div>
           <div style={{ flex: 1, background: cardBg, border: '1px dashed rgba(255,255,255,0.4)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <span style={{ fontSize: 42, color: white, opacity: 0.6, fontStyle: 'italic' }}>便條紙貼上來</span>
           </div>
@@ -299,9 +300,54 @@ const AiMap: Page = () => (
         </div>
       </div>
       <div style={{ marginTop: 18, padding: '10px 0' }}>
-        <span style={{ fontSize: 42, color: white }}>
-          ⏱ 3 分鐘 — 大家工具差不多，但「用它做什麼」差很多。
-        </span>
+        <span style={{ fontSize: 42, color: white }}>⏱ 10 分鐘 — 大家工具差不多，但「用它做什麼」差很多。</span>
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 03b AI 期待與感受 ─────────────────────────────────────────────────────────
+const AiReflect: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="單元 01 · 動動腦" />
+      <H2>你跟 AI 之間</H2>
+      <TealBar />
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, flex: 1 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <div style={{ fontSize: 48, fontWeight: 700, color: teal }}>Q1 你期待 AI 幫你做到什麼？</div>
+          <div style={{
+            flex: 1, background: cardBg,
+            border: '1px dashed rgba(255,255,255,0.4)', borderRadius: 12,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <span style={{ fontSize: 42, color: white, opacity: 0.6, fontStyle: 'italic' }}>寫在便條紙上貼這裡</span>
+          </div>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <div style={{ fontSize: 48, fontWeight: 700, color: teal }}>Q2 你目前用 AI 的感受？</div>
+          <div style={{ display: 'grid', gridTemplateRows: '1fr 1fr', gap: 14, flex: 1 }}>
+            <div style={{
+              background: cardBgTeal, border: '1px dashed rgba(0,229,192,0.5)', borderRadius: 12,
+              display: 'flex', flexDirection: 'column', justifyContent: 'center',
+              padding: '18px 28px', gap: 12,
+            }}>
+              <span style={{ fontSize: 42, fontWeight: 700, color: teal }}>✅ 超乎我的期待</span>
+              <span style={{ fontSize: 36, color: white, opacity: 0.6, fontStyle: 'italic' }}>舉個例子…</span>
+            </div>
+            <div style={{
+              background: cardBgRed, border: '1px dashed rgba(255,100,100,0.5)', borderRadius: 12,
+              display: 'flex', flexDirection: 'column', justifyContent: 'center',
+              padding: '18px 28px', gap: 12,
+            }}>
+              <span style={{ fontSize: 42, fontWeight: 700, color: '#ff8a80' }}>⚠️ 偶爾不受控制</span>
+              <span style={{ fontSize: 36, color: white, opacity: 0.6, fontStyle: 'italic' }}>交不出你想要的東西…</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style={{ marginTop: 18, padding: '10px 0' }}>
+        <span style={{ fontSize: 42, color: white }}>⏱ 5 分鐘 — 先想清楚，等一下一起討論。</span>
       </div>
     </CA>
   </BG>
@@ -442,16 +488,76 @@ const ModeCard = ({ icon, label, title, desc, where }: {
   </div>
 );
 
+// ── Claude 產品架構 ──────────────────────────────────────────────────────────
+const ClaudeArch: Page = () => {
+  const sLabel: CSSProperties = { fontSize: 33, color: teal, fontWeight: 600, marginBottom: 10 };
+  const card: CSSProperties = {
+    background: cardBg, border: '1px solid rgba(255,255,255,0.2)',
+    borderRadius: 10, padding: '18px 24px',
+  };
+  const cTitle: CSSProperties = { fontSize: 44, fontWeight: 800, color: teal, marginBottom: 8, display: 'block' };
+  const cSub: CSSProperties = { fontSize: 34, color: white, lineHeight: 1.5, display: 'block' };
+  const modePill: CSSProperties = {
+    background: pill, borderRadius: 8, padding: '10px 0',
+    textAlign: 'center', fontSize: 34, color: white, fontWeight: 700,
+  };
+  return (
+    <BG>
+      <CA>
+        <div style={{ fontSize: 80, fontWeight: 800, color: white, lineHeight: 1.1, marginBottom: 10 }}>
+          Claude 產品架構
+        </div>
+        <TealBar />
+        <div style={sLabel}>使用者入口</div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 14, marginBottom: 14 }}>
+          <div style={card}>
+            <span style={cTitle}>Claude.ai</span>
+            <span style={cSub}>網頁 + 手機 App</span>
+            <span style={cSub}>一般使用者聊天介面</span>
+          </div>
+          <div style={card}>
+            <span style={cTitle}>Claude Desktop</span>
+            <span style={{ ...cSub, fontSize: 32, marginBottom: 10 }}>macOS / Windows 桌面應用</span>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10 }}>
+              <div style={modePill}>Chat</div>
+              <div style={modePill}>Cowork</div>
+              <div style={modePill}>Code</div>
+            </div>
+          </div>
+        </div>
+        <div style={sLabel}>開發者產品</div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginBottom: 14 }}>
+          <div style={card}>
+            <span style={cTitle}>Claude Code</span>
+            <span style={cSub}>CLI 命令列工具 · Agentic Coding</span>
+            <span style={cSub}>給開發者在終端機中使用</span>
+          </div>
+          <div style={card}>
+            <span style={cTitle}>Claude API / Platform</span>
+            <span style={cSub}>程式呼叫介面</span>
+            <span style={cSub}>整合到自己的應用或服務</span>
+          </div>
+        </div>
+        <div style={sLabel}>底層模型</div>
+        <div style={{ background: 'rgba(140,70,30,0.85)', border: '1px solid rgba(210,110,50,0.6)', borderRadius: 10, padding: '16px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#f98b24' }}>
+          <span style={{ fontSize: 48, fontWeight: 800, color: white }}>Claude</span>
+          <span style={{ fontSize: 38, color: white, opacity: 0.9 }}>Opus 4.8 · Sonnet 4.6 · Haiku 4.5</span>
+        </div>
+      </CA>
+    </BG>
+  );
+};
+
 const ClaudeModes: Page = () => (
   <BG>
     <CA>
       <Eyebrow text="單元 01" />
-      <H2>一個 Claude，三種身分</H2>
+      <H2>一個 Claude，多種身分</H2>
       <TealBar />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 28, flex: 1 }}>
-        <ModeCard icon="💬" label="Chat" title="　對話" desc="你的隨身顧問。問問題、討論、寫東西、做專題規劃。" where="今天單元 2、4 主場" />
-        <ModeCard icon="🤝" label="Cowork" title="　協作" desc="你的數位助理。整理檔案、操作瀏覽器、做簡報、設定期任務。" where="今天單元 5 主場" />
-        <ModeCard icon="🏗️" label="Code" title="　程式" desc="你的工程師。寫程式、建工具、自動化流程。" where="進階延伸" />
+        <ModeCard icon="" label="Chat" title="　對話" desc="你的隨身顧問。問問題、討論、寫東西、做專題規劃。" where="今天單元 2、4 主場" />
+        <ModeCard icon="" label="Cowork" title="　協作" desc="你的數位助理。整理檔案、操作瀏覽器、做簡報、設定期任務。" where="今天單元 5 主場" />
+        <ModeCard icon="" label="Code" title="　程式" desc="你的工程師。寫程式、建工具、自動化流程。" where="進階延伸" />
       </div>
       <KeyInsight text="Chat 動嘴・Cowork 動手・Code 蓋房子" />
     </CA>
@@ -467,7 +573,7 @@ const Recap01: Page = () => (
       <TealBar />
       <DotBullet text="沒有最強的 AI，只有最適合這個任務的 AI。" />
       <DotBullet text="四大工具是分工，不是對手 — 先想任務，再選工具。" />
-      <DotBullet text="Claude 有三種身分：Chat 動嘴、Cowork 動手、Code 蓋房子。" />
+      <DotBullet text="Claude 有多種身分：Chat 雲端助理、Cowork 萬能幫手 、Code 專屬工程師。" />
       <div style={{ marginTop: 'auto', paddingTop: 22, borderTop: '1px solid rgba(255,255,255,0.2)' }}>
         <span style={{ fontSize: 42, color: white, fontStyle: 'italic' }}>
           下一單元：就算選對工具，為什麼有人問得到好答案，有人問了等於沒問？→ Prompt 的真相
@@ -712,6 +818,76 @@ const Keywords: Page = () => (
   </BG>
 );
 
+// ── 17a Skills 是什麼？ ──────────────────────────────────────────────────────
+const SkillIntro: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="單元 03" />
+      <H2>Skills 是什麼？</H2>
+      <TealBar />
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, marginBottom: 28 }}>
+        <div style={{ background: cardBgTeal, border: '1px solid rgba(0,229,192,0.35)', borderRadius: 14, padding: '28px 32px' }}>
+          <div style={{ fontSize: 26, color: teal, fontWeight: 700, letterSpacing: '0.12em', marginBottom: 18 }}>定義</div>
+          <div style={{ fontSize: 56, color: white, fontWeight: 800, lineHeight: 1.25 }}>
+            給 AI 的<br />工作使用說明書
+          </div>
+        </div>
+        <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.18)', borderRadius: 14, padding: '28px 32px' }}>
+          <div style={{ fontSize: 26, color: teal, fontWeight: 700, letterSpacing: '0.12em', marginBottom: 18 }}>類比</div>
+          <div style={{ fontSize: 56, color: white, fontWeight: 800, lineHeight: 1.25 }}>
+            就像公司新人的<br />SOP 手冊
+          </div>
+        </div>
+      </div>
+      <div style={{ fontSize: 28, color: teal, fontWeight: 700, letterSpacing: '0.1em', marginBottom: 14 }}>為什麼需要 Skills？</div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+        <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 10, padding: '18px 26px', fontSize: 38, color: white }}>
+          每次都重新說明規則太累、效率低
+        </div>
+        <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 10, padding: '18px 26px', fontSize: 38, color: white }}>
+          Skill 讓 AI 記住你的標準，每次產出都一致
+        </div>
+        <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 10, padding: '18px 26px', fontSize: 38, color: white }}>
+          多份 Skill 可以組合，打造屬於你的 AI 工作流
+        </div>
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 17b 新聞引言：AI 真的省錢嗎？ ────────────────────────────────────────────
+const TokenCostIntro: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="單元 03" />
+      <H2 style={{ fontSize: 88 }}>AI 真的有比較便宜嗎？</H2>
+      <TealBar />
+      <div style={{ display: 'grid', gridTemplateColumns: '900px 1fr', gap: 48, flex: 1, alignItems: 'center' }}>
+        <a
+          href="https://www.cmoney.tw/notes/note-detail.aspx?nid=1211507"
+          target="_blank"
+          rel="noreferrer"
+          style={{ display: 'block', borderRadius: 14, overflow: 'hidden', boxShadow: '0 18px 48px rgba(0,0,0,0.45)', border: '1px solid rgba(255,255,255,0.18)' }}
+        >
+          <img src={aiCostNews} alt="AI 省不了錢？微軟燒光預算、企業上演「裁員再回聘」的人機成本大逆轉" style={{ display: 'block', width: '100%', height: 'auto' }} />
+        </a>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+          <div style={{ fontSize: 30, color: teal, fontWeight: 700, letterSpacing: '0.08em' }}>CMONEY · 2026.06.09</div>
+          <div style={{ fontSize: 42, color: white, fontWeight: 700, lineHeight: 1.35 }}>
+            微軟燒光 Claude 預算、企業驚覺「AI 工具比人還貴」，竟上演裁員再回聘。
+          </div>
+          <Bullet n="?" title="AI 一次回答到底花多少錢？" />
+          <Bullet n="$" title="為什麼用越多、帳單越驚人？" />
+          <Bullet n="!" title="關鍵就在下一個字 — Token" />
+          <div style={{ marginTop: 6, fontSize: 24, color: 'rgba(255,255,255,0.6)', wordBreak: 'break-all' }}>
+            來源：cmoney.tw/notes/note-detail.aspx?nid=1211507
+          </div>
+        </div>
+      </div>
+    </CA>
+  </BG>
+);
+
 // ── 18 Token 計價 ─────────────────────────────────────────────────────────────
 const TokenCost: Page = () => (
   <BG>
@@ -731,6 +907,77 @@ const TokenCost: Page = () => (
       </div>
       <Bullet title="聰明分配" body="簡單任務用小模型（快又省）；難任務、長文才動用大模型（深又準）" />
       <KeyInsight text="越聰明的模型，每個 Token 越貴 — 會分配，才省錢又有效率" />
+    </CA>
+  </BG>
+);
+
+// ── 18b 費用試算：大型電商客服案例 ──────────────────────────────────────────
+const CostCard = ({ model, inRate, outRate, cost, label, ntd, note, accent }: {
+  model: string; inRate: string; outRate: string;
+  cost: string; label: string; ntd: string; note: string; accent?: boolean;
+}) => (
+  <div style={{
+    background: accent ? cardBgTeal : cardBg,
+    border: `1px solid ${accent ? 'rgba(0,229,192,0.55)' : 'rgba(255,255,255,0.22)'}`,
+    borderRadius: 12, padding: '22px 24px',
+    display: 'flex', flexDirection: 'column', gap: 8,
+  }}>
+    <div style={{ fontSize: 44, fontWeight: 800, color: accent ? teal : white }}>{model}</div>
+    <div style={{ fontSize: 30, color: white, opacity: 0.75 }}>輸入 {inRate}・輸出 {outRate}</div>
+    <div style={{ height: 1, background: 'rgba(255,255,255,0.2)', margin: '4px 0' }} />
+    <div style={{ fontSize: 26, color: white, opacity: 0.65 }}>{label}</div>
+    <div style={{ fontSize: 52, fontWeight: 900, color: accent ? teal : white, lineHeight: 1 }}>{cost}</div>
+    <div style={{ fontSize: 26, color: white, opacity: 0.55 }}>{ntd}</div>
+    <div style={{ height: 1, background: 'rgba(255,255,255,0.2)', margin: '4px 0' }} />
+    <div style={{ fontSize: 28, color: white, lineHeight: 1.4 }}>{note}</div>
+  </div>
+);
+
+const TokenCostCase: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="單元 03 · 費用試算" />
+      <H2 style={{ fontSize: 72 }}>大型電商客服全用 Opus，會發生什麼？</H2>
+      <TealBar />
+      <div style={{
+        background: cardBgRed, border: '1px solid rgba(255,100,100,0.4)',
+        borderRadius: 10, padding: '12px 22px', marginBottom: 16,
+      }}>
+        <span style={{ fontSize: 30, color: white }}>
+          📋 情境（參考 Shopee 規模）：150 萬次 / 月｜每次輸入 ~2,650 tokens（系統提示＋對話記錄），輸出 ~350 tokens
+        </span>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 22, flex: 1 }}>
+        <CostCard
+          model="Haiku 4.5"
+          inRate="$1 / MTok"
+          outRate="$5 / MTok"
+          cost="$6,600 / 月"
+          label="每月費用（150萬次）"
+          ntd="≈ NT$21萬　簡單問題綽綽有餘"
+          note="⚡ 快速回應，最佳性價比"
+          accent
+        />
+        <CostCard
+          model="Sonnet 4.6"
+          inRate="$3 / MTok"
+          outRate="$15 / MTok"
+          cost="$19,800 / 月"
+          label="每月費用（150萬次）"
+          ntd="≈ NT$63萬　處理退換貨、情緒安撫"
+          note="⚖️ 複雜情境才需要這個等級"
+        />
+        <CostCard
+          model="Opus 4.8"
+          inRate="$5 / MTok"
+          outRate="$25 / MTok"
+          cost="$33,000 / 月"
+          label="每月費用（150萬次）"
+          ntd="≈ NT$105萬　全用這個？"
+          note="🔥 一年多燒 NT$1,008萬"
+        />
+      </div>
+      <KeyInsight text="Opus vs Haiku 差 5 倍 — 選錯模型，一年多燒 NT$1,000萬。正確做法：簡單問題 Haiku，複雜推理才升級。" />
     </CA>
   </BG>
 );
@@ -1521,10 +1768,10 @@ export const meta: SlideMeta = {
 
 export default [
   Cover,
-  Sec01, AiMap, VendorMap, WhyClaude, ClaudeModes, Recap01,
+  Sec01, AiMap, AiReflect, VendorMap, WhyClaude, ClaudeArch, ClaudeModes, Recap01,
   Sec02, PromptMyth, GoodBad1, GoodBad2, FourQ, Practice, PracticeExample, Recap02,
   Break1,
-  Sec03, Keywords, TokenCost, ModelDiff, McpSkill, ReverseEng, ReelsSkillExample, ReverseEngExample, Recap03,
+  Sec03, Keywords, SkillIntro, TokenCostIntro, TokenCost, TokenCostCase, ModelDiff, McpSkill, ReverseEng, ReelsSkillExample, ReverseEngExample, Recap03,
   Sec04, MissionBrief, PlanFirst, Relay, Relay1, Relay1Example, Relay2, Relay3, ShareRecap, Recap04,
   Break2,
   Sec05, CoworkVsChat, AssistantScene, ThreeDemo, ScheduleTask, Recap05,
