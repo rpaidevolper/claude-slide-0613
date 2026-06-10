@@ -2,6 +2,8 @@ import type { CSSProperties, ReactNode } from 'react';
 import type { DesignSystem, Page, SlideMeta, SlideTransition } from '@open-slide/core';
 import { useSlidePageNumber } from '@open-slide/core';
 import aiCostNews from './assets/ai-cost-news.png';
+import skillsmpImg from './assets/skillsmp.png';
+import claudeSkillsCustomize from './assets/claude-skills-customize.png';
 
 // ─── Design System ───────────────────────────────────────────────────────────
 export const design: DesignSystem = {
@@ -586,7 +588,7 @@ const Recap01: Page = () => (
       <TealBar />
       <DotBullet text="沒有最強的 AI，只有最適合這個任務的 AI。" />
       <DotBullet text="四大工具是分工，不是對手 — 先想任務，再選工具。" />
-      <DotBullet text="Claude 有多種身分：Chat 雲端助理、Cowork 萬能幫手 、Code 專屬工程師。" />
+      <DotBullet text="Claude 有多種身分：Chat 雲端助理、Cowork 萬能幫手 、Code 專屬工程師..." />
       <div style={{ marginTop: 'auto', paddingTop: 22, borderTop: '1px solid rgba(255,255,255,0.2)' }}>
         <span style={{ fontSize: 42, color: white, fontStyle: 'italic' }}>
           下一單元：就算選對工具，為什麼有人問得到好答案，有人問了等於沒問？→ Prompt 的真相
@@ -819,7 +821,7 @@ const Keywords: Page = () => (
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, flex: 1 }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <Bullet n="1" title="Token（詞元）" body="AI 閱讀和回答的「最小單位」。AI 算錢、算長度，都是用 Token 計。" />
-          <Bullet n="2" title="MCP（模型上下文協定）" body="AI 對外的「插座」。讓 AI 接上外部資料與工具，即時查詢真實數據。" />
+          <Bullet n="2" title="MCP（模型上下文協定）" body="AI 對外的「手腳」。讓 AI 接上外部資料與工具，即時查詢真實數據。" />
           <Bullet n="3" title="Skill（技能）" body="教 AI「怎麼做某件事」的說明書。讓 AI 照規範產出 PPT、Word、Excel。" />
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -907,6 +909,153 @@ const SkillIntro: Page = () => (
   </BG>
 );
 
+// ── 17a-1.5 Skill 從哪裡找 ──────────────────────────────────────────────────
+const SkillMarketplace: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="單元 03 · Skill 從哪裡找" />
+      <H2>Skills Marketplace</H2>
+      <TealBar />
+      <div style={{ display: 'grid', gridTemplateColumns: '1.45fr 1fr', gap: 36, flex: 1, alignItems: 'center' }}>
+        <div style={{
+          background: white, borderRadius: 14, padding: 14,
+          border: '1px solid rgba(255,255,255,0.25)',
+          boxShadow: '0 12px 40px rgba(0,0,0,0.35)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          <img src={skillsmpImg} alt="Skills Marketplace"
+            style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 8 }} />
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+          <div style={{
+            background: cardBgTeal, border: '1px solid rgba(0,229,192,0.45)',
+            borderRadius: 12, padding: '24px 28px',
+          }}>
+            <div style={{ fontSize: 28, color: teal, fontWeight: 700, letterSpacing: '0.12em', marginBottom: 10 }}>
+              網址
+            </div>
+            <a href="https://skillsmp.com/" target="_blank" rel="noreferrer"
+              style={{ fontSize: 56, color: white, fontWeight: 800, textDecoration: 'none', wordBreak: 'break-all' }}>
+              skillsmp.com
+            </a>
+          </div>
+          <DotBullet text="搜尋現成 Skill" />
+          <DotBullet text="依職業 / 創作者 / GitHub 來源瀏覽" />
+        </div>
+      </div>
+      <KeyInsight text="善用資源，站在巨人的肩膀上" />
+    </CA>
+  </BG>
+);
+
+// ── 17a-1.6 Skill 怎麼裝 ────────────────────────────────────────────────────
+const SkillInstall: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="單元 03 · Skill 怎麼裝" />
+      <H2>Claude Desktop - SKills</H2>
+      <TealBar />
+      <div style={{ display: 'grid', gridTemplateColumns: '1.45fr 1fr', gap: 36, flex: 1, alignItems: 'center' }}>
+        <div style={{
+          background: white, borderRadius: 14, padding: 14,
+          border: '1px solid rgba(255,255,255,0.25)',
+          boxShadow: '0 12px 40px rgba(0,0,0,0.35)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          <img src={claudeSkillsCustomize} alt="Claude Desktop Customize Skills"
+            style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 8 }} />
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+          <div style={{
+            background: cardBgTeal, border: '1px solid rgba(0,229,192,0.45)',
+            borderRadius: 12, padding: '24px 28px',
+          }}>
+            <div style={{ fontSize: 28, color: teal, fontWeight: 700, letterSpacing: '0.12em', marginBottom: 10 }}>
+              安裝路徑
+            </div>
+            <div style={{ fontSize: 48, color: white, fontWeight: 800, lineHeight: 1.25 }}>
+              Customize → Skills
+            </div>
+          </div>
+          <DotBullet text="SKILL.md : 主要描述檔" />
+          <DotBullet text="Description：跟 AI 說明觸發時機" />
+        </div>
+      </div>
+      <KeyInsight text="觸發條件寫清楚 AI 才知道何時使用 Skill" />
+    </CA>
+  </BG>
+);
+
+// ── 17a-1.7 Skill 從哪來：三種方法 ─────────────────────────────────────────
+const SkillSources: Page = () => {
+  const Card = ({ n, title, desc, examples, foot }: {
+    n: string; title: string; desc: string; examples: string; foot: string;
+  }) => (
+    <div style={{
+      background: cardBgTeal, border: '1px solid rgba(0,229,192,0.45)',
+      borderRadius: 14, padding: '28px 28px 24px',
+      display: 'flex', flexDirection: 'column', gap: 16,
+    }}>
+      <div style={{
+        fontSize: 28, color: teal, fontWeight: 800, letterSpacing: '0.12em',
+      }}>{n}</div>
+      <div style={{ fontSize: 44, color: white, fontWeight: 800, lineHeight: 1.2 }}>
+        {title}
+      </div>
+      <div style={{ fontSize: '32px', color: white, lineHeight: 1.45, opacity: 0.92 }}>
+        {desc}
+      </div>
+      <div style={{ flex: 1 }} />
+      <div style={{
+        background: 'rgba(0,15,55,0.55)', border: '1px solid rgba(255,255,255,0.16)',
+        borderRadius: 8, padding: '12px 14px',
+        fontFamily: '"JetBrains Mono","Menlo","Consolas",monospace',
+        fontSize: 22, color: white, lineHeight: 1.45,
+      }}>
+        {examples}
+      </div>
+      <div style={{ fontSize: 24, color: teal, fontWeight: 700, marginTop: 4 }}>
+        {foot}
+      </div>
+    </div>
+  );
+  return (
+    <BG>
+      <CA>
+        <Eyebrow text="單元 03 · Skill 從哪來" />
+        <H2>怎麼讓 AI 擁有一個 Skill？</H2>
+        <TealBar />
+        <div style={{ fontSize: 32, color: white, lineHeight: 1.4, marginBottom: 22, opacity: 0.92 }}>
+          三條路 — 從最自己動手、到完全現成，挑一條最適合你的方式。
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24, flex: 1 }}>
+          <Card
+            n="方法 1"
+            title="跟 Claude 一起寫"
+            desc="把你的標準、SOP 講給 Claude 聽，請它整理成 SKILL.md。最貼自己工作流。"
+            examples="例：教學評量標準、班級報名表規格、課堂講義格式"
+            foot="✓ 最自由　✓ 變成自己的"
+          />
+          <Card
+            n="方法 2"
+            title="安裝 Anthropic 官方"
+            desc="Claude 內建一鍵安裝官方 Skills，品質與安全經過驗證，常用任務直接用。"
+            examples="例：pptx-builder、excel-formula、pdf-form-filler"
+            foot="✓ 最安全　✓ 馬上能用"
+          />
+          <Card
+            n="方法 3"
+            title="找別人寫好的"
+            desc="到 SkillsMP 等市集找社群分享的 SKILL.md，看不同領域怎麼拆解。"
+            examples="例：clinical-trial-protocol、code-reviewer、tissue-engineering"
+            foot="⚠ 裝之前先看內容"
+          />
+        </div>
+      </CA>
+    </BG>
+  );
+};
+
 // ── 17a-2 Skill 安全警告 ────────────────────────────────────────────────────
 const SkillWarning: Page = () => (
   <BG>
@@ -934,6 +1083,109 @@ const SkillWarning: Page = () => (
         </div>
       </div>
     </CA>
+  </BG>
+);
+
+// ── 17c 動手練習：建立自己的 Skill ──────────────────────────────────────────
+const BuildSkillPractice: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="單元 03 · 動手練習" />
+      <H2 style={{ fontSize: 84 }}>做你自己的「考試準備」Skill</H2>
+      <TealBar />
+      <div style={{ fontSize: 36, color: white, lineHeight: 1.5, marginBottom: 20, opacity: 0.92 }}>
+        把單元 02 那份「準備考試」prompt，升級成可重複呼叫的 Skill — 以後一句話就能啟動。
+      </div>
+      <Bullet n="1" title="打開 Claude Desktop" body="Customize → Skills → 點右上「＋」新增" />
+      <Bullet n="2" title="把你的 prompt 給 Claude" body="貼上你之前寫好的「準備考試」prompt，請它幫你整理成 SKILL.md" />
+      <Bullet n="3" title="幫它命名、寫觸發條件" body="取個好名字（例：exam-prep），description 寫清楚什麼情境會觸發，存檔" />
+      <KeyInsight text="一個寫過一次的好 prompt → 變成永遠可叫用的 Skill" />
+      <div style={{ marginTop: 10, fontSize: 28, color: 'rgba(255,255,255,0.6)' }}>
+        下一頁看範例 →
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 17d 練習範例：地理 prompt → SKILL.md 對話 ───────────────────────────────
+const BuildSkillExample: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="單元 03 · 練習範例" />
+      <H2 style={{ fontSize: 78 }}>從一句 prompt 變成一份 Skill</H2>
+      <TealBar />
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, flex: 1 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <div style={{ fontSize: 32, fontWeight: 700, color: teal, letterSpacing: '0.06em' }}>
+            你對 Claude 說
+          </div>
+          <div style={{
+            background: cardBg, border: '1px solid rgba(255,255,255,0.25)',
+            borderRadius: 10, padding: '20px 24px', flex: 1,
+            fontSize: 26, color: white, lineHeight: 1.55,
+            display: 'flex', flexDirection: 'column', gap: 14,
+          }}>
+            <div>
+              「我是高一升高二，地理段考只能拿 65 分。請幫我把『東南亞氣候與季風』這章從不懂變成能應用 — 我兩週後考試、每天只有 30 分鐘。請用三層筆記呈現：核心概念、真實例子、3 題練習附解析。」
+            </div>
+            <div style={{
+              borderTop: '1px solid rgba(0,229,192,0.4)', paddingTop: 12,
+              color: teal, fontWeight: 600,
+            }}>
+              → 加一句：「請依此幫我寫一份 SKILL.md，以後我只要說『幫我準備 XX 段考』就自動套用這個流程。」
+            </div>
+          </div>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <div style={{ fontSize: 32, fontWeight: 700, color: teal, letterSpacing: '0.06em' }}>
+            Claude 回你（SKILL.md 草稿）
+          </div>
+          <div style={{
+            background: 'rgba(0,15,55,0.78)', border: '1px solid rgba(0,229,192,0.40)',
+            borderRadius: 10, padding: '20px 24px', flex: 1,
+            fontFamily: '"JetBrains Mono","Menlo","Consolas",monospace',
+            color: white, fontSize: 22, lineHeight: 1.6,
+            display: 'flex', flexDirection: 'column', gap: 12, overflow: 'hidden',
+          }}>
+            <div style={{ color: 'rgba(255,255,255,0.45)' }}># exam-prep.md</div>
+            <div>
+              <div style={{ color: teal, fontWeight: 700 }}>## When to use</div>
+              <div style={{ marginLeft: 14 }}>使用者要準備任何科目的段考、想把一章從不懂變成能應用時。</div>
+            </div>
+            <div>
+              <div style={{ color: teal, fontWeight: 700 }}>## Hard rules</div>
+              <div style={{ marginLeft: 14 }}>- 先問五件事：科目、章節、剩餘天數、每日可用時間、目標分數</div>
+              <div style={{ marginLeft: 14 }}>- 產出格式固定為三層筆記</div>
+              <div style={{ marginLeft: 14 }}>- 練習題必附解析與對應概念</div>
+            </div>
+            <div>
+              <div style={{ color: teal, fontWeight: 700 }}>## Procedure</div>
+              <div style={{ marginLeft: 14 }}>1. 詢問 5 項基本資料</div>
+              <div style={{ marginLeft: 14 }}>2. 拆解章節重點</div>
+              <div style={{ marginLeft: 14 }}>3. 生三層筆記：核心概念 → 真實例子 → 3 題練習</div>
+              <div style={{ marginLeft: 14 }}>4. 附每題解析與下一步建議</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <KeyInsight text="把 prompt 變 Skill — 把一次性的好點子變成可重複的習慣" />
+    </CA>
+  </BG>
+);
+
+// ── 17e Break 中場休息 ──────────────────────────────────────────────────────
+const Break3: Page = () => (
+  <BG>
+    <div style={{ position: 'absolute', top: 0, bottom: 60, left: 0, right: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+      <svg width="110" height="110" viewBox="0 0 100 100" fill="none" style={{ marginBottom: 36, opacity: 0.75 }}>
+        <circle cx="50" cy="50" r="44" stroke="white" strokeWidth="3"/>
+        <line x1="50" y1="18" x2="50" y2="50" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+        <line x1="50" y1="50" x2="70" y2="62" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+        <circle cx="50" cy="50" r="4" fill="white"/>
+      </svg>
+      <h1 style={{ fontSize: 120, fontWeight: 900, color: white, margin: 0 }}>休息 10 分鐘</h1>
+      <p style={{ fontSize: 57, color: white, marginTop: 28, opacity: 0.9 }}>待會兒：Token 成本、模型差異與 MCP</p>
+    </div>
   </BG>
 );
 
@@ -1130,7 +1382,7 @@ const ReverseEng: Page = () => (
           <div style={{ padding: '12px 14px', fontSize: 33, fontWeight: 700, color: white, borderRight: '1px solid rgba(255,255,255,0.2)' }}>它假設你先懂什麼</div>
           <div style={{ padding: '12px 14px', fontSize: 33, fontWeight: 700, color: white }}>我學到的入門知識</div>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', lineHeight: '2.05', fontSize: '28px' }}>
           <div style={{ padding: '22px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', minHeight: 120 }}>
             <span style={{ fontSize: 33, color: white, opacity: 0.55, fontStyle: 'italic' }}>（填）</span>
           </div>
@@ -1140,7 +1392,7 @@ const ReverseEng: Page = () => (
           <div style={{ padding: '22px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)' }}>
             <span style={{ fontSize: 33, color: white, opacity: 0.55, fontStyle: 'italic' }}>（填）</span>
           </div>
-          <div style={{ padding: '22px 14px', borderTop: '1px solid rgba(255,255,255,0.15)' }}>
+          <div style={{ padding: '22px 14px', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: '28px', lineHeight: '1.7' }}>
             <span style={{ fontSize: 33, color: white, opacity: 0.55, fontStyle: 'italic' }}>（填）</span>
           </div>
         </div>
@@ -1152,45 +1404,49 @@ const ReverseEng: Page = () => (
   </BG>
 );
 
-// ── 21a IG Reels Skill 範例（給下一頁拆解用）────────────────────────────────
+// ── 21a Code Reviewer Skill 範例（給下一頁拆解用）──────────────────────────
 const ReelsSkillExample: Page = () => (
   <BG>
     <CA>
       <Eyebrow text="單元 03 · 範例 Skill" />
-      <H2 style={{ fontSize: 84 }}>一個真正的「IG Reels」Skill 長這樣</H2>
+      <H2 style={{ fontSize: 76 }}>一個真正的 Code Reviewer Skill 長這樣</H2>
       <TealBar />
-      <div style={{ fontSize: 36, color: white, lineHeight: 1.45, marginBottom: 14 }}>
-        把它當成一份「專家手冊」 — 下一頁我們會把它拆開來看。
+      <div style={{ fontSize: 30, color: white, lineHeight: 1.4, marginBottom: 12 }}>
+        一份 AI 工程師會放進 Claude Code 的真實 Skill — 下一頁我們會把它拆開來看。
       </div>
       <div style={{
         background: 'rgba(0,15,55,0.78)', border: '1px solid rgba(0,229,192,0.40)',
-        borderRadius: 10, padding: '22px 28px', flex: 1,
+        borderRadius: 10, padding: '20px 26px', flex: 1,
         fontFamily: '"JetBrains Mono","Menlo","Consolas",monospace',
-        color: white, fontSize: 25, lineHeight: 1.55, overflow: 'hidden',
+        color: white, fontSize: 22, lineHeight: 1.5, overflow: 'hidden',
+        display: 'flex', flexDirection: 'column',
       }}>
-        <div style={{ color: 'rgba(255,255,255,0.45)', marginBottom: 10 }}># reels-builder.md</div>
-        <div style={{ color: teal, fontWeight: 700, marginTop: 6 }}>## When to use this skill</div>
-        <div style={{ marginLeft: 14 }}>要做一支會被看完的 IG Reels 短影音時。</div>
+        <div style={{ color: 'rgba(255,255,255,0.45)', marginBottom: 8 }}># code-reviewer.md</div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: 32, flex: 1 }}>
+          <div style={{ lineHeight: '2', fontSize: '28px' }}>
+            <div style={{ color: teal, fontWeight: 700 }}>## When to use this skill</div>
+            <div style={{ marginLeft: 14 }}>審查 PR、做 security audit、檢查程式碼品質時。</div>
 
-        <div style={{ color: teal, fontWeight: 700, marginTop: 14 }}>## Hard rules</div>
-        <div style={{ marginLeft: 14 }}>- 前 3 秒一定要有 hook，否則人會滑掉</div>
-        <div style={{ marginLeft: 14 }}>- 每片段不超過 2 秒就要切換鏡頭</div>
-        <div style={{ marginLeft: 14 }}>- 字幕必須對齊音樂節拍（不是「貼著就好」）</div>
-        <div style={{ marginLeft: 14 }}>- 結尾留 cliffhanger，引導留言或下集</div>
+            <div style={{ color: teal, fontWeight: 700, marginTop: 14 }}>## Hard rules（每條 finding 必備）</div>
+            <div style={{ marginLeft: 14 }}>- 標嚴重程度：Critical / High / Medium / Low</div>
+            <div style={{ marginLeft: 14 }}>- 指出具體行號或片段</div>
+            <div style={{ marginLeft: 14 }}>- 附上建議修法</div>
+            <div style={{ marginLeft: 14 }}>- 結尾給整體品質分數 1–10</div>
+          </div>
+          <div style={{ fontSize: '28px', lineHeight: '2' }}>
+            <div style={{ color: teal, fontWeight: 700 }}>## Procedure（三大檢查面向）</div>
+            <div style={{ marginLeft: 14 }}>1. <span style={{ color: teal }}>Security</span>：SQL injection、XSS、寫死的密鑰、不安全的資料處理</div>
+            <div style={{ marginLeft: 14 }}>2. <span style={{ color: teal }}>Performance</span>：多餘迴圈、記憶體洩漏、可快取卻沒快取</div>
+            <div style={{ marginLeft: 14 }}>3. <span style={{ color: teal }}>Best practices</span>：命名、錯誤處理、文件、DRY</div>
 
-        <div style={{ color: teal, fontWeight: 700, marginTop: 14 }}>## Procedure</div>
-        <div style={{ marginLeft: 14 }}>1. 先寫 3 秒 hook 句（疑問 / 反差 / 數字）</div>
-        <div style={{ marginLeft: 14 }}>2. 列分鏡：每 2 秒一個畫面，總長 ≤ 15 秒</div>
-        <div style={{ marginLeft: 14 }}>3. 拍素材：每鏡頭至少 3 個 take</div>
-        <div style={{ marginLeft: 14 }}>4. 剪輯：對齊 BPM 切點，字幕配色高反差</div>
-        <div style={{ marginLeft: 14 }}>5. 結尾 1 秒留白＋一句 cliffhanger 文案</div>
-
-        <div style={{ color: teal, fontWeight: 700, marginTop: 14 }}>## Don't</div>
-        <div style={{ marginLeft: 14 }}>- 不要把長影片硬剪短當 Reels</div>
-        <div style={{ marginLeft: 14 }}>- 不要用平拍 + 平剪 — 完播率會直接掉</div>
+            <div style={{ color: teal, fontWeight: 700, marginTop: 14 }}>## Don't</div>
+            <div style={{ marginLeft: 14 }}>- 不要只說「這段不好」卻沒給 severity、行號、修法</div>
+            <div style={{ marginLeft: 14 }}>- 不要混用主觀偏好與真實 bug</div>
+          </div>
+        </div>
       </div>
-      <div style={{ marginTop: 14, fontSize: 30, color: 'rgba(255,255,255,0.6)' }}>
-        ↑ Skill 把專家的「眉角」變成可重複的步驟　→ 下一頁示範怎麼拆解它
+      <div style={{ marginTop: 12, fontSize: 26, color: 'rgba(255,255,255,0.6)' }}>
+        ↑ Skill 把資深 reviewer 的「checklist」變成可重複的步驟　→ 下一頁示範怎麼拆解它
       </div>
     </CA>
   </BG>
@@ -1204,7 +1460,7 @@ const ReverseEngExample: Page = () => (
       <H2>把上一頁的 Skill 拆給你看</H2>
       <TealBar />
       <div style={{ fontSize: 39, color: white, lineHeight: 1.5, marginBottom: 18 }}>
-        用同一張四欄表，把剛剛那份 IG Reels Skill 解讀回「外行能懂的入門知識」—
+        用同一張四欄表，把剛剛那份 Code Reviewer Skill 解讀回「外行能懂的入門知識」—
       </div>
       <div style={{ border: '1px solid rgba(255,255,255,0.28)', borderRadius: 10, overflow: 'hidden', flex: 1 }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', background: 'rgba(0,229,192,0.22)' }}>
@@ -1215,16 +1471,16 @@ const ReverseEngExample: Page = () => (
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)' }}>
           <div style={{ padding: '20px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.5 }}>
-            做 IG Reels 短影音 — 從零開始拍一支會被看完的影片。
+            程式碼審查（Code Review）— 看別人寫的程式有沒有錯、有沒有更好寫法。
           </div>
           <div style={{ padding: '20px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.5 }}>
-            ① 前 3 秒一定要有 hook<br/>② 每片段不超過 2 秒切換<br/>③ 字幕對齊音樂節拍<br/>④ 結尾留 cliffhanger
+            ① 三面向：安全 / 效能 / 風格<br/>② 每個 finding 標 Critical–Low<br/>③ 指出行號＋建議修法<br/>④ 給總分 1–10
           </div>
           <div style={{ padding: '20px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.5 }}>
-            IG 演算法看重「完播率」、看得懂節奏感是什麼、會用基本剪輯 App。
+            常見漏洞名詞（SQL injection、XSS）、看得懂程式結構、知道 DRY 是什麼。
           </div>
           <div style={{ padding: '20px 14px', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: 30, color: white, lineHeight: 1.5 }}>
-            短片不是「縮短長片」；節奏是設計出來的，不是天然的 — 這也是高手用 AI 的方法。
+            好的審查不是憑感覺，是「分嚴重度＋給修法」；DRY、錯誤處理、命名是工程師的共同語言。
           </div>
         </div>
       </div>
@@ -1853,7 +2109,7 @@ export default [
   Sec01, AiMap, AiReflect, VendorMap, WhyClaude, ClaudeArch, ClaudeModes, Recap01,
   Sec02, PromptMyth, GoodBad1, GoodBad2, FourQ, Practice, PracticeExample, Recap02,
   Break1,
-  Sec03, Keywords, PromptPain, PromptPainExamples, SkillIntro, SkillWarning, TokenCostIntro, TokenCost, TokenCostCase, ModelDiff, McpSkill, ReverseEng, ReelsSkillExample, ReverseEngExample, Recap03,
+  Sec03, Keywords, PromptPain, PromptPainExamples, SkillIntro, SkillSources, SkillInstall, SkillMarketplace, ReverseEng, ReelsSkillExample, ReverseEngExample, SkillWarning, BuildSkillPractice, BuildSkillExample, Break3, TokenCostIntro, TokenCost, TokenCostCase, ModelDiff, McpSkill, Recap03,
   Sec04, MissionBrief, PlanFirst, Relay, Relay1, Relay1Example, Relay2, Relay3, ShareRecap, Recap04,
   Break2,
   Sec05, CoworkVsChat, AssistantScene, ThreeDemo, ScheduleTask, Recap05,
