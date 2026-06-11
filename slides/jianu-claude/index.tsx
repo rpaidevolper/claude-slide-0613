@@ -4,6 +4,13 @@ import { useSlidePageNumber } from '@open-slide/core';
 import aiCostNews from './assets/ai-cost-news.png';
 import skillsmpImg from './assets/skillsmp.png';
 import claudeSkillsCustomize from './assets/claude-skills-customize.png';
+import qrWebsite from './assets/qr-website.png';
+import qrInstagram from './assets/qr-instagram.png';
+import yinAvatar from './assets/yin-avatar.webp';
+import hugoAvatar from './assets/hugo-avatar.png';
+import slidoQr from './assets/slido-qr.png';
+import qrWebsiteOrig from './assets/qr-website.orig.png';
+
 
 // ─── Design System ───────────────────────────────────────────────────────────
 export const design: DesignSystem = {
@@ -243,28 +250,26 @@ const Cover: Page = () => (
       padding: '0 160px',
     }}>
       <div style={{ fontSize: 33, color: teal, fontWeight: 700, letterSpacing: '0.16em', marginBottom: 28 }}>
-        RPAI 數位優化器 · 嘉義女中 AI 內訓
+        RPAI 數位優化器 · 嘉義女中工作坊
       </div>
       <h1 style={{ fontSize: 130, fontWeight: 900, color: white, margin: 0, lineHeight: 1.08, letterSpacing: '-0.02em' }}>
-        為什麼是 Claude？
+        Claude AI 實戰班
       </h1>
-      <p style={{ fontSize: 66, fontWeight: 500, color: white, margin: '20px 0 40px', lineHeight: 1.25 }}>
-        高中生必知的 AI 工具 — 從會用，到會指揮
+      <p style={{ fontSize: 60, fontWeight: 500, color: white, margin: '20px 0 40px', lineHeight: 1.25 }}>
+        教你養一個會做事的數位小幫手
       </p>
       <div style={{ display: 'flex', gap: 20, marginBottom: 56 }}>
-        <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.35)', borderRadius: 8, padding: '12px 32px' }}>
-          <span style={{ fontSize: 42, color: white, fontWeight: 600 }}>Claude Chat</span>
+        <div style={{ background: 'rgba(0,229,192,0.14)', border: `1px solid ${teal}`, borderRadius: 999, padding: '12px 36px' }}>
+          <span style={{ fontSize: 42, color: teal, fontWeight: 700 }}>Claude Chat</span>
         </div>
-        <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.35)', borderRadius: 8, padding: '12px 32px' }}>
-          <span style={{ fontSize: 42, color: white, fontWeight: 600 }}>Cowork</span>
+        <div style={{ background: 'rgba(0,229,192,0.14)', border: `1px solid ${teal}`, borderRadius: 999, padding: '12px 36px' }}>
+          <span style={{ fontSize: 42, color: teal, fontWeight: 700 }}>Cowork</span>
         </div>
-        <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.35)', borderRadius: 8, padding: '12px 32px' }}>
-          <span style={{ fontSize: 42, color: white, fontWeight: 600 }}>Code</span>
+        <div style={{ background: 'rgba(0,229,192,0.14)', border: `1px solid ${teal}`, borderRadius: 999, padding: '12px 36px' }}>
+          <span style={{ fontSize: 42, color: teal, fontWeight: 700 }}>Code</span>
         </div>
       </div>
-      <p style={{ fontSize: 36, color: white, margin: 0, opacity: 0.9 }}>
-        講師：（待填）｜300 分鐘｜嘉義女中
-      </p>
+      <p style={{ fontSize: 36, color: white, margin: 0, opacity: 0.9 }}>{''}</p>
     </div>
   </BG>
 );
@@ -277,8 +282,331 @@ Cover.transition = {
            keyframes: [{ opacity: 0, transform: 'translateY(12px)', filter: 'blur(4px)' },{ opacity: 1, transform: 'translateY(0)', filter: 'blur(0)' }] },
 };
 
+// ── 01a 講師介紹 ──────────────────────────────────────────────────────────────
+const Instructor: Page = () => {
+  const projects = [
+    '2026_科技業_企業雲端運算資源管理與平台化建置案',
+    '2025_科技業_企業開發者平台資安檢核與流程自動化（AI 導入基礎）建置案',
+    '2024_餐飲服務業_門市訂單與營運流程優化數位轉型案',
+    '2023_金融業_結算交割系統數位轉型專案',
+    '2023_政府業_藥政管理電子化與流程數位化平台建置案',
+    '2022_金融業_個人金融服務平台優化與數位轉型',
+    '2022_金融業_開戶流程無紙化與自動化轉型案',
+    '2021_金融業_保經管理流程數位轉型專案',
+    '2020_醫藥業_影音簽署與無紙化流程轉型',
+  ];
+  return (
+    <BG>
+      <CA>
+        <div style={{ display: 'grid', gridTemplateColumns: '480px 1fr', gap: 60, flex: 1, alignItems: 'flex-start' }}>
+          <div>
+            <div style={{ fontSize: 32, fontWeight: 800, color: teal, letterSpacing: '0.04em', marginBottom: 24 }}>
+              RPAI 數位優化器
+            </div>
+            <div style={{ fontSize: 168, fontWeight: 900, color: white, lineHeight: 1.02, letterSpacing: '0.02em' }}>
+              講師<br/>介紹
+            </div>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 32, alignSelf: 'center' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '360px 1fr', gap: 50, alignItems: 'center' }}>
+              <div style={{
+                width: 360, height: 360, borderRadius: '50%',
+                border: '2px solid rgba(255,255,255,0.35)',
+                overflow: 'hidden',
+              }}>
+                <img src={yinAvatar} alt="Yin" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              </div>
+              <div>
+                <div style={{ fontSize: 100, fontWeight: 900, color: teal, lineHeight: 1, marginBottom: 18 }}>Yin</div>
+                <DotBullet text="科技業軟體工程師" />
+                <DotBullet text="自動化工具講師" />
+                <DotBullet text="自動化導入技術顧問" />
+              </div>
+            </div>
+            <div style={{ background: 'transparent', borderRadius: 12, padding: '20px 28px' }}>
+              {projects.map((p) => (
+                <div key={p} style={{ fontSize: 26, color: white, lineHeight: 1.6, letterSpacing: '0.01em' }}>{p}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </CA>
+    </BG>
+  );
+};
+
+// ── 01a-2 助教介紹 Hugo ──────────────────────────────────────────────────────
+const InstructorHugo: Page = () => (
+  <BG>
+    <CA>
+      <div style={{ display: 'grid', gridTemplateColumns: '480px 1fr', gap: 60, flex: 1, alignItems: 'flex-start' }}>
+        <div style={{ lineHeight: '1.55' }}>
+          <div style={{ fontSize: 32, fontWeight: 800, color: teal, letterSpacing: '0.04em', marginBottom: 24 }}>
+            RPAI 數位優化器
+          </div>
+          <div style={{ fontSize: 168, fontWeight: 900, color: white, lineHeight: 1.02, letterSpacing: '0.02em' }}>
+            助教<br/>介紹
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '420px 1fr', gap: 60, alignItems: 'center', alignSelf: 'center' }}>
+          <div style={{
+            width: 420, height: 420, borderRadius: '50%',
+            border: '2px solid rgba(255,255,255,0.35)',
+            overflow: 'hidden',
+          }}>
+            <img src={hugoAvatar} alt="Hugo" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          </div>
+          <div style={{ whiteSpace: 'nowrap' }}>
+            <div style={{ fontSize: 110, fontWeight: 900, color: teal, lineHeight: 1, marginBottom: 30 }}>Hugo</div>
+            {['RPAI 數位優化器行銷長','科技業 HR','人才招募 / 雇主品牌 / 教育訓練','企業內部豐富教育訓練經驗'].map((t) => (
+              <div key={t} style={{ display: 'flex', gap: 22, alignItems: 'center', marginBottom: 18 }}>
+                <div style={{ width: 13, height: 13, borderRadius: '50%', background: teal, flexShrink: 0 }}/>
+                <span style={{ fontSize: 42, fontWeight: 500, color: white, lineHeight: 1.35, whiteSpace: 'nowrap' }}>{t}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 01b 主辦單位 ──────────────────────────────────────────────────────────────
+const Organizer: Page = () => (
+  <BG>
+    <CA>
+      <div style={{ display: 'grid', gridTemplateColumns: '420px 1fr', gap: 60, flex: 1, alignItems: 'center' }}>
+        <div style={{ fontSize: 168, fontWeight: 900, color: white, lineHeight: 1.05, letterSpacing: '0.02em' }}>
+          主辦<br/>單位
+        </div>
+        <div>
+          <div style={{ fontSize: 60, fontWeight: 800, color: teal, marginBottom: 8 }}>
+            RPAI 數位優化器
+          </div>
+          <div style={{ fontSize: 40, fontWeight: 600, color: teal, marginBottom: 26, letterSpacing: '0.02em' }}>
+            Digital Transformer
+          </div>
+          <TealBar />
+          <p style={{ fontSize: 38, color: white, lineHeight: 1.55, margin: '0 0 22px' }}>
+            以機器人流程自動化（RPA）結合人工智慧（AI）為主題的中文社群，
+            分享自動化工具、低程式碼開發（low-code）的學習資源、應用實例和最新發展趨勢。
+          </p>
+          <p style={{ fontSize: 38, color: white, lineHeight: 1.55, margin: 0 }}>
+            團隊成員來自各行各業，具備不同的流程優化技能，立志讓不會寫程式的工作者，
+            也能透過自動化工具<span style={{ color: teal, fontWeight: 700 }}>提升工作效率與價值</span>。
+          </p>
+          <div style={{ display: 'flex', gap: 60, marginTop: 42, alignItems: 'flex-start' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, lineHeight: '0.8', letterSpacing: '1.1px' }}>
+              <img src={qrWebsite} alt="官方網站 QR code" style={{ width: 320, height: 320, objectFit: 'contain' }}/>
+              <span style={{ fontSize: 32, color: white, fontWeight: 700 }}>官方網站</span>
+              <span style={{ fontSize: 24, color: white, opacity: 0.75, lineHeight: '0.8' }}>portaly.cc/RPAITW</span>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, lineHeight: '0.8', letterSpacing: '3.1px', fontSize: '24px' }}>
+              <img src={qrInstagram} alt="Instagram QR code" style={{ width: 320, height: 320, objectFit: 'contain' }}/>
+              <span style={{ fontSize: 32, color: white, fontWeight: 700 }}>Instagram</span>
+              <span style={{ fontSize: 24, color: white, opacity: 0.75, lineHeight: '1.15' }}>@rpai_digitaltransformer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 01c 執行專案 ──────────────────────────────────────────────────────────────
+const Projects: Page = () => {
+  const Callout = ({
+    pos, title, lines, lineDir,
+  }: {
+    pos: CSSProperties;
+    title: string;
+    lines: string[];
+    lineDir: 'tl' | 'tr' | 'bl' | 'br';
+  }) => {
+    const dashColor = 'rgba(255,255,255,0.55)';
+    const isTop = lineDir.startsWith('t');
+    const isLeft = lineDir.endsWith('l');
+    return (
+      <div style={{ position: 'absolute', width: 540, ...pos }}>
+        <div style={{
+          position: 'absolute',
+          left: 0, right: 0,
+          top: isTop ? 'auto' : -2,
+          bottom: isTop ? -2 : 'auto',
+          height: 2,
+          borderTop: `2px dashed ${dashColor}`,
+        }}/>
+        <div style={{
+          position: 'absolute',
+          [isLeft ? 'right' : 'left']: 0,
+          [isTop ? 'bottom' : 'top']: -34,
+          width: 2, height: 34,
+          borderLeft: `2px dashed ${dashColor}`,
+        } as CSSProperties}/>
+        <div style={{
+          fontSize: 38, fontWeight: 800, color: teal,
+          marginTop: isTop ? 0 : 14,
+          marginBottom: isTop ? 14 : 0,
+          letterSpacing: '0.02em',
+        }}>{title}</div>
+        <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 2 }}>
+          {lines.map((t) => (
+            <li key={t} style={{ fontSize: '40px', color: white, lineHeight: 1.25, display: 'flex', gap: 10 }}>
+              <span style={{ color: teal }}></span><span>{t}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
+  const RING_SIZE = 580;
+  const cx = RING_SIZE / 2, cy = RING_SIZE / 2;
+  const rOuter = 270, rInner = 105;
+  const arc = (startDeg: number, endDeg: number) => {
+    const toXY = (deg: number, r: number) => {
+      const rad = (deg - 90) * Math.PI / 180;
+      return [cx + r * Math.cos(rad), cy + r * Math.sin(rad)];
+    };
+    const [x1, y1] = toXY(startDeg, rOuter);
+    const [x2, y2] = toXY(endDeg, rOuter);
+    const [x3, y3] = toXY(endDeg, rInner);
+    const [x4, y4] = toXY(startDeg, rInner);
+    return `M ${x1} ${y1} A ${rOuter} ${rOuter} 0 0 1 ${x2} ${y2} L ${x3} ${y3} A ${rInner} ${rInner} 0 0 0 ${x4} ${y4} Z`;
+  };
+  const labelXY = (deg: number) => {
+    const r = (rOuter + rInner) / 2;
+    const rad = (deg - 90) * Math.PI / 180;
+    return [cx + r * Math.cos(rad), cy + r * Math.sin(rad)];
+  };
+
+  const quads = [
+    { start: -45, end:  45, label: '自媒體內容', fill: '#7eb8e6' },
+    { start:  45, end: 135, label: '講座課程',   fill: '#5e9bd1' },
+    { start: 135, end: 225, label: '導入開發',   fill: '#4583bd' },
+    { start: 225, end: 315, label: '諮詢陪跑',   fill: '#6ba9dc' },
+  ];
+
+  return (
+    <BG>
+      <CA>
+        <H2>執行專案</H2>
+        <TealBar />
+        <div style={{ flex: 1, position: 'relative' }}>
+          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: RING_SIZE, height: RING_SIZE }}>
+            <svg width={RING_SIZE} height={RING_SIZE} viewBox={`0 0 ${RING_SIZE} ${RING_SIZE}`}>
+              {quads.map((q) => (
+                <path key={q.label} d={arc(q.start, q.end)} fill={q.fill} stroke="rgba(255,255,255,0.15)" strokeWidth={2}/>
+              ))}
+              <circle cx={cx} cy={cy} r={rInner - 8} fill="rgba(10,30,80,0.85)" stroke="rgba(255,255,255,0.2)" strokeWidth={2}/>
+              {quads.map((q) => {
+                const mid = (q.start + q.end) / 2;
+                const [lx, ly] = labelXY(mid);
+                return (
+                  <text key={q.label} x={lx} y={ly}
+                    textAnchor="middle" dominantBaseline="central"
+                    fill="#0a1c46" fontSize={42} fontWeight={800}
+                    style={{ fontFamily: F, letterSpacing: '0.04em' }}>
+                    {q.label}
+                  </text>
+                );
+              })}
+            </svg>
+          </div>
+
+          <Callout
+            pos={{ top: 10, left: 0 }}
+            title="自媒體內容"
+            lines={[
+              '官方網站超過 100+ 自動化相關議題文章',
+              'IG、FB 定期分享聚會、訪談內容',
+            ]}
+            lineDir="tl"
+          />
+          <Callout
+            pos={{ top: 10, right: 0 }}
+            title="講座課程"
+            lines={[
+              '每月定期線上線下分享活動',
+              '企業、大專院校講座',
+            ]}
+            lineDir="tr"
+          />
+          <Callout
+            pos={{ bottom: 10, left: 0 }}
+            title="諮詢陪跑"
+            lines={[
+              '手把手教學功能 & 帶專案',
+              '小型店家、專業工作者',
+            ]}
+            lineDir="bl"
+          />
+          <Callout
+            pos={{ bottom: 10, right: 0 }}
+            title="導入開發"
+            lines={[
+              '協助金融、科技、長照產業開發流程',
+              '自動化工具：Power Automate、UiPath etc.',
+            ]}
+            lineDir="br"
+          />
+        </div>
+      </CA>
+    </BG>
+  );
+};
+
+// ── 01d 我們相信 ──────────────────────────────────────────────────────────────
+const Believe: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="我們相信" />
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: 80, paddingRight: 80 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 30 }}>
+          <span style={{ fontSize: 110, color: teal, fontWeight: 900, lineHeight: 1, fontFamily: 'Georgia, serif' }}></span>
+          <div style={{ flex: 1, height: 2, background: teal, opacity: 0.7 }}/>
+        </div>
+        <p style={{ fontSize: 100, fontWeight: 700, color: white, margin: 0, lineHeight: 1.35, letterSpacing: '0.02em' }}>
+          在 AI 時代，<br/>
+          人人都可以是<br/>
+          自己流程的<span style={{ color: teal }}>優化師</span>。
+        </p>
+      </div>
+    </CA>
+  </BG>
+);
+
 // ── 02 Unit 1 Divider ─────────────────────────────────────────────────────────
-const Sec01: Page = () => <SecDiv n="01" title="為什麼是 Claude？" sub="學生必知的 AI 工具" />;
+const Sec01: Page = () => <SecDiv n="01" title="學生必知的 AI 工具" sub="建立屬於自己的 AI 工具選擇判斷力" />;
+
+// ── 02b Slido 互動 ────────────────────────────────────────────────────────────
+const SlidoQR: Page = () => (
+  <BG>
+    <div style={{
+      position: 'absolute', inset: 0,
+      display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
+      padding: '0 160px', textAlign: 'center',
+    }}>
+      <div style={{ fontSize: 44, fontWeight: 800, color: teal, letterSpacing: '0.18em', marginBottom: 32 }}>
+        加入課堂互動
+      </div>
+      <div style={{ fontSize: 132, fontWeight: 900, color: white, lineHeight: 1.1, marginBottom: 48 }}>
+        Slido
+      </div>
+      <div style={{
+        background: white, padding: 28, borderRadius: 18,
+        boxShadow: '0 16px 50px rgba(0,0,0,0.35)', marginBottom: 36,
+      }}>
+        <img src={slidoQr} alt="Slido QR Code"
+          style={{ width: 420, height: 420, display: 'block' }} />
+      </div>
+      <a href="https://app.sli.do/event/9bSAF2yyPW6ScEUyh98ETM" target="_blank" rel="noreferrer"
+        style={{ fontSize: 40, color: white, fontWeight: 600, textDecoration: 'none', wordBreak: 'break-all', opacity: 0.95 }}>
+        app.sli.do/event/9bSAF2yyPW6ScEUyh98ETM
+      </a>
+    </div>
+  </BG>
+);
 
 // ── 03 AI 使用地圖 ────────────────────────────────────────────────────────────
 const AiMap: Page = () => (
@@ -948,6 +1276,31 @@ const SkillMarketplace: Page = () => (
   </BG>
 );
 
+// ── 17a-1.5b 小組練習 · 拆解 Skill ──────────────────────────────────────────
+const SkillMarketplacePractice: Page = () => (
+  <BG>
+    <div style={{
+      position: 'absolute', inset: 0,
+      display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
+      padding: '0 160px', textAlign: 'center',
+    }}>
+      <div style={{ fontSize: 44, fontWeight: 800, color: teal, letterSpacing: '0.18em', marginBottom: 40 }}>
+        小組練習時間
+      </div>
+      <div style={{ fontSize: 132, fontWeight: 900, color: white, lineHeight: 1.15, marginBottom: 28 }}>
+        去 Marketplace
+      </div>
+      <div style={{ fontSize: 132, fontWeight: 900, color: white, lineHeight: 1.15, marginBottom: 56 }}>
+        找一個你有興趣的 Skill
+      </div>
+      <div style={{ height: 4, width: 120, background: teal, borderRadius: 2, marginBottom: 48 }} />
+      <div style={{ fontSize: 56, fontWeight: 600, color: white, lineHeight: 1.55, opacity: 0.95 }}>
+        先看懂它在做什麼，<br/>再決定要不要加進 Claude。
+      </div>
+    </div>
+  </BG>
+);
+
 // ── 17a-1.6 Skill 怎麼裝 ────────────────────────────────────────────────────
 const SkillInstall: Page = () => (
   <BG>
@@ -1169,6 +1522,38 @@ const BuildSkillExample: Page = () => (
         </div>
       </div>
       <KeyInsight text="把 prompt 變 Skill — 把一次性的好點子變成可重複的習慣" />
+    </CA>
+  </BG>
+);
+
+// ── 17d-2 個人練習：把自己的 prompt 變 Skill ────────────────────────────────
+const BuildSkillPersonal: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="單元 03 · 個人練習" />
+      <H2 style={{ fontSize: 84 }}>換你動手：把 prompt 變成 Skill</H2>
+      <TealBar />
+      <div style={{ fontSize: 36, color: white, lineHeight: 1.5, marginBottom: 18, opacity: 0.92 }}>
+        拿出單元 02 你寫好的那份 prompt，請 Claude 幫你寫成 SKILL。
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, flex: 1 }}>
+        <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.22)', borderRadius: 12, padding: '24px 28px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <div style={{ fontSize: 36, fontWeight: 800, color: teal }}>步驟</div>
+          <Bullet n="1" title="貼上你的 prompt" body="把單元 02 寫好的那份 prompt 完整貼給 Claude" />
+          <Bullet n="2" title="請它整理成 SKILL.md" body="「請幫我把這份 prompt 整理成 SKILL.md，含 name / description / 內容」" />
+          <Bullet n="3" title="存進 Skills" body="Customize → Skills → ＋ 新增，貼上 Claude 整理好的內容並命名" />
+        </div>
+        <div style={{ background: cardBgTeal, border: `1px solid ${teal}55`, borderRadius: 12, padding: '24px 28px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <div style={{ fontSize: 36, fontWeight: 800, color: teal }}>小提醒</div>
+          <DotBullet text="description 越具體，觸發越準" />
+          <DotBullet text="把「不要做什麼」也寫進去" />
+          <DotBullet text="存完後馬上叫一次測試效果" />
+          <div style={{ marginTop: 'auto', display: 'inline-flex', alignSelf: 'flex-start', background: 'rgba(0,229,192,0.18)', border: `1px solid ${teal}`, borderRadius: 999, padding: '10px 26px' }}>
+            <span style={{ fontSize: 38, fontWeight: 800, color: teal }}>⏱ 15 分鐘</span>
+          </div>
+        </div>
+      </div>
+      <KeyInsight text="今天帶走的不是一份 prompt — 是一個會做事的小幫手" />
     </CA>
   </BG>
 );
@@ -2098,6 +2483,58 @@ const Closing: Page = () => (
   </BG>
 );
 
+// ── 結尾 · 自動化旅程 ─────────────────────────────────────────────────────────
+const JourneyEnd: Page = () => (
+  <BG>
+    <div style={{ position: 'absolute', inset: 0, padding: '120px 160px', display: 'grid', gridTemplateColumns: '1fr 420px', gap: 60, alignItems: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ fontSize: 36, fontWeight: 800, color: white, letterSpacing: '0.04em', marginBottom: 80, opacity: 0.92 }}>
+          RPAI 數位優化器
+        </div>
+        <h1 style={{ fontSize: 120, fontWeight: 900, color: white, margin: 0, lineHeight: 1.18, letterSpacing: '-0.01em' }}>
+          決定好踏上自動化<br/>旅程了嗎？
+        </h1>
+        <div style={{ height: 4, width: 110, background: teal, borderRadius: 2, margin: '48px 0 36px' }} />
+        <p style={{ fontSize: 48, color: white, margin: 0, fontWeight: 500, lineHeight: 1.5 }}>
+          讓我們一起由簡單開始，<span style={{ color: teal, fontWeight: 700 }}>成就不簡單！</span>
+        </p>
+        <div style={{
+          marginTop: 56, display: 'flex', alignItems: 'center', gap: 28,
+          background: cardBg, border: '1px solid rgba(255,255,255,0.25)',
+          borderRadius: 14, padding: '22px 26px', alignSelf: 'flex-start',
+        }}>
+          {/* @slide-comment id="c-590dc2a1" ts="2026-06-11T15:43:30.807Z" text="eyJub3RlIjoi5oqK6YCZ5YCL5Y2A5aGK5YWn5a655pS-5Yiw5YmN5LiA5by15oqV5b2x54mHIn0" */}
+          <div style={{ background: white, padding: 8, borderRadius: 8 }}>
+            <img src={slidoQr} alt="Slido QR code" style={{ width: 140, height: 140, display: 'block' }}/>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <span style={{ fontSize: 26, color: teal, fontWeight: 800, letterSpacing: '0.16em' }}>SLIDO Q&amp;A</span>
+            <span style={{ fontSize: 40, color: white, fontWeight: 800, lineHeight: 1.15 }}>你的問題，現在問</span>
+            <a href="https://app.sli.do/event/9bSAF2yyPW6ScEUyh98ETM" target="_blank" rel="noreferrer"
+              style={{ fontSize: 22, color: white, textDecoration: 'none', opacity: 0.85, wordBreak: 'break-all' }}>
+              app.sli.do/event/9bSAF2yyPW6ScEUyh98ETM
+            </a>
+          </div>
+        </div>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 40, alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, objectFit: 'cover', lineHeight: '1.2' }}>
+          <div style={{ background: white, padding: 16, borderRadius: 14, boxShadow: '0 12px 36px rgba(0,0,0,0.35)', backgroundColor: '#009bc7' }}>
+            <img src={qrWebsiteOrig} alt="官方網站 QR code" style={{ width: 340, height: 340, display: 'block' }}/>
+          </div>
+          <span style={{ fontSize: 26, color: white, fontWeight: 700, letterSpacing: '0.08em', opacity: 0.9 }}>WEBSITE</span>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
+          <div style={{ background: white, padding: 16, borderRadius: 14, boxShadow: '0 12px 36px rgba(0,0,0,0.35)' }}>
+            <img src={qrInstagram} alt="Instagram QR code" style={{ width: 340, height: 340, display: 'block', objectFit: 'cover' }}/>
+          </div>
+          <span style={{ fontSize: 26, color: white, fontWeight: 700, letterSpacing: '0.08em', opacity: 0.9 }}>@RPAI_DIGITALTRANSFORMER</span>
+        </div>
+      </div>
+    </div>
+  </BG>
+);
+
 // ─── Meta & export ────────────────────────────────────────────────────────────
 export const meta: SlideMeta = {
   title: '為什麼是 Claude？高中生必知的 AI 工具',
@@ -2106,14 +2543,16 @@ export const meta: SlideMeta = {
 
 export default [
   Cover,
-  Sec01, AiMap, AiReflect, VendorMap, WhyClaude, ClaudeArch, ClaudeModes, Recap01,
-  Sec02, PromptMyth, GoodBad1, GoodBad2, FourQ, Practice, PracticeExample, Recap02,
-  Break1,
-  Sec03, Keywords, PromptPain, PromptPainExamples, SkillIntro, SkillSources, SkillInstall, SkillMarketplace, ReverseEng, ReelsSkillExample, ReverseEngExample, SkillWarning, BuildSkillPractice, BuildSkillExample, Break3, TokenCostIntro, TokenCost, TokenCostCase, ModelDiff, McpSkill, Recap03,
-  Sec04, MissionBrief, PlanFirst, Relay, Relay1, Relay1Example, Relay2, Relay3, ShareRecap, Recap04,
-  Break2,
-  Sec05, CoworkVsChat, AssistantScene, ThreeDemo, ScheduleTask, Recap05,
-  Sec06, HonestQ, Amplify, LearnPath, CoLearn, Recap06,
-  Example01, Example02,
-  Closing,
+  Organizer,
+  Projects, Instructor, InstructorHugo, Believe,
+  SlidoQR,
+  Sec01, AiMap, AiReflect, VendorMap, WhyClaude, ClaudeArch, ClaudeModes, Recap01, Sec02,
+  PromptMyth, GoodBad1, GoodBad2, FourQ, Practice, PracticeExample, Recap02, Break1,
+  Sec03,
+  Keywords, PromptPain, PromptPainExamples, SkillIntro, SkillSources, SkillInstall, BuildSkillExample, BuildSkillPractice, BuildSkillPersonal, SkillMarketplace, ReverseEng, ReelsSkillExample, ReverseEngExample, SkillMarketplacePractice, SkillWarning, Break3, TokenCostIntro, TokenCost, TokenCostCase, ModelDiff, McpSkill, Recap03, Sec04,
+  MissionBrief, PlanFirst, Relay, Relay1, Relay1Example, Relay2, Relay3, ShareRecap, Recap04, Break2,
+  Sec05,
+  CoworkVsChat, AssistantScene, ThreeDemo, ScheduleTask, Recap05, Sec06,
+  HonestQ, Amplify, LearnPath, CoLearn, Recap06, SlidoQR,
+  JourneyEnd,
 ] satisfies Page[];
