@@ -587,9 +587,7 @@ const SlidoQR: Page = () => (
       display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
       padding: '0 160px', textAlign: 'center',
     }}>
-      <div style={{ fontSize: 44, fontWeight: 800, color: teal, letterSpacing: '0.18em', marginBottom: 32 }}>
-        加入課堂互動
-      </div>
+      <div style={{ fontSize: '60px', fontWeight: 800, color: teal, letterSpacing: '0.18em', marginBottom: 32 }}>Q&A</div>
       <div style={{ fontSize: 132, fontWeight: 900, color: white, lineHeight: 1.1, marginBottom: 48 }}>
         Slido
       </div>
@@ -1284,9 +1282,7 @@ const SkillMarketplacePractice: Page = () => (
       display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
       padding: '0 160px', textAlign: 'center',
     }}>
-      <div style={{ fontSize: 44, fontWeight: 800, color: teal, letterSpacing: '0.18em', marginBottom: 40 }}>
-        小組練習時間
-      </div>
+      <div style={{ fontSize: 44, fontWeight: 800, color: teal, letterSpacing: '0.18em', marginBottom: 40 }}>練習時間</div>
       <div style={{ fontSize: 132, fontWeight: 900, color: white, lineHeight: 1.15, marginBottom: 28 }}>
         去 Marketplace
       </div>
@@ -1530,30 +1526,12 @@ const BuildSkillExample: Page = () => (
 const BuildSkillPersonal: Page = () => (
   <BG>
     <CA>
-      <Eyebrow text="單元 03 · 個人練習" />
-      <H2 style={{ fontSize: 84 }}>換你動手：把 prompt 變成 Skill</H2>
-      <TealBar />
-      <div style={{ fontSize: 36, color: white, lineHeight: 1.5, marginBottom: 18, opacity: 0.92 }}>
-        拿出單元 02 你寫好的那份 prompt，請 Claude 幫你寫成 SKILL。
-      </div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, flex: 1 }}>
-        <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.22)', borderRadius: 12, padding: '24px 28px', display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <div style={{ fontSize: 36, fontWeight: 800, color: teal }}>步驟</div>
-          <Bullet n="1" title="貼上你的 prompt" body="把單元 02 寫好的那份 prompt 完整貼給 Claude" />
-          <Bullet n="2" title="請它整理成 SKILL.md" body="「請幫我把這份 prompt 整理成 SKILL.md，含 name / description / 內容」" />
-          <Bullet n="3" title="存進 Skills" body="Customize → Skills → ＋ 新增，貼上 Claude 整理好的內容並命名" />
-        </div>
-        <div style={{ background: cardBgTeal, border: `1px solid ${teal}55`, borderRadius: 12, padding: '24px 28px', display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <div style={{ fontSize: 36, fontWeight: 800, color: teal }}>小提醒</div>
-          <DotBullet text="description 越具體，觸發越準" />
-          <DotBullet text="把「不要做什麼」也寫進去" />
-          <DotBullet text="存完後馬上叫一次測試效果" />
-          <div style={{ marginTop: 'auto', display: 'inline-flex', alignSelf: 'flex-start', background: 'rgba(0,229,192,0.18)', border: `1px solid ${teal}`, borderRadius: 999, padding: '10px 26px' }}>
-            <span style={{ fontSize: 38, fontWeight: 800, color: teal }}>⏱ 15 分鐘</span>
-          </div>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', gap: 48 }}>
+        <H2 style={{ fontSize: 120, margin: 0 }}>動手把 prompt 變成 Skill</H2>
+        <div style={{ fontSize: 56, color: white, lineHeight: 1.5, opacity: 0.95 }}>
+          拿出剛剛寫好的那份 prompt，請 Claude 幫你寫成 SKILL。
         </div>
       </div>
-      <KeyInsight text="今天帶走的不是一份 prompt — 是一個會做事的小幫手" />
     </CA>
   </BG>
 );
@@ -1753,37 +1731,16 @@ const McpSkill: Page = () => (
 // ── 21 逆向工程互動 ───────────────────────────────────────────────────────────
 const ReverseEng: Page = () => (
   <BG>
-    <CA>
+    <CA style={{ justifyContent: 'center', alignItems: 'flex-start' }}>
       <Eyebrow text="單元 03 · 互動" />
-      <H2>逆向工程：從一個 Skill 看懂一個領域</H2>
+      <H2 style={{ fontSize: 132 }}>逆向工程：</H2>
+      <H2 style={{ fontSize: 132, marginTop: 8 }}>從一個 Skill 看懂一個領域</H2>
       <TealBar />
-      <div style={{ fontSize: 42, color: white, lineHeight: 1.5, marginBottom: 18 }}>
-        挑一個你有興趣的領域，拆解它的 Skill — 等於偷看那個領域的專家怎麼思考。
+      <div style={{ fontSize: 54, color: white, lineHeight: 1.45, fontWeight: 500 }}>
+        拆解一個 Skill，等於<span style={{ color: teal, fontWeight: 700 }}>偷看那個領域的專家怎麼思考</span>。
       </div>
-      <div style={{ border: '1px solid rgba(255,255,255,0.28)', borderRadius: 10, overflow: 'hidden', flex: 1 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', background: 'rgba(0,229,192,0.22)' }}>
-          <div style={{ padding: '12px 14px', fontSize: 33, fontWeight: 700, color: white, borderRight: '1px solid rgba(255,255,255,0.2)' }}>我選的領域</div>
-          <div style={{ padding: '12px 14px', fontSize: 33, fontWeight: 700, color: white, borderRight: '1px solid rgba(255,255,255,0.2)' }}>Skill 規定哪些步驟</div>
-          <div style={{ padding: '12px 14px', fontSize: 33, fontWeight: 700, color: white, borderRight: '1px solid rgba(255,255,255,0.2)' }}>它假設你先懂什麼</div>
-          <div style={{ padding: '12px 14px', fontSize: 33, fontWeight: 700, color: white }}>我學到的入門知識</div>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', lineHeight: '2.05', fontSize: '28px' }}>
-          <div style={{ padding: '22px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)', minHeight: 120 }}>
-            <span style={{ fontSize: 33, color: white, opacity: 0.55, fontStyle: 'italic' }}>（填）</span>
-          </div>
-          <div style={{ padding: '22px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)' }}>
-            <span style={{ fontSize: 33, color: white, opacity: 0.55, fontStyle: 'italic' }}>（填）</span>
-          </div>
-          <div style={{ padding: '22px 14px', borderRight: '1px solid rgba(255,255,255,0.15)', borderTop: '1px solid rgba(255,255,255,0.15)' }}>
-            <span style={{ fontSize: 33, color: white, opacity: 0.55, fontStyle: 'italic' }}>（填）</span>
-          </div>
-          <div style={{ padding: '22px 14px', borderTop: '1px solid rgba(255,255,255,0.15)', fontSize: '28px', lineHeight: '1.7' }}>
-            <span style={{ fontSize: 33, color: white, opacity: 0.55, fontStyle: 'italic' }}>（填）</span>
-          </div>
-        </div>
-      </div>
-      <div style={{ marginTop: 14, fontSize: 36, color: white }}>
-        Skill 是專家把「怎麼做」寫下來 — 拆解它，等於偷看專家的腦袋。
+      <div style={{ fontSize: 40, color: 'rgba(255,255,255,0.7)', lineHeight: 1.5, marginTop: 24 }}>
+        專家把「怎麼做」寫成 Skill — 我們反過來，從 Skill 讀回專家的腦袋。
       </div>
     </CA>
   </BG>
@@ -2498,24 +2455,6 @@ const JourneyEnd: Page = () => (
         <p style={{ fontSize: 48, color: white, margin: 0, fontWeight: 500, lineHeight: 1.5 }}>
           讓我們一起由簡單開始，<span style={{ color: teal, fontWeight: 700 }}>成就不簡單！</span>
         </p>
-        <div style={{
-          marginTop: 56, display: 'flex', alignItems: 'center', gap: 28,
-          background: cardBg, border: '1px solid rgba(255,255,255,0.25)',
-          borderRadius: 14, padding: '22px 26px', alignSelf: 'flex-start',
-        }}>
-          {/* @slide-comment id="c-590dc2a1" ts="2026-06-11T15:43:30.807Z" text="eyJub3RlIjoi5oqK6YCZ5YCL5Y2A5aGK5YWn5a655pS-5Yiw5YmN5LiA5by15oqV5b2x54mHIn0" */}
-          <div style={{ background: white, padding: 8, borderRadius: 8 }}>
-            <img src={slidoQr} alt="Slido QR code" style={{ width: 140, height: 140, display: 'block' }}/>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-            <span style={{ fontSize: 26, color: teal, fontWeight: 800, letterSpacing: '0.16em' }}>SLIDO Q&amp;A</span>
-            <span style={{ fontSize: 40, color: white, fontWeight: 800, lineHeight: 1.15 }}>你的問題，現在問</span>
-            <a href="https://app.sli.do/event/9bSAF2yyPW6ScEUyh98ETM" target="_blank" rel="noreferrer"
-              style={{ fontSize: 22, color: white, textDecoration: 'none', opacity: 0.85, wordBreak: 'break-all' }}>
-              app.sli.do/event/9bSAF2yyPW6ScEUyh98ETM
-            </a>
-          </div>
-        </div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 40, alignItems: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, objectFit: 'cover', lineHeight: '1.2' }}>
