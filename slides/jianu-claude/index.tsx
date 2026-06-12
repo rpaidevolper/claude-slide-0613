@@ -10,6 +10,8 @@ import yinAvatar from './assets/yin-avatar.webp';
 import hugoAvatar from './assets/hugo-avatar.png';
 import slidoQr from './assets/slido-qr.png';
 import qrWebsiteOrig from './assets/qr-website.orig.png';
+import accupassEvent from './assets/accupass-event.png';
+import accupassQr from './assets/accupass-qr.png';
 
 
 // ─── Design System ───────────────────────────────────────────────────────────
@@ -270,6 +272,23 @@ const Cover: Page = () => (
         </div>
       </div>
       <p style={{ fontSize: 36, color: white, margin: 0, opacity: 0.9 }}>{''}</p>
+    </div>
+    <div style={{
+      position: 'absolute', right: 120, bottom: 120,
+      display: 'flex', alignItems: 'center', gap: 24,
+      background: 'rgba(0,0,0,0.28)', border: `1px solid ${teal}`,
+      borderRadius: 18, padding: '20px 24px',
+    }}>
+      <div style={{ background: white, padding: 10, borderRadius: 10 }}>
+        <img src={slidoQr} alt="Slido QR Code" style={{ width: 180, height: 180, display: 'block' }} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <div style={{ fontSize: 22, color: teal, fontWeight: 700, letterSpacing: '0.18em' }}>課程互動</div>
+        <div style={{ fontSize: 34, color: white, fontWeight: 800, lineHeight: 1 }}>Slido</div>
+        <div style={{ fontSize: 18, color: white, opacity: 0.9, fontWeight: 500 }}>
+          app.sli.do/event/9bSAF2yyPW6ScEUyh98ETM
+        </div>
+      </div>
     </div>
   </BG>
 );
@@ -2474,6 +2493,38 @@ const JourneyEnd: Page = () => (
   </BG>
 );
 
+const EventPromo: Page = () => (
+  <BG>
+    <div style={{ position: 'absolute', inset: 0, padding: '90px 120px 110px', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 28 }}>
+        <Eyebrow text="RPAI 實體聚 · 活動報名" />
+      </div>
+      <H2 style={{ fontSize: 78, lineHeight: 1.15 }}>
+        {'從 0 到 1 '}
+        <span style={{ color: teal }}>實戰 Claude 三大模式</span>
+      </H2>
+      <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '1fr 380px', gap: 56, alignItems: 'center', marginTop: 32 }}>
+        <div style={{
+          borderRadius: 18, overflow: 'hidden',
+          boxShadow: '0 24px 60px rgba(0,0,0,0.45)',
+          border: '2px solid rgba(255,255,255,0.18)',
+        }}>
+          <img src={accupassEvent} alt="RPAI 實體聚活動視覺" style={{ width: '100%', display: 'block' }} />
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
+          <div style={{ background: white, padding: 18, borderRadius: 14, boxShadow: '0 12px 36px rgba(0,0,0,0.35)' }}>
+            <img src={accupassQr} alt="Accupass 活動報名 QR code" style={{ width: 320, height: 320, display: 'block' }}/>
+          </div>
+          <div style={{ fontSize: 30, color: white, fontWeight: 700, letterSpacing: '0.06em', textAlign: 'center', lineHeight: 1.4 }}>
+            掃描立即報名<br/>
+            <span style={{ color: teal, fontSize: 24, letterSpacing: '0.02em' }}>accupass.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </BG>
+);
+
 // ─── Meta & export ────────────────────────────────────────────────────────────
 export const meta: SlideMeta = {
   title: '為什麼是 Claude？高中生必知的 AI 工具',
@@ -2484,7 +2535,6 @@ export default [
   Cover,
   Organizer,
   Projects, Instructor, InstructorHugo, Believe,
-  SlidoQR,
   Sec01, AiMap, AiReflect, VendorMap, WhyClaude, ClaudeArch, ClaudeModes, Recap01, Sec02,
   PromptMyth, GoodBad1, GoodBad2, FourQ, Practice, PracticeExample, Recap02, Break1,
   Sec03,
@@ -2493,5 +2543,6 @@ export default [
   Sec05,
   CoworkVsChat, AssistantScene, ThreeDemo, ScheduleTask, Recap05, Sec06,
   HonestQ, Amplify, LearnPath, CoLearn, Recap06, SlidoQR,
+  EventPromo,
   JourneyEnd,
 ] satisfies Page[];
