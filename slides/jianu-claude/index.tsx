@@ -198,6 +198,7 @@ const DotBullet = ({ text }: { text: string }) => (
 // Key insight box — 51px teal text
 const KeyInsight = ({ text }: { text: string }) => (
   <div style={{ marginTop: 'auto', paddingTop: 22, alignSelf: 'flex-start' }}>
+    {/* @slide-comment id="c-cbad6ca2" ts="2026-06-12T16:36:10.103Z" text="eyJub3RlIjoi5pS55oiQXCJBSeS4jeWPquaYr-iBiuWkqeapn-WZqOS6ulwiIn0" */}
     <span style={{ fontSize: 42, fontWeight: 700, color: teal }}>{text}</span>
   </div>
 );
@@ -2203,8 +2204,8 @@ const ThreeDemo: Page = () => (
       <TealBar />
       <Bullet n="1" title="整理報告" body="給一批檔名雜亂的學生報告 → Cowork 統一檔名、按班級分類，自己一個一個處理" />
       <Bullet n="2" title="取得學測歷屆考題" body="請 Cowork 打開大考中心網站，下載歷屆考題並解析" />
-      <Bullet n="3" title="查大學錄取分數" body="查詢大學資工系錄取分數，整理成對照表 — 選填志願超有用" />
-      <KeyInsight text="看的時候注意：它「自己分步驟」把整件事做完 — 這就是 Agent" />
+      <Bullet n="3" title="分析穿戴裝置心率數據" body="丟一份「一日心率紀錄.csv」給 Cowork → 自動讀 Excel、畫趨勢圖、抓出異常心跳時段、輸出一頁分析摘要 " />
+      <KeyInsight text="AI 不只是聊天機器人，Claude Cowork 模式讓你輕鬆指揮 AI 動手" />
     </CA>
   </BG>
 );
@@ -2219,8 +2220,8 @@ const ScheduleTask: Page = () => (
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, flex: 1 }}>
         <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.28)', borderRadius: 12, padding: '24px 20px' }}>
           <div style={{ fontSize: 48, fontWeight: 800, color: teal, marginBottom: 14 }}>⏰ 定期任務</div>
-          <div style={{ fontSize: 39, color: white, lineHeight: 1.55 }}>設定「每天早上幫我整理一份當天新聞重點」，設定一次，它每天自動做。</div>
-          <div style={{ fontSize: 36, color: white, opacity: 0.85, marginTop: 12 }}>一次設定，每天自動執行</div>
+          <div style={{ fontSize: 39, color: white, lineHeight: 1.55 }}>設定「每週一早上自動抓 NEJM、Nature Medicine、食藥署 上週新藥核准，整理成一頁摘要」，設定一次，它每週自動做。</div>
+          <div style={{ fontSize: 36, color: white, opacity: 0.85, marginTop: 12 }}>一次設定，每週自動執行</div>
         </div>
         <div style={{ background: cardBgTeal, border: '1px solid rgba(0,229,192,0.55)', borderRadius: 12, padding: '24px 20px' }}>
           <div style={{ fontSize: 48, fontWeight: 800, color: teal, marginBottom: 14 }}>🔍 逆向拆解考題</div>
@@ -2242,7 +2243,7 @@ const Recap05: Page = () => (
       <TealBar />
       <DotBullet text="AI 不只會講，還會動手。" />
       <DotBullet text="Chat 給建議、Cowork 做實事 — 整理檔案、抓資料做 Excel、設定期任務。" />
-      <DotBullet text="用逆向拆解考題，讓 AI 幫你想「該複習什麼」。" />
+      <DotBullet text="" />
       <div style={{ marginTop: 'auto', paddingTop: 22, borderTop: '1px solid rgba(255,255,255,0.2)' }}>
         <span style={{ fontSize: 42, color: white, fontStyle: 'italic' }}>
           最後一單元：AI 這麼強，那我們為什麼還要讀書？
@@ -2296,7 +2297,12 @@ const Amplify: Page = () => (
           <div style={{ fontSize: 36, color: teal, marginTop: 14, fontWeight: 600 }}>→ 駕馭 AI</div>
         </div>
       </div>
-      <KeyInsight text="AI 是放大鏡，不是替代品 — 它放大你已經有的判斷力與知識" />
+      <div style={{ background: cardBg, border: '1px solid rgba(0,229,192,0.45)', borderRadius: 12, padding: '20px 26px', marginBottom: 14 }}>
+        <div style={{ fontSize: 36, color: white, lineHeight: 1.5 }}>
+          你<span style={{ color: teal, fontWeight: 800 }}>懂得越深、研究得越透徹</span>，就越能<span style={{ color: teal, fontWeight: 800 }}>駕馭 AI</span> — 因為你知道如何判斷是非、如何透過反問逐步逼近真相。
+        </div>
+      </div>
+      <KeyInsight text="不學習的人用 AI，得到平均值；學習的人用 AI，得到槓桿。" />
     </CA>
   </BG>
 );
@@ -2577,7 +2583,7 @@ export default [
   Keywords, PromptPain, PromptPainExamples, SkillIntro, SkillSources, SkillInstall, BuildSkillExample, BuildSkillPractice, BuildSkillPersonal, SkillMarketplace, ReverseEng, ReelsSkillExample, ReverseEngExample, SkillMarketplacePractice, SkillWarning, Break3, TokenCostIntro, TokenCost, TokenCostCase, ModelDiff, McpSkill, Recap03, Sec04,
   MissionBrief, PlanFirst, Relay, Relay1, Relay1Example, Relay2, Relay3, ShareRecap, Recap04, Break2,
   Sec05,
-  CoworkVsChat, AssistantScene, ThreeDemo, ScheduleTask, Recap05, Sec06,
+  CoworkVsChat, AssistantScene, ThreeDemo, Sec06,
   HonestQ, Amplify, LearnPath, CoLearn, Recap06, SlidoQR,
   EventPromo,
   Survey,
