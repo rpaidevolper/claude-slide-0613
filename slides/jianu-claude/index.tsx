@@ -12,6 +12,7 @@ import slidoQr from './assets/slido-qr.png';
 import qrWebsiteOrig from './assets/qr-website.orig.png';
 import accupassEvent from './assets/accupass-event.png';
 import accupassQr from './assets/accupass-qr.png';
+import surveyQr from './assets/survey-qr.png';
 
 
 // ─── Design System ───────────────────────────────────────────────────────────
@@ -2493,6 +2494,41 @@ const JourneyEnd: Page = () => (
   </BG>
 );
 
+const Survey: Page = () => (
+  <BG>
+    <div style={{ position: 'absolute', inset: 0, padding: '100px 140px 110px', display: 'grid', gridTemplateColumns: '1fr 460px', gap: 80, alignItems: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <Eyebrow text="課後回饋 · 領取教材" />
+        <H2 style={{ fontSize: 96, lineHeight: 1.12 }}>
+          填寫問卷<br/>
+          <span style={{ color: teal }}>領取今日簡報 &amp; 教材</span>
+        </H2>
+        <TealBar />
+        <p style={{ fontSize: 46, color: white, margin: 0, fontWeight: 500, lineHeight: 1.5 }}>
+          完成後<span style={{ color: teal, fontWeight: 800 }}>{''}</span>{''}
+          取得：
+        </p>
+        <div style={{ marginTop: 28, display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <DotBullet text="今日完整上課簡報" />
+          <DotBullet text="實戰範例與教材連結" />
+          <DotBullet text="後續學習資源推薦" />
+        </div>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
+        <div style={{ background: white, padding: 20, borderRadius: 16, boxShadow: '0 16px 44px rgba(0,0,0,0.4)' }}>
+          <img src={surveyQr} alt="課後問卷 QR code" style={{ width: 380, height: 380, display: 'block' }}/>
+        </div>
+        <div style={{ fontSize: 32, color: white, fontWeight: 800, letterSpacing: '0.08em' }}>
+          掃描填寫問卷
+        </div>
+        <div style={{ fontSize: 22, color: white, opacity: 0.75, letterSpacing: '0.02em' }}>
+          forms.gle / Google 表單
+        </div>
+      </div>
+    </div>
+  </BG>
+);
+
 const EventPromo: Page = () => (
   <BG>
     <div style={{ position: 'absolute', inset: 0, padding: '90px 120px 110px', display: 'flex', flexDirection: 'column' }}>
@@ -2516,7 +2552,7 @@ const EventPromo: Page = () => (
             <img src={accupassQr} alt="Accupass 活動報名 QR code" style={{ width: 320, height: 320, display: 'block' }}/>
           </div>
           <div style={{ fontSize: 30, color: white, fontWeight: 700, letterSpacing: '0.06em', textAlign: 'center', lineHeight: 1.4 }}>
-            掃描立即報名<br/>
+            掃描關注RPAI講座資訊<br/>
             <span style={{ color: teal, fontSize: 24, letterSpacing: '0.02em' }}>accupass.com</span>
           </div>
         </div>
@@ -2544,5 +2580,6 @@ export default [
   CoworkVsChat, AssistantScene, ThreeDemo, ScheduleTask, Recap05, Sec06,
   HonestQ, Amplify, LearnPath, CoLearn, Recap06, SlidoQR,
   EventPromo,
+  Survey,
   JourneyEnd,
 ] satisfies Page[];
