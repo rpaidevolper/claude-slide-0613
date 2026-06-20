@@ -240,6 +240,221 @@ const SecDiv = ({ n, title, sub }: { n: string; title: string; sub: string }) =>
 );
 ```
 
+## Fixed pages (reuse every lecture)
+
+These four pages are part of the RPAI house identity and recur in **every** deck — keep them, only swap copy/assets. Paste them after the cover (組織 + 講師 near the front; CTA pages at the very end). They depend on the Tokens / `BG` / `CA` / `Eyebrow` / `H2` / `TealBar` / `DotBullet` primitives above.
+
+### Required assets
+
+Copy these into the new slide's `assets/` folder and import at the top of `index.tsx` (filenames are stable across decks):
+
+```tsx
+import qrWebsite   from './assets/qr-website.png';        // 主辦單位 + 結尾 CTA — portaly.cc/RPAITW
+import qrInstagram from './assets/qr-instagram.png';       // 主辦單位 + 結尾 CTA — @rpai_digitaltransformer
+import yinAvatar   from './assets/yin-avatar.webp';        // 講師介紹 (Yin)
+import hugoAvatar  from './assets/hugo-avatar.png';        // 助教介紹 (Hugo)
+import surveyQr    from './assets/survey-qr.png';          // 課後問卷 CTA (swap per lecture)
+```
+
+The fastest way to get these: copy them from `slides/jianu-claude/assets/`. The Yin/Hugo avatars and the two RPAI QR codes are fixed; `survey-qr.png` (and any event QR) changes per lecture.
+
+### 主辦單位 — RPAI organization intro
+
+```tsx
+const Organizer: Page = () => (
+  <BG>
+    <CA>
+      <div style={{ display: 'grid', gridTemplateColumns: '420px 1fr', gap: 60, flex: 1, alignItems: 'center' }}>
+        <div style={{ fontSize: 168, fontWeight: 900, color: white, lineHeight: 1.05, letterSpacing: '0.02em' }}>
+          主辦<br/>單位
+        </div>
+        <div>
+          <div style={{ fontSize: 60, fontWeight: 800, color: teal, marginBottom: 8 }}>RPAI 數位優化器</div>
+          <div style={{ fontSize: 40, fontWeight: 600, color: teal, marginBottom: 26, letterSpacing: '0.02em' }}>Digital Transformer</div>
+          <TealBar />
+          <p style={{ fontSize: 38, color: white, lineHeight: 1.55, margin: '0 0 22px' }}>
+            以機器人流程自動化（RPA）結合人工智慧（AI）為主題的中文社群，
+            分享自動化工具、低程式碼開發（low-code）的學習資源、應用實例和最新發展趨勢。
+          </p>
+          <p style={{ fontSize: 38, color: white, lineHeight: 1.55, margin: 0 }}>
+            團隊成員來自各行各業，具備不同的流程優化技能，立志讓不會寫程式的工作者，
+            也能透過自動化工具<span style={{ color: teal, fontWeight: 700 }}>提升工作效率與價值</span>。
+          </p>
+          <div style={{ display: 'flex', gap: 60, marginTop: 42, alignItems: 'flex-start' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, lineHeight: '0.8', letterSpacing: '1.1px' }}>
+              <img src={qrWebsite} alt="官方網站 QR code" style={{ width: 320, height: 320, objectFit: 'contain' }}/>
+              <span style={{ fontSize: 32, color: white, fontWeight: 700 }}>官方網站</span>
+              <span style={{ fontSize: 24, color: white, opacity: 0.75, lineHeight: '0.8' }}>portaly.cc/RPAITW</span>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, lineHeight: '0.8', letterSpacing: '3.1px', fontSize: '24px' }}>
+              <img src={qrInstagram} alt="Instagram QR code" style={{ width: 320, height: 320, objectFit: 'contain' }}/>
+              <span style={{ fontSize: 32, color: white, fontWeight: 700 }}>Instagram</span>
+              <span style={{ fontSize: 24, color: white, opacity: 0.75, lineHeight: '1.15' }}>@rpai_digitaltransformer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </CA>
+  </BG>
+);
+```
+
+### 講師介紹 — instructor (Yin)
+
+`projects` is the rolling case-study list; trim or update per lecture (keep it to ~9 lines so it doesn't overflow).
+
+```tsx
+const Instructor: Page = () => {
+  const projects = [
+    '2026_科技業_企業雲端運算資源管理與平台化建置案',
+    '2025_科技業_企業開發者平台資安檢核與流程自動化（AI 導入基礎）建置案',
+    '2024_餐飲服務業_門市訂單與營運流程優化數位轉型案',
+    '2023_金融業_結算交割系統數位轉型專案',
+    '2023_政府業_藥政管理電子化與流程數位化平台建置案',
+    '2022_金融業_個人金融服務平台優化與數位轉型',
+    '2022_金融業_開戶流程無紙化與自動化轉型案',
+    '2021_金融業_保經管理流程數位轉型專案',
+    '2020_醫藥業_影音簽署與無紙化流程轉型',
+  ];
+  return (
+    <BG>
+      <CA>
+        <div style={{ display: 'grid', gridTemplateColumns: '480px 1fr', gap: 60, flex: 1, alignItems: 'flex-start' }}>
+          <div>
+            <div style={{ fontSize: 32, fontWeight: 800, color: teal, letterSpacing: '0.04em', marginBottom: 24 }}>RPAI 數位優化器</div>
+            <div style={{ fontSize: 168, fontWeight: 900, color: white, lineHeight: 1.02, letterSpacing: '0.02em' }}>講師<br/>介紹</div>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 32, alignSelf: 'center' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '360px 1fr', gap: 50, alignItems: 'center' }}>
+              <div style={{ width: 360, height: 360, borderRadius: '50%', border: '2px solid rgba(255,255,255,0.35)', overflow: 'hidden' }}>
+                <img src={yinAvatar} alt="Yin" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              </div>
+              <div>
+                <div style={{ fontSize: 100, fontWeight: 900, color: teal, lineHeight: 1, marginBottom: 18 }}>Yin</div>
+                <DotBullet text="科技業軟體工程師" />
+                <DotBullet text="自動化工具講師" />
+                <DotBullet text="自動化導入技術顧問" />
+              </div>
+            </div>
+            <div style={{ borderRadius: 12, padding: '20px 28px' }}>
+              {projects.map((p) => (
+                <div key={p} style={{ fontSize: 26, color: white, lineHeight: 1.6, letterSpacing: '0.01em' }}>{p}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </CA>
+    </BG>
+  );
+};
+```
+
+### 助教介紹 — co-host (Hugo)
+
+Optional second presenter page; same layout, larger avatar. Drop it if the lecture has no co-host.
+
+```tsx
+const InstructorHugo: Page = () => (
+  <BG>
+    <CA>
+      <div style={{ display: 'grid', gridTemplateColumns: '480px 1fr', gap: 60, flex: 1, alignItems: 'flex-start' }}>
+        <div style={{ lineHeight: '1.55' }}>
+          <div style={{ fontSize: 32, fontWeight: 800, color: teal, letterSpacing: '0.04em', marginBottom: 24 }}>RPAI 數位優化器</div>
+          <div style={{ fontSize: 168, fontWeight: 900, color: white, lineHeight: 1.02, letterSpacing: '0.02em' }}>助教<br/>介紹</div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '420px 1fr', gap: 60, alignItems: 'center', alignSelf: 'center' }}>
+          <div style={{ width: 420, height: 420, borderRadius: '50%', border: '2px solid rgba(255,255,255,0.35)', overflow: 'hidden' }}>
+            <img src={hugoAvatar} alt="Hugo" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          </div>
+          <div style={{ whiteSpace: 'nowrap' }}>
+            <div style={{ fontSize: 110, fontWeight: 900, color: teal, lineHeight: 1, marginBottom: 30 }}>Hugo</div>
+            {['RPAI 數位優化器行銷長','科技業 HR','人才招募 / 雇主品牌 / 教育訓練','企業內部豐富教育訓練經驗'].map((t) => (
+              <div key={t} style={{ display: 'flex', gap: 22, alignItems: 'center', marginBottom: 18 }}>
+                <div style={{ width: 13, height: 13, borderRadius: '50%', background: teal, flexShrink: 0 }}/>
+                <span style={{ fontSize: 42, fontWeight: 500, color: white, lineHeight: 1.35, whiteSpace: 'nowrap' }}>{t}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </CA>
+  </BG>
+);
+```
+
+### 結尾 CTA — automation-journey close (the main closing page)
+
+The signature sign-off: "決定好踏上自動化旅程了嗎？" + website & Instagram QR. Always the last (or near-last) page.
+
+```tsx
+const JourneyEnd: Page = () => (
+  <BG>
+    <div style={{ position: 'absolute', inset: 0, padding: '120px 160px', display: 'grid', gridTemplateColumns: '1fr 420px', gap: 60, alignItems: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ fontSize: 36, fontWeight: 800, color: white, letterSpacing: '0.04em', marginBottom: 80, opacity: 0.92 }}>RPAI 數位優化器</div>
+        <h1 style={{ fontSize: 120, fontWeight: 900, color: white, margin: 0, lineHeight: 1.18, letterSpacing: '-0.01em' }}>
+          決定好踏上自動化<br/>旅程了嗎？
+        </h1>
+        <div style={{ height: 4, width: 110, background: teal, borderRadius: 2, margin: '48px 0 36px' }} />
+        <p style={{ fontSize: 48, color: white, margin: 0, fontWeight: 500, lineHeight: 1.5 }}>
+          讓我們一起由簡單開始，<span style={{ color: teal, fontWeight: 700 }}>成就不簡單！</span>
+        </p>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 40, alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
+          <div style={{ padding: 16, borderRadius: 14, boxShadow: '0 12px 36px rgba(0,0,0,0.35)', backgroundColor: '#009bc7' }}>
+            <img src={qrWebsite} alt="官方網站 QR code" style={{ width: 340, height: 340, display: 'block' }}/>
+          </div>
+          <span style={{ fontSize: 26, color: white, fontWeight: 700, letterSpacing: '0.08em', opacity: 0.9 }}>WEBSITE</span>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
+          <div style={{ background: white, padding: 16, borderRadius: 14, boxShadow: '0 12px 36px rgba(0,0,0,0.35)' }}>
+            <img src={qrInstagram} alt="Instagram QR code" style={{ width: 340, height: 340, display: 'block' }}/>
+          </div>
+          <span style={{ fontSize: 26, color: white, fontWeight: 700, letterSpacing: '0.08em', opacity: 0.9 }}>@RPAI_DIGITALTRANSFORMER</span>
+        </div>
+      </div>
+    </div>
+  </BG>
+);
+```
+
+### 課後問卷 CTA — survey / hand-out materials (optional)
+
+Drives the post-class survey that unlocks the slides & materials. Swap `surveyQr` per lecture.
+
+```tsx
+const Survey: Page = () => (
+  <BG>
+    <div style={{ position: 'absolute', inset: 0, padding: '100px 140px 110px', display: 'grid', gridTemplateColumns: '1fr 460px', gap: 80, alignItems: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <Eyebrow text="課後回饋 · 領取教材" />
+        <H2 style={{ fontSize: 96, lineHeight: 1.12 }}>
+          填寫問卷<br/>
+          <span style={{ color: teal }}>領取今日簡報 &amp; 教材</span>
+        </H2>
+        <TealBar />
+        <p style={{ fontSize: 46, color: white, margin: 0, fontWeight: 500, lineHeight: 1.5 }}>完成後取得：</p>
+        <div style={{ marginTop: 28, display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <DotBullet text="今日完整上課簡報" />
+          <DotBullet text="實戰範例與教材連結" />
+          <DotBullet text="後續學習資源推薦" />
+        </div>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
+        <div style={{ background: white, padding: 20, borderRadius: 16, boxShadow: '0 16px 44px rgba(0,0,0,0.4)' }}>
+          <img src={surveyQr} alt="課後問卷 QR code" style={{ width: 380, height: 380, display: 'block' }}/>
+        </div>
+        <div style={{ fontSize: 32, color: white, fontWeight: 800, letterSpacing: '0.08em' }}>掃描填寫問卷</div>
+        <div style={{ fontSize: 22, color: white, opacity: 0.75, letterSpacing: '0.02em' }}>forms.gle / Google 表單</div>
+      </div>
+    </div>
+  </BG>
+);
+```
+
+Place them in the deck like: `Cover, Organizer, Instructor, InstructorHugo, …content…, Survey, JourneyEnd`.
+
 ## Motion
 
 - Philosophy: **subtle.** A short fade + small vertical drift between pages; the cover gets one extra touch (a 4 px blur-in). Nothing slides far or bounces.

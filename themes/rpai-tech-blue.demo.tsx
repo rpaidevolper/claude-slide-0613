@@ -136,6 +136,24 @@ const KeyInsight = ({ text }: { text: string }) => (
   </div>
 );
 
+const DotBullet = ({ text }: { text: string }) => (
+  <div style={{ display: 'flex', gap: 22, alignItems: 'center', marginBottom: 18 }}>
+    <div style={{ width: 13, height: 13, borderRadius: '50%', background: teal, flexShrink: 0 }}/>
+    <span style={{ fontSize: 54, fontWeight: 500, color: white, lineHeight: 1.35 }}>{text}</span>
+  </div>
+);
+
+// Preview-only placeholder for avatars / QR codes. Real decks import images from ./assets.
+const AssetBox = ({ size, label, round }: { size: number; label: string; round?: boolean }) => (
+  <div style={{
+    width: size, height: size, flexShrink: 0,
+    borderRadius: round ? '50%' : 16,
+    border: '2px dashed rgba(255,255,255,0.35)', background: 'rgba(255,255,255,0.06)',
+    display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center',
+    fontSize: 24, color: 'rgba(255,255,255,0.7)', fontWeight: 600, padding: 12,
+  }}>{label}</div>
+);
+
 // ─── Transitions ──────────────────────────────────────────────────────────────
 const EO = 'cubic-bezier(0,0,0.2,1)';
 const EI = 'cubic-bezier(0.4,0,1,1)';
@@ -228,4 +246,114 @@ const Section: Page = () => (
   </BG>
 );
 
-export default [Cover, Content, Section];
+// ─────────────────────────────────────────────────────────────────────────────
+// REUSABLE PAGES — these recur in every RPAI lecture (org intro / instructor / CTA)
+// In a real deck the AssetBox placeholders become <img> from ./assets.
+// ─────────────────────────────────────────────────────────────────────────────
+
+const Organizer: Page = () => (
+  <BG>
+    <CA>
+      <div style={{ display: 'grid', gridTemplateColumns: '420px 1fr', gap: 60, flex: 1, alignItems: 'center' }}>
+        <div style={{ fontSize: 168, fontWeight: 900, color: white, lineHeight: 1.05, letterSpacing: '0.02em' }}>
+          主辦<br/>單位
+        </div>
+        <div>
+          <div style={{ fontSize: 60, fontWeight: 800, color: teal, marginBottom: 8 }}>RPAI 數位優化器</div>
+          <div style={{ fontSize: 40, fontWeight: 600, color: teal, marginBottom: 26, letterSpacing: '0.02em' }}>Digital Transformer</div>
+          <TealBar />
+          <p style={{ fontSize: 38, color: white, lineHeight: 1.55, margin: '0 0 22px' }}>
+            以機器人流程自動化（RPA）結合人工智慧（AI）為主題的中文社群，
+            分享自動化工具、低程式碼開發（low-code）的學習資源、應用實例和最新發展趨勢。
+          </p>
+          <p style={{ fontSize: 38, color: white, lineHeight: 1.55, margin: 0 }}>
+            團隊成員來自各行各業，立志讓不會寫程式的工作者，
+            也能透過自動化工具<span style={{ color: teal, fontWeight: 700 }}>提升工作效率與價值</span>。
+          </p>
+          <div style={{ display: 'flex', gap: 60, marginTop: 42, alignItems: 'flex-start' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
+              <AssetBox size={200} label="官網 QR" />
+              <span style={{ fontSize: 32, color: white, fontWeight: 700 }}>官方網站</span>
+              <span style={{ fontSize: 24, color: white, opacity: 0.75 }}>portaly.cc/RPAITW</span>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
+              <AssetBox size={200} label="IG QR" />
+              <span style={{ fontSize: 32, color: white, fontWeight: 700 }}>Instagram</span>
+              <span style={{ fontSize: 24, color: white, opacity: 0.75 }}>@rpai_digitaltransformer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </CA>
+  </BG>
+);
+
+const Instructor: Page = () => {
+  const projects = [
+    '2026_科技業_企業雲端運算資源管理與平台化建置案',
+    '2025_科技業_企業開發者平台資安檢核與流程自動化建置案',
+    '2024_餐飲服務業_門市訂單與營運流程優化數位轉型案',
+    '2023_金融業_結算交割系統數位轉型專案',
+    '2023_政府業_藥政管理電子化與流程數位化平台建置案',
+    '2022_金融業_開戶流程無紙化與自動化轉型案',
+    '2021_金融業_保經管理流程數位轉型專案',
+    '2020_醫藥業_影音簽署與無紙化流程轉型',
+  ];
+  return (
+    <BG>
+      <CA>
+        <div style={{ display: 'grid', gridTemplateColumns: '480px 1fr', gap: 60, flex: 1, alignItems: 'flex-start' }}>
+          <div>
+            <div style={{ fontSize: 32, fontWeight: 800, color: teal, letterSpacing: '0.04em', marginBottom: 24 }}>RPAI 數位優化器</div>
+            <div style={{ fontSize: 168, fontWeight: 900, color: white, lineHeight: 1.02, letterSpacing: '0.02em' }}>講師<br/>介紹</div>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 32, alignSelf: 'center' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '360px 1fr', gap: 50, alignItems: 'center' }}>
+              <AssetBox size={360} round label="講師照片" />
+              <div>
+                <div style={{ fontSize: 100, fontWeight: 900, color: teal, lineHeight: 1, marginBottom: 18 }}>Yin</div>
+                <DotBullet text="科技業軟體工程師" />
+                <DotBullet text="自動化工具講師" />
+                <DotBullet text="自動化導入技術顧問" />
+              </div>
+            </div>
+            <div style={{ padding: '20px 28px' }}>
+              {projects.map((p) => (
+                <div key={p} style={{ fontSize: 26, color: white, lineHeight: 1.6 }}>{p}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </CA>
+    </BG>
+  );
+};
+
+const JourneyEnd: Page = () => (
+  <BG>
+    <div style={{ position: 'absolute', inset: 0, padding: '120px 160px', display: 'grid', gridTemplateColumns: '1fr 420px', gap: 60, alignItems: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ fontSize: 36, fontWeight: 800, color: white, letterSpacing: '0.04em', marginBottom: 80, opacity: 0.92 }}>RPAI 數位優化器</div>
+        <h1 style={{ fontSize: 120, fontWeight: 900, color: white, margin: 0, lineHeight: 1.18, letterSpacing: '-0.01em' }}>
+          決定好踏上自動化<br/>旅程了嗎？
+        </h1>
+        <div style={{ height: 4, width: 110, background: teal, borderRadius: 2, margin: '48px 0 36px' }} />
+        <p style={{ fontSize: 48, color: white, margin: 0, fontWeight: 500, lineHeight: 1.5 }}>
+          讓我們一起由簡單開始，<span style={{ color: teal, fontWeight: 700 }}>成就不簡單！</span>
+        </p>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 40, alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
+          <AssetBox size={300} label="官網 QR" />
+          <span style={{ fontSize: 26, color: white, fontWeight: 700, letterSpacing: '0.08em', opacity: 0.9 }}>WEBSITE</span>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
+          <AssetBox size={300} label="IG QR" />
+          <span style={{ fontSize: 26, color: white, fontWeight: 700, letterSpacing: '0.08em', opacity: 0.9 }}>@RPAI_DIGITALTRANSFORMER</span>
+        </div>
+      </div>
+    </div>
+  </BG>
+);
+
+export default [Cover, Content, Section, Organizer, Instructor, JourneyEnd];
