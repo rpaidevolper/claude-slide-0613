@@ -242,21 +242,27 @@ const SecDiv = ({ n, title, sub }: { n: string; title: string; sub: string }) =>
 
 ## Fixed pages (reuse every lecture)
 
-These four pages are part of the RPAI house identity and recur in **every** deck — keep them, only swap copy/assets. Paste them after the cover (組織 + 講師 near the front; CTA pages at the very end). They depend on the Tokens / `BG` / `CA` / `Eyebrow` / `H2` / `TealBar` / `DotBullet` primitives above.
+These pages are part of the RPAI house identity and recur in **every** deck — keep them, only swap copy/assets. Paste them after the cover (組織 + 講師 near the front; CTA pages at the very end). They depend on the Tokens / `BG` / `CA` / `Eyebrow` / `H2` / `TealBar` / `DotBullet` primitives above (and `F` for the SVG label font on 執行專案).
+
+The recurring opening run is: **Cover → 主辦單位 → 執行專案 → 講師介紹 → (助教介紹) → 我們相信**, then the lecture body, then the CTA pages at the end.
 
 ### Required assets
 
-Copy these into the new slide's `assets/` folder and import at the top of `index.tsx` (filenames are stable across decks):
+The fixed RPAI brand assets already live in the **global** `assets/rpai/` folder — import them with the `@assets/...` alias, no copying needed:
 
 ```tsx
-import qrWebsite   from './assets/qr-website.png';        // 主辦單位 + 結尾 CTA — portaly.cc/RPAITW
-import qrInstagram from './assets/qr-instagram.png';       // 主辦單位 + 結尾 CTA — @rpai_digitaltransformer
-import yinAvatar   from './assets/yin-avatar.webp';        // 講師介紹 (Yin)
-import hugoAvatar  from './assets/hugo-avatar.png';        // 助教介紹 (Hugo)
-import surveyQr    from './assets/survey-qr.png';          // 課後問卷 CTA (swap per lecture)
+import yinAvatar   from '@assets/rpai/yin-avatar.webp';   // 講師介紹 (Yin)
+import hugoAvatar  from '@assets/rpai/hugo-avatar.png';   // 助教介紹 (Hugo)
+import qrWebsite   from '@assets/rpai/qr-website.png';    // 主辦單位 + 結尾 CTA — portaly.cc/RPAITW
+import qrInstagram from '@assets/rpai/qr-instagram.png';  // 主辦單位 + 結尾 CTA — @rpai_digitaltransformer
 ```
 
-The fastest way to get these: copy them from `slides/jianu-claude/assets/`. The Yin/Hugo avatars and the two RPAI QR codes are fixed; `survey-qr.png` (and any event QR) changes per lecture.
+The per-lecture QR codes change every time, so keep them **deck-local** under `slides/<id>/assets/` and import with `./assets/...`:
+
+```tsx
+import surveyQr from './assets/survey-qr.png';            // 課後問卷 CTA — regenerate per lecture
+// import eventQr from './assets/accupass-qr.png';        // optional event-promo CTA
+```
 
 ### 主辦單位 — RPAI organization intro
 
@@ -297,6 +303,119 @@ const Organizer: Page = () => (
     </CA>
   </BG>
 );
+```
+
+### 執行專案 — RPAI service quadrants (page 03)
+
+A donut of four service areas (自媒體內容 / 講座課程 / 諮詢陪跑 / 導入開發) with dashed callouts. Pure SVG, no assets. The inner `Callout` helper and the ring math are self-contained.
+
+```tsx
+const Projects: Page = () => {
+  const Callout = ({
+    pos, title, lines, lineDir,
+  }: {
+    pos: CSSProperties;
+    title: string;
+    lines: string[];
+    lineDir: 'tl' | 'tr' | 'bl' | 'br';
+  }) => {
+    const dashColor = 'rgba(255,255,255,0.55)';
+    const isTop = lineDir.startsWith('t');
+    const isLeft = lineDir.endsWith('l');
+    return (
+      <div style={{ position: 'absolute', width: 540, ...pos }}>
+        <div style={{
+          position: 'absolute', left: 0, right: 0,
+          top: isTop ? 'auto' : -2, bottom: isTop ? -2 : 'auto',
+          height: 2, borderTop: `2px dashed ${dashColor}`,
+        }}/>
+        <div style={{
+          position: 'absolute',
+          [isLeft ? 'right' : 'left']: 0,
+          [isTop ? 'bottom' : 'top']: -34,
+          width: 2, height: 34, borderLeft: `2px dashed ${dashColor}`,
+        } as CSSProperties}/>
+        <div style={{
+          fontSize: 38, fontWeight: 800, color: teal,
+          marginTop: isTop ? 0 : 14, marginBottom: isTop ? 14 : 0, letterSpacing: '0.02em',
+        }}>{title}</div>
+        <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 2 }}>
+          {lines.map((t) => (
+            <li key={t} style={{ fontSize: '40px', color: white, lineHeight: 1.25, display: 'flex', gap: 10 }}>
+              <span style={{ color: teal }}>·</span><span>{t}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
+  const RING_SIZE = 580;
+  const cx = RING_SIZE / 2, cy = RING_SIZE / 2;
+  const rOuter = 270, rInner = 105;
+  const arc = (startDeg: number, endDeg: number) => {
+    const toXY = (deg: number, r: number) => {
+      const rad = (deg - 90) * Math.PI / 180;
+      return [cx + r * Math.cos(rad), cy + r * Math.sin(rad)];
+    };
+    const [x1, y1] = toXY(startDeg, rOuter);
+    const [x2, y2] = toXY(endDeg, rOuter);
+    const [x3, y3] = toXY(endDeg, rInner);
+    const [x4, y4] = toXY(startDeg, rInner);
+    return `M ${x1} ${y1} A ${rOuter} ${rOuter} 0 0 1 ${x2} ${y2} L ${x3} ${y3} A ${rInner} ${rInner} 0 0 0 ${x4} ${y4} Z`;
+  };
+  const labelXY = (deg: number) => {
+    const r = (rOuter + rInner) / 2;
+    const rad = (deg - 90) * Math.PI / 180;
+    return [cx + r * Math.cos(rad), cy + r * Math.sin(rad)];
+  };
+
+  const quads = [
+    { start: -45, end:  45, label: '自媒體內容', fill: '#7eb8e6' },
+    { start:  45, end: 135, label: '講座課程',   fill: '#5e9bd1' },
+    { start: 135, end: 225, label: '導入開發',   fill: '#4583bd' },
+    { start: 225, end: 315, label: '諮詢陪跑',   fill: '#6ba9dc' },
+  ];
+
+  return (
+    <BG>
+      <CA>
+        <H2>執行專案</H2>
+        <TealBar />
+        <div style={{ flex: 1, position: 'relative' }}>
+          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: RING_SIZE, height: RING_SIZE }}>
+            <svg width={RING_SIZE} height={RING_SIZE} viewBox={`0 0 ${RING_SIZE} ${RING_SIZE}`}>
+              {quads.map((q) => (
+                <path key={q.label} d={arc(q.start, q.end)} fill={q.fill} stroke="rgba(255,255,255,0.15)" strokeWidth={2}/>
+              ))}
+              <circle cx={cx} cy={cy} r={rInner - 8} fill="rgba(10,30,80,0.85)" stroke="rgba(255,255,255,0.2)" strokeWidth={2}/>
+              {quads.map((q) => {
+                const mid = (q.start + q.end) / 2;
+                const [lx, ly] = labelXY(mid);
+                return (
+                  <text key={q.label} x={lx} y={ly}
+                    textAnchor="middle" dominantBaseline="central"
+                    fill="#0a1c46" fontSize={42} fontWeight={800}
+                    style={{ fontFamily: F, letterSpacing: '0.04em' }}>
+                    {q.label}
+                  </text>
+                );
+              })}
+            </svg>
+          </div>
+          <Callout pos={{ top: 10, left: 0 }} title="自媒體內容" lineDir="tl"
+            lines={['官方網站超過 100+ 自動化相關議題文章', 'IG、FB 定期分享聚會、訪談內容']} />
+          <Callout pos={{ top: 10, right: 0 }} title="講座課程" lineDir="tr"
+            lines={['每月定期線上線下分享活動', '企業、大專院校講座']} />
+          <Callout pos={{ bottom: 10, left: 0 }} title="諮詢陪跑" lineDir="bl"
+            lines={['手把手教學功能 & 帶專案', '小型店家、專業工作者']} />
+          <Callout pos={{ bottom: 10, right: 0 }} title="導入開發" lineDir="br"
+            lines={['協助金融、科技、長照產業開發流程', '自動化工具：Power Automate、UiPath etc.']} />
+        </div>
+      </CA>
+    </BG>
+  );
+};
 ```
 
 ### 講師介紹 — instructor (Yin)
@@ -382,6 +501,31 @@ const InstructorHugo: Page = () => (
 );
 ```
 
+### 我們相信 — brand belief statement (page 06)
+
+The RPAI manifesto page that closes the opening block. Pure type, no assets — one large centered statement with a teal rule above it.
+
+```tsx
+const Believe: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="我們相信" />
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: 80, paddingRight: 80 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 30 }}>
+          <span style={{ fontSize: 110, color: teal, fontWeight: 900, lineHeight: 1, fontFamily: 'Georgia, serif' }}>“</span>
+          <div style={{ flex: 1, height: 2, background: teal, opacity: 0.7 }}/>
+        </div>
+        <p style={{ fontSize: 100, fontWeight: 700, color: white, margin: 0, lineHeight: 1.35, letterSpacing: '0.02em' }}>
+          在 AI 時代，<br/>
+          人人都可以是<br/>
+          自己流程的<span style={{ color: teal }}>優化師</span>。
+        </p>
+      </div>
+    </CA>
+  </BG>
+);
+```
+
 ### 結尾 CTA — automation-journey close (the main closing page)
 
 The signature sign-off: "決定好踏上自動化旅程了嗎？" + website & Instagram QR. Always the last (or near-last) page.
@@ -453,7 +597,7 @@ const Survey: Page = () => (
 );
 ```
 
-Place them in the deck like: `Cover, Organizer, Instructor, InstructorHugo, …content…, Survey, JourneyEnd`.
+Place them in the deck like: `Cover, Organizer, Projects, Instructor, InstructorHugo, Believe, …content…, Survey, JourneyEnd`.
 
 ## Motion
 
