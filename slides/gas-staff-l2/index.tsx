@@ -103,8 +103,6 @@ const Footer = () => {
 
 const BG = ({ children }: { children: ReactNode }) => (
   <div style={{ ...fill, background: GRAD }}>
-    {/* @slide-comment id="c-0f0c84cc" ts="2026-06-21T14:19:16.253Z" text="eyJub3RlIjoi6KuL5bmr5oiR6Kq_5pW06YCZ5YCL54mI6Z2iIn0" */}
-    {/* @slide-comment id="c-8b354db7" ts="2026-06-21T13:14:26.220Z" text="eyJub3RlIjoi57Ch5YyW5o6S54mILiDnlKjliJfpu57mlrnlvI_lkYjnj77lsLHlpb0ifQ" */}
     <CircuitDeco /><RingDeco /><DotGrid side="left" /><DotGrid side="right" />
     {children}
     <Footer />
