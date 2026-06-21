@@ -267,13 +267,13 @@ const Cover: Page = () => (
     <div style={{ position: 'absolute', top: 0, bottom: 60, left: 0, right: 0,
       display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 160px' }}>
       <div style={{ fontSize: 33, color: teal, fontWeight: 700, letterSpacing: '0.16em', marginBottom: 28 }}>
-        RPAI 數位優化器 · 高中教職員研習
+        RPAI 數位優化器
       </div>
       <h1 style={{ fontSize: 130, fontWeight: 900, color: white, margin: 0, lineHeight: 1.08, letterSpacing: '-0.02em' }}>
-        Google Apps Script 基礎
+        Google 工具行政力維新
       </h1>
       <p style={{ fontSize: 60, fontWeight: 500, color: white, margin: '24px 0 40px', lineHeight: 1.25 }}>
-        第二堂：讓報名表<span style={{ color: teal, fontWeight: 700 }}>自己會寄信、會通知</span>
+        Session2：報名<span style={{ color: teal, fontWeight: 700 }}>通知流程自動化</span>
       </p>
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 30 }}>
         {['Google Apps Script', 'Gmail', '試算表', '表單'].map((t) => (
@@ -528,7 +528,7 @@ const TodayMap: Page = () => (
 
 // ── 07 段落分頁 ───────────────────────────────────────────────────────────────
 const Sec1: Page = () => (
-  <SecDiv ghost="01" kicker="環節 一" title="認識 Apps Script" sub="第一次，讓程式聽你的話" />
+  <SecDiv ghost="01" kicker="環節 一" title="認識 Google Apps Script" sub="第一次，讓程式聽你的話" />
 );
 
 // ── 08 上節回顧 ──────────────────────────────────────────────────────────────
@@ -555,7 +555,7 @@ const WhatIsAS: Page = () => (
         background: white, borderRadius: 20, padding: '48px 56px',
         boxShadow: '0 28px 70px rgba(0,0,0,0.4)', display: 'flex',
       }}>
-        <img src={appsScriptIntro} alt="Apps Script：使用簡單的程式碼即可自動化及擴充 Google Workspace 的功能"
+        <img src={appsScriptIntro} alt="Google Apps Script：使用簡單的程式碼即可自動化及擴充 Google Workspace 的功能"
           style={{ display: 'block', width: 1480, height: 'auto', objectFit: 'contain' }} />
       </div>
     </CA>
