@@ -4,6 +4,12 @@ import { ImagePlaceholder, useSlidePageNumber } from '@open-slide/core';
 import yinAvatar from '@assets/rpai/yin-avatar.webp';
 import qrWebsite from '@assets/rpai/qr-website.png';
 import qrInstagram from '@assets/rpai/qr-instagram.png';
+import appsScriptIntro from './assets/apps-script-intro.png';
+import hands1EditorLog from './assets/hands1-editor-log.png';
+import authNeed from './assets/auth-1-need.png';
+import authUnverified from './assets/auth-2-unverified.png';
+import authConfirm from './assets/auth-3-confirm.png';
+import hands2WriteSheet from './assets/hands2-write-sheet.png';
 
 // ─── Design System ───────────────────────────────────────────────────────────
 export const design: DesignSystem = {
@@ -96,6 +102,7 @@ const Footer = () => {
 
 const BG = ({ children }: { children: ReactNode }) => (
   <div style={{ ...fill, background: GRAD }}>
+    {/* @slide-comment id="c-8b354db7" ts="2026-06-21T13:14:26.220Z" text="eyJub3RlIjoi57Ch5YyW5o6S54mILiDnlKjliJfpu57mlrnlvI_lkYjnj77lsLHlpb0ifQ" */}
     <CircuitDeco /><RingDeco /><DotGrid side="left" /><DotGrid side="right" />
     {children}
     <Footer />
@@ -503,14 +510,14 @@ const TodayMap: Page = () => (
       <H2>今天，我們會做到這三件事</H2>
       <TealBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 8 }}>
-        <Bullet n="1" title="第一次跟程式打招呼"
-          body="寫幾行字，讓它印出訊息、把文字寫進試算表 — 先破冰。" />
-        <Bullet n="2" title="報名成功，信自己寄"
-          body="從資料抓內容，表單一送出就自動回信 —— 今天的主菜。" />
-        <Bullet n="3" title="指定時間，通知自己發"
-          body="讓電腦在你設定的那一刻，自動寄出行前通知。" />
+        <Bullet n="1" title="學會用 Google App Script 撰寫程式"
+          body="理解基礎：寫幾行字，讓它印出訊息、把文字寫進試算表" />
+        <Bullet n="2" title="只要有人報名成功，系統自動寄出信件"
+          body="運行自動化：從資料抓內容，表單一送出就自動回信" />
+        <Bullet n="3" title="指定時間一到，信件自動分類寄出"
+          body="設定排程：讓系統在你設定的時間，自動寄出信件通知。" />
       </div>
-      <KeyInsight text="全程「給你範本貼上去改」，不用從零打字" />
+      <KeyInsight text="原來撰寫程式沒有想像中困難" />
     </CA>
   </BG>
 );
@@ -529,24 +536,13 @@ const Recap1: Page = () => (
   <BG>
     <CA>
       <Eyebrow text="上節回顧" />
-      <H2>還記得這張表嗎？</H2>
+      <H2>上節回顧</H2>
       <TealBar />
-      <div style={{ fontSize: 38, color: white, lineHeight: 1.45, marginBottom: 26, opacity: 0.92 }}>
-        上一堂我們替「2026 嘉義縣教師專業成長研習」辦了報名，整理出誰正式錄取、誰候補。
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 8 }}>
+        <Bullet n="1" title="使用 Google Form 製作活動報名表" />
+        <Bullet n="2" title="使用 Google Sheet 搭配公式分析並快速整理資料" />
+        <Bullet n="3" title="使用 Google Sheet 製作儀表板" />
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, flex: 1 }}>
-        <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.2)', borderRadius: 14, padding: '30px 34px' }}>
-          <div style={{ fontSize: 34, fontWeight: 800, color: white, opacity: 0.85, marginBottom: 18 }}>上一堂我們做到</div>
-          <DotBullet text="收報名、整理出「正式錄取／候補」" />
-          <DotBullet text="全部要人工一封一封寄" />
-        </div>
-        <div style={{ background: cardBgTeal, border: '1px solid rgba(0,229,192,0.45)', borderRadius: 14, padding: '30px 34px' }}>
-          <div style={{ fontSize: 34, fontWeight: 800, color: teal, marginBottom: 18 }}>今天要往前一步</div>
-          <DotBullet text="讓「通知」這件事自己發生" />
-          <DotBullet text="程式幫你判斷、幫你寄" />
-        </div>
-      </div>
-      <KeyInsight text="重複、有規則的動作 → 交給程式；你訂規則，它不厭其煩地執行" />
     </CA>
   </BG>
 );
@@ -554,24 +550,31 @@ const Recap1: Page = () => (
 // ── 09 Apps Script 是什麼 ─────────────────────────────────────────────────────
 const WhatIsAS: Page = () => (
   <BG>
-    <CA>
-      <H2>Apps Script 是什麼？</H2>
-      <TealBar />
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, flex: 1, marginTop: 10 }}>
-        <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.2)', borderRadius: 14, padding: '32px 36px' }}>
-          <div style={{ fontSize: 36, fontWeight: 800, color: white, opacity: 0.85, marginBottom: 20 }}>你平常怎麼做</div>
-          <div style={{ fontSize: 40, color: white, lineHeight: 1.5 }}>
-            手動打開試算表 → 自己看資料 → 自己開 Gmail → 自己打字寄信
-          </div>
-        </div>
-        <div style={{ background: cardBgTeal, border: '1px solid rgba(0,229,192,0.45)', borderRadius: 14, padding: '32px 36px' }}>
-          <div style={{ fontSize: 36, fontWeight: 800, color: teal, marginBottom: 20 }}>交給 Apps Script</div>
-          <div style={{ fontSize: 40, color: white, lineHeight: 1.5 }}>
-            你寫幾行指令，它自動在試算表、Gmail、表單之間幫你做完同樣的事
-          </div>
-        </div>
+    <CA style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{
+        background: white, borderRadius: 20, padding: '48px 56px',
+        boxShadow: '0 28px 70px rgba(0,0,0,0.4)', display: 'flex',
+      }}>
+        <img src={appsScriptIntro} alt="Apps Script：使用簡單的程式碼即可自動化及擴充 Google Workspace 的功能"
+          style={{ display: 'block', width: 1480, height: 'auto', objectFit: 'contain' }} />
       </div>
-      <KeyInsight text="它是「Google 版的小幫手」，住在你的 Google 帳號裡，免安裝" />
+    </CA>
+  </BG>
+);
+
+// ── 09b 實際使用範例 ──────────────────────────────────────────────────────────
+const UsageExamples: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="實際應用" />
+      <H2>實際上，它能幫你做這些事</H2>
+      <TealBar />
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 4 }}>
+        <DotBullet text="報名表一送出，自動寄出錄取／候補通知" />
+        <DotBullet text="每天定時把試算表整理成摘要信，自動寄出" />
+        <DotBullet text="收到表單回覆，自動分類、標記並寫回試算表" />
+      </div>
+      <KeyInsight text="共同點：重複、有規則的事 → 交給 Apps Script 自動完成" />
     </CA>
   </BG>
 );
@@ -615,13 +618,12 @@ const VarLogger: Page = () => (
           <div style={{ marginTop: 18, fontFamily: mono, fontSize: 30, color: teal }}>姓名 = '王小明'</div>
         </div>
         <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.2)', borderRadius: 14, padding: '32px 36px' }}>
-          <div style={{ fontSize: 44, fontWeight: 800, color: teal, marginBottom: 18 }}>Logger.log</div>
+          <div style={{ fontSize: 44, fontWeight: 800, color: teal, marginBottom: 18 }}>log</div>
           <div style={{ fontSize: 38, color: white, lineHeight: 1.5 }}>
-            就是「印出來給我看」：讓程式把某個值顯示在下方執行紀錄，方便確認對不對。
+            就是「執行紀錄」：讓程式把某個值顯示在下方執行紀錄，方便確認對不對。
           </div>
         </div>
       </div>
-      <KeyInsight text="寫程式 80% 的時間都在：把值放進變數、再印出來檢查" />
     </CA>
   </BG>
 );
@@ -630,18 +632,19 @@ const VarLogger: Page = () => (
 const Hands1: Page = () => (
   <BG>
     <CA>
-      <H2 style={{ fontSize: 84 }}>【動手 1】按下「執行」，看它印出訊息</H2>
+      <H2 style={{ fontSize: 84 }}>【動手 1】讓程式碼跟你打招呼</H2>
       <TealBar />
-      <TaskStrip tag="動手" text="把範本貼進程式碼區 → 按上方「執行」→ 看下方執行紀錄跳出訊息" />
-      <Code size={26} code={`
-function 我的第一支程式() {
-  // 1) 先在記錄檔印出訊息（按「執行」後，下方會出現）
-  Logger.log('Hello！我是我的第一支 Apps Script');
-
-  // 2) 把一句話寫進目前這份試算表的 A1 格
-  const 試算表 = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  試算表.getRange('A1').setValue('我成功把文字寫進來了！');
-}`} note="⚠ 第一次執行一定跳授權視窗：審查權限 → 選帳號 → 進階／前往 → 允許（全班一起過一次）" />
+      
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 0 }}>
+        <div style={{
+          background: white, borderRadius: 16, padding: 20, overflow: 'hidden',
+          boxShadow: '0 24px 60px rgba(0,0,0,0.4)', maxHeight: '100%', display: 'flex',
+        }}>
+          <img src={hands1EditorLog} alt="Apps Script 編輯器執行 myFunction，執行記錄印出 helo: Yin"
+            style={{ display: 'block', maxWidth: '100%', maxHeight: '100%', width: 1360, height: 'auto', objectFit: 'contain' }} />
+        </div>
+      </div>
+      <TaskStrip tag="動手" text="按上方「執行」→ 看下方執行紀錄跳出訊息" />
     </CA>
   </BG>
 );
@@ -663,19 +666,22 @@ const TwoThings: Page = () => (
   </BG>
 );
 
-// ── 14 【動手2】把一句話寫進 A1 ───────────────────────────────────────────────
+// ── 14 【動手2】透過程式把資料寫進 Google Sheet ──────────────────────────────
 const Hands2: Page = () => (
   <BG>
     <CA>
-      <H2 style={{ fontSize: 88 }}>【動手 2】換你，把自己的話寫進 A1</H2>
+      <H2 style={{ fontSize: 84 }}>【動手 2】讓程式把資料寫進 Sheet</H2>
       <TealBar />
-      <TaskStrip tag="動手" text="把 setValue('…') 引號中的字改成你想寫的任何一句話 → 再執行 → 切回試算表看 A1" />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 6 }}>
-        <DotBullet text="只改引號中間的文字，其他一個字都不要動" />
-        <DotBullet text="中文、英文、表情符號都可以" />
-        <DotBullet text="執行後切回試算表分頁，確認 A1 變了沒" />
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 0 }}>
+        <div style={{
+          background: white, borderRadius: 16, padding: 18, overflow: 'hidden',
+          boxShadow: '0 24px 60px rgba(0,0,0,0.4)', maxHeight: '100%', display: 'flex',
+        }}>
+          <img src={hands2WriteSheet} alt="Apps Script 執行寫入程式，試算表 A1 出現「我成功把文字寫進來了！」"
+            style={{ display: 'block', maxWidth: '100%', maxHeight: '100%', width: 1520, height: 'auto', objectFit: 'contain' }} />
+        </div>
       </div>
-      <KeyInsight text="這就是「改變數」：同一支程式，換掉裡面的值，結果就跟著變" />
+      <TaskStrip tag="動手" text="① 撰寫程式碼 → ② 按「執行」→ ③ 切回試算表，看 A1 真的多了文字" />
     </CA>
   </BG>
 );
@@ -777,6 +783,43 @@ function 寄出自我介紹() {
     </CA>
   </BG>
 );
+
+// ── 20b 第一次寄信的授權流程 ──────────────────────────────────────────────────
+const AuthFlow: Page = () => {
+  const Step = ({ n, label, src, alt }: { n: string; label: string; src: string; alt: string }) => (
+    <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+        <div style={{
+          width: 46, height: 46, borderRadius: '50%', background: pill, color: white, flexShrink: 0,
+          display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 26, fontWeight: 800,
+        }}>{n}</div>
+        <span style={{ fontSize: 30, fontWeight: 700, color: teal, lineHeight: 1.2 }}>{label}</span>
+      </div>
+      <div style={{
+        flex: 1, background: white, borderRadius: 12, padding: 14, overflow: 'hidden',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        boxShadow: '0 16px 40px rgba(0,0,0,0.35)',
+      }}>
+        <img src={src} alt={alt} style={{ display: 'block', maxWidth: '100%', maxHeight: 470, width: 'auto', height: 'auto', objectFit: 'contain' }} />
+      </div>
+    </div>
+  );
+  return (
+    <BG>
+      <CA>
+        <Eyebrow text="第一次執行" />
+        <H2>跳出「授權」怎麼辦？</H2>
+        <TealBar />
+        <div style={{ display: 'flex', gap: 24, flex: 1, marginTop: 8, alignItems: 'stretch' }}>
+          <Step n="1" label="需要授權 → 審查權限" src={authNeed} alt="需要授權對話框，點審查權限" />
+          <Step n="2" label="未經驗證 → 進階 → 前往" src={authUnverified} alt="這個應用程式未經 Google 驗證，點進階後前往專案" />
+          <Step n="3" label="確認信任 → 繼續" src={authConfirm} alt="確認信任應用程式並點繼續" />
+        </div>
+        <KeyInsight text="只需要授權一次，後續就不會再出現" />
+      </CA>
+    </BG>
+  );
+};
 
 // ── 21 複習：表單和試算表 ─────────────────────────────────────────────────────
 const FormReview: Page = () => (
@@ -1321,11 +1364,11 @@ export default [
   // 開場 + 品牌
   Cover,
   Organizer, Projects, Instructor, Believe,
-  TodayMap,
+  Recap1,
   // 環節一
-  Sec1, Recap1, WhatIsAS, OpenAS, VarLogger, Hands1, TwoThings, Hands2, Troubleshoot, Sec1Recap, Break1,
+  TodayMap, Sec1, WhatIsAS, UsageExamples, OpenAS, VarLogger, Hands1, Hands2, AuthFlow, Troubleshoot, Sec1Recap,
   // 環節二
-  Sec2, MailThree, Hands3, FormReview, Hands4, EParam, Hands5, SetTrigger, WhatTrigger, TimeTrigger, Sec2Recap, Break2,
+  Break1, Sec2, MailThree, Hands3, FormReview, Hands4, EParam, Hands5, SetTrigger, WhatTrigger, TimeTrigger, Sec2Recap, Break2,
   // 環節三
   Sec3, RealList, PrepCopy, DataSafety, IfMark, Hands6, HtmlPanel, ClassRecap, QnA,
   // 附錄（備用加映）
