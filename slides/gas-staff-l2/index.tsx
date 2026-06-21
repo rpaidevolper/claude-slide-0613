@@ -10,6 +10,7 @@ import authNeed from './assets/auth-1-need.png';
 import authUnverified from './assets/auth-2-unverified.png';
 import authConfirm from './assets/auth-3-confirm.png';
 import hands2WriteSheet from './assets/hands2-write-sheet.png';
+import triggerNewDialog from './assets/trigger-new-dialog.png';
 
 // ─── Design System ───────────────────────────────────────────────────────────
 export const design: DesignSystem = {
@@ -102,6 +103,7 @@ const Footer = () => {
 
 const BG = ({ children }: { children: ReactNode }) => (
   <div style={{ ...fill, background: GRAD }}>
+    {/* @slide-comment id="c-0f0c84cc" ts="2026-06-21T14:19:16.253Z" text="eyJub3RlIjoi6KuL5bmr5oiR6Kq_5pW06YCZ5YCL54mI6Z2iIn0" */}
     {/* @slide-comment id="c-8b354db7" ts="2026-06-21T13:14:26.220Z" text="eyJub3RlIjoi57Ch5YyW5o6S54mILiDnlKjliJfpu57mlrnlvI_lkYjnj77lsLHlpb0ifQ" */}
     <CircuitDeco /><RingDeco /><DotGrid side="left" /><DotGrid side="right" />
     {children}
@@ -767,7 +769,6 @@ const Hands3: Page = () => (
     <CA>
       <H2 style={{ fontSize: 84 }}>【動手 3】寄一封自我介紹給講師</H2>
       <TealBar />
-      <TaskStrip tag="動手" text="A2 填姓名、B2 填一句自我介紹 → 貼上範本 → 執行 → 講師當場秀「收到信」" />
       <Code size={26} code={`
 function 寄出自我介紹() {
   const 試算表 = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
@@ -779,8 +780,12 @@ function 寄出自我介紹() {
   const 內容 = \`老師好，我是 \${姓名}。\\n\\n\${自我介紹}\`;
 
   GmailApp.sendEmail(講師信箱, 主旨, 內容);
-}`} note="★ 第一個情緒高點 —— 你寫的東西，真的變成一封信寄出去了" />
+}`} note="" />
+
+    <KeyInsight text="試算表 A2 填姓名、B2 填一句自我介紹 → 貼上程式碼 → 執行 → 送出信件" />
+
     </CA>
+
   </BG>
 );
 
@@ -930,11 +935,22 @@ const WhatTrigger: Page = () => (
       <Eyebrow text="先有成功體驗，背景知識才聽得進去" />
       <H2>觸發器就是「幫你站崗的人」</H2>
       <TealBar />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 14 }}>
-        <Bullet n="?" title="事件型觸發"
-          body="「有人提交表單」就動 —— 像門口的感應燈：有人來，燈就亮。" />
-        <Bullet n="∞" title="它幫你 24 小時待命"
-          body="半夜、假日、你在開會，它都照常執行。" />
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 44, flex: 1, marginTop: 6, alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 14 }}>
+          <Bullet n="?" title="事件型觸發"
+            body="「有人提交表單」就動 —— 像門口的感應燈：有人來，燈就亮。" />
+          <Bullet n="∞" title="它幫你 24 小時待命"
+            body="半夜、假日、你在開會，它都照常執行。" />
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 0 }}>
+          <div style={{
+            background: white, borderRadius: 14, padding: 14, overflow: 'hidden',
+            boxShadow: '0 20px 50px rgba(0,0,0,0.4)', maxHeight: '100%', display: 'flex',
+          }}>
+            <img src={triggerNewDialog} alt="新增觸發條件對話框：選擇 myFunction、事件來源試算表、事件類型提交表單時"
+              style={{ display: 'block', maxWidth: '100%', maxHeight: 540, width: 'auto', height: 'auto', objectFit: 'contain' }} />
+          </div>
+        </div>
       </div>
       <KeyInsight text="那「到某個時間點才做」呢？比如活動前一天自動發通知 —— 下一頁" />
     </CA>
@@ -983,88 +999,90 @@ const Sec2Recap: Page = () => (
         <Bullet n="2" title="會讓表單自己回信" body="靠「提交表單時」觸發器。" />
         <Bullet n="3" title="知道有兩種觸發器" body="事件型（某事發生）／時間型（某刻到了）。" />
       </div>
-      <KeyInsight text="下一段，我們拿上次真的 45 人名單來玩真的" />
+      <KeyInsight text="下一段，拿回上次做的報名檔，自己當報名者跑一次自動化" />
     </CA>
   </BG>
 );
 
 // ── 29 休息② ─────────────────────────────────────────────────────────────────
 const Break2: Page = () => (
-  <Break title="休息 10 分鐘" sub="等等：拿真的 45 人名單，讓它自己跑" back="11:20 回來" />
+  <Break title="休息 10 分鐘" sub="等等：拿回上次做的報名檔，自己跑一次自動化" back="11:20 回來" />
 );
 
 // ════════════════════════════════════════════════════════════════════════════
-// 環節三｜真實名單自動化
+// 環節三｜自己的報名檔自動化
 // ════════════════════════════════════════════════════════════════════════════
 
 // ── 30 段落分頁 ───────────────────────────────────────────────────────────────
 const Sec3: Page = () => (
-  <SecDiv ghost="03" kicker="環節 三" title="真實名單自動化" sub="把學到的招，套到真的會用的場景" />
+  <SecDiv ghost="03" kicker="環節 三" title="實戰：嘉義縣教師專業成長研習報名通知自動化" sub="把學到的招，套到真的會用的場景" />
 );
 
-// ── 31 情境溫習：45 人真實名單 ────────────────────────────────────────────────
+// ── 31 情境溫習：拿回上次做的報名檔 ──────────────────────────────────────────
 const RealList: Page = () => (
   <BG>
     <CA>
       <Eyebrow text="情境溫習" />
-      <H2>接手這份真實名單</H2>
+      <H2>拿回上次做的報名檔</H2>
       <TealBar />
       <div style={{ fontSize: 36, color: white, lineHeight: 1.45, marginBottom: 24, opacity: 0.92 }}>
-        2026 嘉義縣教師專業成長研習，共 45 位老師、三個場次，各有「正式錄取」與「候補」。
+        上次你做好的「研習報名表單 ＋ 連動試算表」，這次原檔發回給你 —— 欄位都在，但報名資料已經清空，等你自己當一次報名者。
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, flex: 1 }}>
         <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.2)', borderRadius: 14, padding: '30px 34px' }}>
           <div style={{ fontSize: 34, fontWeight: 800, color: white, opacity: 0.85, marginBottom: 18 }}>現在它是</div>
-          <DotBullet text="一張靜態的表（45 人、三場次）" />
-          <DotBullet text="誰錄取、誰候補要人工通知" />
+          <DotBullet text="一份空的報名試算表（只剩欄位標題）" />
+          <DotBullet text="表單還在，但還沒有任何自動化" />
         </div>
         <div style={{ background: cardBgTeal, border: '1px solid rgba(0,229,192,0.45)', borderRadius: 14, padding: '30px 34px' }}>
           <div style={{ fontSize: 34, fontWeight: 800, color: teal, marginBottom: 18 }}>我們要讓它變成</div>
-          <DotBullet text="一條會自己跑的流程" />
+          <DotBullet text="有人報名 → 自動判斷 → 自動寄通知" />
           <DotBullet text="正式錄取自動收信、寄過的自動標記" />
         </div>
       </div>
-      <KeyInsight text="前兩段學的寄信和排程，這一段套到真的會用到的場景" />
+      <KeyInsight text="前兩段學的寄信和排程，這一段套到你自己做的報名檔上" />
     </CA>
   </BG>
 );
 
-// ── 32 操作前置：先複製、加標題 ───────────────────────────────────────────────
+// ── 32 操作前置：準備測試環境（報名一筆、連 GAS、加記號欄）─────────────────────
 const PrepCopy: Page = () => (
   <BG>
     <CA>
-      <Eyebrow text="先備份，再動手" />
-      <H2>動手前，先做兩件保護動作</H2>
+      <Eyebrow text="動手前 · 準備測試環境" />
+      <H2>三步驟，把檔案準備好</H2>
       <TealBar />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 14 }}>
-        <Bullet n="1" title="把名單複製一份成自己的檔案"
-          body="工作表仍叫「表單回覆 1」—— 程式會真的寄信、改格子，別動到母檔。" />
-        <Bullet n="2" title="在最右邊空白欄（O 欄）第一列打標題「第一場已寄信」"
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 10 }}>
+        <Bullet n="1" title="先用表單自己報名一筆"
+          body="信箱填你自己的 —— 這是等下要拿來測試的測試資料。" />
+        <Bullet n="2" title="回試算表 →「擴充功能」→「Apps Script」"
+          body="幫這份試算表連結一個新的 GAS 檔案，待會把程式碼貼進去。" />
+        <Bullet n="3" title="在最右邊空白欄（O 欄）打標題「第一場已寄信」"
           body="這是我們新增的「已寄信」記號欄，等下寄完要在這裡打勾。" />
       </div>
-      <KeyInsight text="複製是為了不動到母檔；O 欄是我們自己加的記號欄" />
+      <KeyInsight text="先有一筆測試資料、連好 GAS、加好記號欄 → 接著就能貼程式碼" />
     </CA>
   </BG>
 );
 
-// ── 33 ★資料安全提醒 ──────────────────────────────────────────────────────────
+// ── 33 測試守則：自己的測試資料，怎麼測、怎麼收尾 ─────────────────────────────
 const DataSafety: Page = () => (
   <BG>
     <CA>
-      <Eyebrow text="★ 安全第一 · 務必先做" />
-      <H2>動手前，最重要的一件事</H2>
+      <Eyebrow text="測試資料 · 安心練習" />
+      <H2>這是你的測試資料，放心跑</H2>
       <TealBar />
-      <div style={{ background: cardBgRed, border: '1px solid rgba(255,120,120,0.5)', borderRadius: 14, padding: '28px 36px', marginBottom: 22 }}>
+      <div style={{ background: cardBgTeal, border: '1px solid rgba(0,229,192,0.45)', borderRadius: 14, padding: '28px 36px', marginBottom: 22 }}>
         <div style={{ fontSize: 46, fontWeight: 800, color: white, lineHeight: 1.4 }}>
-          這份名單的 Email 是<span style={{ color: '#ff9a9a' }}>真實老師信箱</span> —— 程式一跑，是真的會寄出去的。
+          名單已清空，你填的是<span style={{ color: teal }}>自己的測試報名</span> —— 信箱是你自己的，程式一跑也只寄給你。
         </div>
       </div>
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 6 }}>
-        <DotBullet text="先把 C 欄整欄換成你的測試信箱，避免練習時打擾名單上的人" />
-        <DotBullet text="流程確認跑通後，正式上線那天才換回真實信箱" />
-        <DotBullet text="寧可多這一步 —— 誤寄出去收不回來" />
+        <DotBullet text="要讓程式寄信：先在你那一列的「第一場狀態」(L 欄) 填「正式錄取」" />
+        <DotBullet text="執行後到自己信箱確認 —— 看到信進來才算成功" />
+        <DotBullet text="測試完畢：把這一筆測試資料整列刪掉，檔案就回到乾淨狀態" />
       </div>
-      <KeyInsight text="大家先改 C 欄，改好我們再往下" />
+      <KeyInsight text="自己的測試資料，怎麼測都沒關係 —— 測完刪掉就好" />
     </CA>
   </BG>
 );
@@ -1100,7 +1118,7 @@ const Hands6: Page = () => (
     <CA>
       <H2 style={{ fontSize: 72 }}>【動手 6】只寄給正式錄取，寄完打勾</H2>
       <div style={{ height: 4, width: 90, background: teal, borderRadius: 2, margin: '14px 0 16px' }} />
-      <TaskStrip tag="動手" text="貼上範本 → 只改主旨、內容兩處 → 執行 → 看測試信箱 ＋ O 欄打勾（迴圈不要動）" />
+      <TaskStrip tag="動手" text="你那列 L 欄填「正式錄取」→ 貼上範本 → 只改主旨、內容兩處 → 執行 → 看自己信箱 ＋ O 欄打勾（迴圈不要動）" />
       <Code size={19} code={`
 function 寄信給第一場錄取者() {
   const 試算表 = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('表單回覆 1');
@@ -1186,7 +1204,6 @@ const QnA: Page = () => (
         課後會給：<span style={{ color: teal, fontWeight: 700 }}>今日全部範本程式碼</span> ＋ 操作步驟圖。
       </p>
       <p style={{ fontSize: 38, color: white, margin: '18px 0 0', opacity: 0.85, lineHeight: 1.5 }}>
-        時間有餘，加碼示範「自動產出時數證明 PDF」。
       </p>
     </CA>
   </BG>
@@ -1198,26 +1215,21 @@ const QnA: Page = () => (
 
 // ── 39 段落分頁 ───────────────────────────────────────────────────────────────
 const SecApp: Page = () => (
-  <SecDiv ghost="＋" kicker="加映單元" title="自動產出時數證明 PDF" sub="活動結束後，每個人的證明自己寄出去" />
+  <SecDiv ghost="＋" kicker="加映單元" title="自動產出時數證明" sub="活動結束後，每個人的證明自己寄出去" />
 );
 
 // ── 40 用 Slides 當底稿 ───────────────────────────────────────────────────────
 const SlidesBase: Page = () => (
   <BG>
     <CA>
-      <H2>為什麼不能直接改 PDF？</H2>
+      <H2>工作流程</H2>
       <TealBar />
-      <div style={{ background: cardBgRed, border: '1px solid rgba(255,120,120,0.5)', borderRadius: 14, padding: '24px 36px', marginBottom: 22 }}>
-        <div style={{ fontSize: 42, fontWeight: 800, color: white, lineHeight: 1.4 }}>
-          Apps Script <span style={{ color: '#ff9a9a' }}>不能</span>直接編輯現成 PDF 裡的文字。
-        </div>
-      </div>
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 6 }}>
         <DotBullet text="改用 Google 簡報當底稿（橫式，可放邊框／logo／簽名）" />
         <DotBullet text="底稿先打好佔位符：{{姓名}}、{{時數}}、{{日期}}" />
         <DotBullet text="複製一份 → 換掉佔位符 → 另存 PDF → 當附件寄出" />
       </div>
-      <KeyInsight text="不是改 PDF，是「每個人現做一張、再轉成 PDF」" />
+      <KeyInsight text="使用 Google Slide 製作底稿，再轉成 PDF" />
     </CA>
   </BG>
 );
@@ -1368,7 +1380,7 @@ export default [
   // 環節一
   TodayMap, Sec1, WhatIsAS, UsageExamples, OpenAS, VarLogger, Hands1, Hands2, AuthFlow, Troubleshoot, Sec1Recap,
   // 環節二
-  Break1, Sec2, MailThree, Hands3, FormReview, Hands4, EParam, Hands5, SetTrigger, WhatTrigger, TimeTrigger, Sec2Recap, Break2,
+  Break1, Sec2, MailThree, Hands3, FormReview, Hands4, Hands5, EParam, SetTrigger, WhatTrigger, TimeTrigger, Sec2Recap, Break2,
   // 環節三
   Sec3, RealList, PrepCopy, DataSafety, IfMark, Hands6, HtmlPanel, ClassRecap, QnA,
   // 附錄（備用加映）
