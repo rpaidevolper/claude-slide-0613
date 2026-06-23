@@ -734,29 +734,52 @@ const Break1: Page = () => (
 
 // ── 18 段落分頁 ───────────────────────────────────────────────────────────────
 const Sec2: Page = () => (
-  <SecDiv ghost="02" kicker="環節 二" title="Gmail 自動寄信 ＋ 表單觸發" sub="從「抓資料」到「自己寄」" />
+  <SecDiv ghost="02" kicker="環節 二" title="解鎖Google工具自動化" sub="從「抓資料」到「自動寄信」" />
+);
+
+// ── 解鎖一：開場 ──────────────────────────────────────────────────────────────
+const Unlock1: Page = () => (
+  <BG>
+    <CA style={{ justifyContent: 'center' }}>
+      <Eyebrow text="解鎖 一" />
+      <H2>從表單取得資料，<br />寄信給特定對象</H2>
+      <TealBar />
+    </CA>
+  </BG>
+);
+
+// ── 解鎖二：開場 ──────────────────────────────────────────────────────────────
+const Unlock2: Page = () => (
+  <BG>
+    <CA style={{ justifyContent: 'center' }}>
+      <Eyebrow text="解鎖 二" />
+      <H2 style={{ fontSize: 88 }}>報名表一送出，<br />就自動寄一封確認信給填寫的人</H2>
+      <TealBar />
+    </CA>
+  </BG>
 );
 
 // ── 19 抓 → 組 → 寄 ───────────────────────────────────────────────────────────
 const MailThree: Page = () => (
   <BG>
     <CA>
-      <H2>寄一封信，程式做三件事</H2>
+      <Eyebrow text="描述任務" />
+      <H2>動手前，先拆解任務</H2>
       <TealBar />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24, flex: 1, marginTop: 14 }}>
         {[
-          { n: '抓', t: 'getValue', d: '從試算表某幾格，把姓名、內容讀出來。' },
-          { n: '組', t: '組字串', d: '把讀到的值，組成主旨和信件內文；${姓名} 把盒子裡的值塞進句子。' },
-          { n: '寄', t: 'sendEmail', d: 'GmailApp.sendEmail(收件人, 主旨, 內容) 送出去。' },
+          { n: '抓', t: '抓資料', d: '從試算表上面，把姓名、內容讀出來。' },
+          { n: '組', t: '組信件', d: '把讀到的值，組成我們信件要的主旨和內容。' },
+          { n: '寄', t: '寄出', d: '把這封信寄給收件人。' },
         ].map((c) => (
           <div key={c.n} style={{ background: cardBgTeal, border: '1px solid rgba(0,229,192,0.45)', borderRadius: 14, padding: '30px 30px', display: 'flex', flexDirection: 'column' }}>
             <div style={{ fontSize: 72, fontWeight: 900, color: teal, lineHeight: 1 }}>{c.n}</div>
-            <div style={{ fontFamily: mono, fontSize: 30, color: white, opacity: 0.85, margin: '14px 0 18px' }}>{c.t}</div>
+            <div style={{ fontSize: 38, fontWeight: 700, color: white, opacity: 0.9, margin: '14px 0 18px' }}>{c.t}</div>
             <div style={{ fontSize: 34, color: white, lineHeight: 1.45 }}>{c.d}</div>
           </div>
         ))}
       </div>
-      <KeyInsight text="getValue（抓）→ 組內容（組）→ sendEmail（寄）" />
+      <KeyInsight text="從試算表抓資料 → 組成信件主旨與內容 → 寄出" />
     </CA>
   </BG>
 );
@@ -767,7 +790,7 @@ const Hands3: Page = () => (
     <CA>
       <H2 style={{ fontSize: 84 }}>【動手 3】寄一封自我介紹給講師</H2>
       <TealBar />
-      <Code size={26} code={`
+      <Code size={30} code={`
 function 寄出自我介紹() {
   const 試算表 = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   const 姓名 = 試算表.getRange('A2').getValue();      // 你的名字（填在 A2）
@@ -854,14 +877,15 @@ const FormReview: Page = () => (
 const Hands4: Page = () => (
   <BG>
     <CA>
-      <H2 style={{ fontSize: 92 }}>【動手 4】建一份報名小表單</H2>
+      <H2 style={{ fontSize: 92 }}>【動手 4-1】建一份報名小表單</H2>
       <TealBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 6 }}>
-        <Bullet n="1" title="新建 Google 表單，標題打活動名稱" />
-        <Bullet n="2" title="加三題：姓名（簡答）、信箱（簡答）、性別（選擇題）" />
-        <Bullet n="3" title="右上「回覆」→ 連結到試算表" />
+        <Bullet n="1" title="新建 Google 表單，標題打 「練習4: 報名通知自動化」" />
+        <Bullet n="2" title="加兩題：姓名（簡答）、性別（選擇題）" />
+        <Bullet n="3" title="「設定」→ 回覆 → 收集電子郵件地址 → 由作答者手動輸入" />
+        <Bullet n="4" title="「回覆」→ 連結到試算表" />
       </div>
-      <KeyInsight text="題目順序照「姓名／信箱／性別」；先自己填一筆測試，確認有進去" />
+      <KeyInsight text="題目順序照「姓名／性別」；填寫完畢記得發佈" />
     </CA>
   </BG>
 );
@@ -889,21 +913,22 @@ const EParam: Page = () => (
 const Hands5: Page = () => (
   <BG>
     <CA>
-      <H2 style={{ fontSize: 80 }}>【動手 5】跟著我，一步一停</H2>
+      <H2 style={{ fontSize: 80 }}>【動手 4-2】完成自動寄信程式碼</H2>
       <TealBar />
-      <TaskStrip tag="動手" text="講師講一步、停 30 秒、大家跟著貼一步，完成這支函式" />
-      <Code size={25} code={`
+      <Code size={30} code={`
 function 報名後自動寄信(e) {
   // e 是表單送出時，系統自動帶進來的那一筆資料
-  const 回覆 = e.values;     // 順序：[時間戳記, 姓名, 信箱, 性別]
-  const 姓名 = 回覆[1];
-  const 信箱 = 回覆[2];
+  const 回覆 = e.values;     // 順序：[時間戳記, 信箱, 姓名, 性別]
+  const 信箱 = 回覆[1];
+  const 姓名 = 回覆[2];
 
   const 主旨 = '報名成功通知';
   const 內容 = \`\${姓名} 您好，\\n\\n我們已經收到您的報名，感謝您的參與！\`;
 
   GmailApp.sendEmail(信箱, 主旨, 內容);
-}`} note="先別自己按執行 —— 沒有人送表單就沒有 e，會報錯，這很正常（下一頁設觸發器）" />
+}`} />
+<br />
+  <H2 style={{ fontSize: 40 }}>先別自己按執行 —— 沒有人送表單就沒有 e，會報錯，這很正常（下一頁設觸發器）</H2>
     </CA>
   </BG>
 );
@@ -1117,7 +1142,7 @@ const Hands6: Page = () => (
       <H2 style={{ fontSize: 72 }}>【動手 6】只寄給正式錄取，寄完打勾</H2>
       <div style={{ height: 4, width: 90, background: teal, borderRadius: 2, margin: '14px 0 16px' }} />
       <TaskStrip tag="動手" text="你那列 L 欄填「正式錄取」→ 貼上範本 → 只改主旨、內容兩處 → 執行 → 看自己信箱 ＋ O 欄打勾（迴圈不要動）" />
-      <Code size={19} code={`
+      <Code size={20} code={`
 function 寄信給第一場錄取者() {
   const 試算表 = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('表單回覆 1');
   const 資料 = 試算表.getDataRange().getValues();
@@ -1150,7 +1175,7 @@ const HtmlPanel: Page = () => (
       <Eyebrow text="示範 · 不要求學員操作" />
       <H2 style={{ fontSize: 76 }}>把幾招組起來，做一個「點得動」的小工具</H2>
       <div style={{ height: 4, width: 90, background: teal, borderRadius: 2, margin: '14px 0 16px' }} />
-      <Code size={20} code={`
+      <Code size={30} code={`
 // 試算表開啟時，自動長出「候補管理」選單
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('候補管理')
@@ -1238,7 +1263,7 @@ const PdfFlow: Page = () => (
     <CA>
       <H2 style={{ fontSize: 92 }}>複製 → 換字 → 轉 PDF → 寄出</H2>
       <div style={{ height: 4, width: 90, background: teal, borderRadius: 2, margin: '14px 0 16px' }} />
-      <Code size={20} code={`
+      <Code size={30} code={`
 function 寄送時數證明() {
   const 名單 = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('表單回覆 1');
   const 資料 = 名單.getDataRange().getValues();
@@ -1378,7 +1403,7 @@ export default [
   // 環節一
   TodayMap, Sec1, WhatIsAS, UsageExamples, OpenAS, VarLogger, Hands1, Hands2, AuthFlow, Troubleshoot, Sec1Recap,
   // 環節二
-  Break1, Sec2, MailThree, Hands3, FormReview, Hands4, Hands5, EParam, SetTrigger, WhatTrigger, TimeTrigger, Sec2Recap, Break2,
+  Break1, Sec2, Unlock1, MailThree, Hands3, Unlock2, Hands4, Hands5, EParam, SetTrigger, WhatTrigger, TimeTrigger, Sec2Recap, Break2,
   // 環節三
   Sec3, RealList, PrepCopy, DataSafety, IfMark, Hands6, HtmlPanel, ClassRecap, QnA,
   // 附錄（備用加映）
