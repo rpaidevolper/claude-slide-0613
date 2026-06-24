@@ -1632,11 +1632,11 @@ export default [
   Organizer, Projects, Instructor, Believe,
   Recap1,
   // 環節一
-  TodayMap, Sec1, WhatIsAS, UsageExamples, OpenAS, VarLogger, Hands1, Hands2, AuthFlow, Troubleshoot, Sec1Recap,
+  TodayMap, Sec3GeminiIntro, Sec1, WhatIsAS, UsageExamples, OpenAS, VarLogger, Hands1, Hands2, AuthFlow, Troubleshoot,
   // 環節二
-  Break1, Sec2, Unlock1, MailThree, Hands3, Unlock2, Hands4, Hands4Preview, Hands5, EParam, SetTrigger, WhatTrigger, TimeTrigger, Sec2Recap, Break2,
+  Sec1Recap, Break1, Sec2, Unlock1, MailThree, Hands3, Unlock2, Hands4, Hands4Preview, Hands5, EParam, SetTrigger, WhatTrigger, TimeTrigger, Sec2Recap,
   // 環節三
-  Sec3, RealList, PrepCopy, DataSafety, Sec3Scenario, Sec3FormPreview, Sec3GeminiIntro, Sec3GeminiSteps, Sec3GeminiPrompt, Sec3GasResult, Sec3EmailResult, ClassRecap, QnA,
+  Break2, Sec3, Sec3Scenario, Sec3FormPreview, Sec3GeminiSteps, Sec3GeminiPrompt, Sec3GasResult, Sec3EmailResult, ClassRecap, QnA,
   // 附錄（備用加映）— 暫時隱藏 p41-44
   // SecApp, SlidesBase, PdfFlow, AppRecap,
   // 結尾 CTA
