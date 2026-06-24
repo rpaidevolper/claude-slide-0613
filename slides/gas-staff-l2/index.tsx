@@ -11,6 +11,9 @@ import authUnverified from './assets/auth-2-unverified.png';
 import authConfirm from './assets/auth-3-confirm.png';
 import hands2WriteSheet from './assets/hands2-write-sheet.png';
 import triggerNewDialog from './assets/trigger-new-dialog.png';
+import hands4FormPreview from './assets/hands4-form-preview.png';
+import sec3FormPreview from './assets/sec3-form-preview.png';
+import sec3GeminiIntro from './assets/sec3-gemini-intro.png';
 
 // ─── Design System ───────────────────────────────────────────────────────────
 export const design: DesignSystem = {
@@ -609,17 +612,17 @@ const VarLogger: Page = () => (
     <CA>
       <H2>兩個今天會一直用到的詞</H2>
       <TealBar />
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, flex: 1, marginTop: 10 }}>
-        <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.2)', borderRadius: 14, padding: '32px 36px' }}>
-          <div style={{ fontSize: 44, fontWeight: 800, color: teal, marginBottom: 18 }}>變數</div>
-          <div style={{ fontSize: 38, color: white, lineHeight: 1.5 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 56, flex: 1, marginTop: 10, justifyContent: 'center' }}>
+        <div>
+          <div style={{ fontSize: 76, fontWeight: 900, color: teal, marginBottom: 16, fontFamily: F }}>變數</div>
+          <div style={{ paddingLeft: 28, fontSize: 44, color: white, lineHeight: 1.5 }}>
             像「便利貼」或「盒子」：先把一個值貼上名字，後面要用就喊它的名字。
           </div>
-          <div style={{ marginTop: 18, fontFamily: mono, fontSize: 30, color: teal }}>姓名 = '王小明'</div>
+          <div style={{ paddingLeft: 28, marginTop: 16, fontFamily: mono, fontSize: 36, color: teal }}>姓名 = '王小明'</div>
         </div>
-        <div style={{ background: cardBg, border: '1px solid rgba(255,255,255,0.2)', borderRadius: 14, padding: '32px 36px' }}>
-          <div style={{ fontSize: 44, fontWeight: 800, color: teal, marginBottom: 18 }}>log</div>
-          <div style={{ fontSize: 38, color: white, lineHeight: 1.5 }}>
+        <div>
+          <div style={{ fontSize: 76, fontWeight: 900, color: teal, marginBottom: 16, fontFamily: F }}>log</div>
+          <div style={{ paddingLeft: 28, fontSize: 44, color: white, lineHeight: 1.5 }}>
             就是「執行紀錄」：讓程式把某個值顯示在下方執行紀錄，方便確認對不對。
           </div>
         </div>
@@ -734,7 +737,7 @@ const Break1: Page = () => (
 
 // ── 18 段落分頁 ───────────────────────────────────────────────────────────────
 const Sec2: Page = () => (
-  <SecDiv ghost="02" kicker="環節 二" title="解鎖Google工具自動化" sub="從「抓資料」到「自動寄信」" />
+  <SecDiv ghost="02" kicker="環節 二" title="解鎖Google工具自動化" sub="從「取得表單資料」到「自動寄信」" />
 );
 
 // ── 解鎖一：開場 ──────────────────────────────────────────────────────────────
@@ -890,6 +893,22 @@ const Hands4: Page = () => (
   </BG>
 );
 
+// ── 24b 表單完成預覽 ─────────────────────────────────────────────────────────
+const Hands4Preview: Page = () => (
+  <BG>
+    <CA style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{
+        background: white, borderRadius: 20, padding: '32px 40px',
+        boxShadow: '0 28px 70px rgba(0,0,0,0.4)', display: 'flex',
+        maxHeight: '100%', overflow: 'hidden',
+      }}>
+        <img src={hands4FormPreview} alt="練習4：報名通知自動化表單預覽，含電子郵件、姓名、性別三題"
+          style={{ display: 'block', width: 1360, height: 'auto', objectFit: 'contain' }} />
+      </div>
+    </CA>
+  </BG>
+);
+
 // ── 23 程式碼講解：多了一個 e ─────────────────────────────────────────────────
 const EParam: Page = () => (
   <BG>
@@ -937,8 +956,7 @@ function 報名後自動寄信(e) {
 const SetTrigger: Page = () => (
   <BG>
     <CA>
-      <Eyebrow text="先成功，再講原理" />
-      <H2>讓它「有人填就自己寄」</H2>
+      <H2 style={{ fontSize: 80 }}>【動手 4-3】設定觸發條件</H2>
       <TealBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 4 }}>
         <Bullet n="1" title="左側時鐘圖示「觸發條件」→ 右下「新增觸發條件」" />
@@ -955,7 +973,6 @@ const SetTrigger: Page = () => (
 const WhatTrigger: Page = () => (
   <BG>
     <CA>
-      <Eyebrow text="先有成功體驗，背景知識才聽得進去" />
       <H2>觸發器就是「幫你站崗的人」</H2>
       <TealBar />
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 44, flex: 1, marginTop: 6, alignItems: 'center' }}>
@@ -984,7 +1001,6 @@ const WhatTrigger: Page = () => (
 const TimeTrigger: Page = () => (
   <BG>
     <CA>
-      <Eyebrow text="★ 示範 · 約 3–5 分鐘" />
       <H2 style={{ fontSize: 96 }}>另一種觸發器：到「指定時間」才動</H2>
       <TealBar />
       <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 1fr', gap: 36, flex: 1, marginTop: 6 }}>
@@ -1106,6 +1122,179 @@ const DataSafety: Page = () => (
         <DotBullet text="測試完畢：把這一筆測試資料整列刪掉，檔案就回到乾淨狀態" />
       </div>
       <KeyInsight text="自己的測試資料，怎麼測都沒關係 —— 測完刪掉就好" />
+    </CA>
+  </BG>
+);
+
+// ── 33b 自動化情境流程圖 ──────────────────────────────────────────────────────
+const Sec3Scenario: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="自動化情境" />
+      <H2 style={{ fontSize: 88 }}>填完就收信：系統自動判斷並通知</H2>
+      <TealBar />
+
+      {/* 流程圖容器 */}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 0 }}>
+
+        {/* 頂部節點：報名者填寫表單送出 */}
+        <div style={{
+          border: '1px solid rgba(255,255,255,0.4)', borderRadius: 12,
+          padding: '18px 48px', color: white, fontSize: 36, fontWeight: 600,
+          background: 'rgba(255,255,255,0.08)', letterSpacing: '0.02em',
+        }}>
+          報名者填寫表單送出
+        </div>
+
+        {/* 箭頭 */}
+        <div style={{ fontSize: 36, color: teal, lineHeight: 1, padding: '8px 0' }}>▼</div>
+
+        {/* 判斷節點 */}
+        <div style={{
+          border: `2px solid ${teal}`, borderRadius: 12,
+          padding: '18px 48px', color: teal, fontSize: 36, fontWeight: 700,
+          background: 'rgba(0,229,192,0.08)', letterSpacing: '0.02em',
+        }}>
+          系統自動判斷名額
+        </div>
+
+        {/* 分叉箭頭 + 兩欄 */}
+        <div style={{ display: 'flex', gap: 80, marginTop: 16, alignItems: 'flex-start' }}>
+
+          {/* 左側：正式錄取 */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
+            <div style={{ fontSize: 36, color: teal, lineHeight: 1, padding: '6px 0' }}>▼</div>
+            <div style={{
+              background: 'rgba(0,229,192,0.22)', border: `1px solid ${teal}`,
+              borderRadius: 12, padding: '18px 48px',
+              color: teal, fontSize: 42, fontWeight: 800, letterSpacing: '0.02em',
+            }}>
+              報名成功
+            </div>
+            <div style={{ fontSize: 36, color: teal, lineHeight: 1, padding: '6px 0' }}>▼</div>
+            <div style={{
+              background: 'rgba(0,229,192,0.22)', border: `1px solid ${teal}`,
+              borderRadius: 12, padding: '14px 40px',
+              color: teal, fontSize: 32, fontWeight: 600, letterSpacing: '0.02em',
+            }}>
+              寄出通知信（標示：報名成功）
+            </div>
+          </div>
+
+          {/* 右側：候補 */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
+            <div style={{ fontSize: 36, color: '#ffb400', lineHeight: 1, padding: '6px 0' }}>▼</div>
+            <div style={{
+              background: 'rgba(255,180,0,0.18)', border: '1px solid rgba(255,180,0,0.5)',
+              borderRadius: 12, padding: '18px 48px',
+              color: '#ffb400', fontSize: 42, fontWeight: 800, letterSpacing: '0.02em',
+            }}>
+              列入候補
+            </div>
+            <div style={{ fontSize: 36, color: '#ffb400', lineHeight: 1, padding: '6px 0' }}>▼</div>
+            <div style={{
+              background: 'rgba(255,180,0,0.18)', border: '1px solid rgba(255,180,0,0.5)',
+              borderRadius: 12, padding: '14px 40px',
+              color: '#ffb400', fontSize: 32, fontWeight: 600, letterSpacing: '0.02em',
+            }}>
+              寄出通知信（標示：列入候補）
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 33b 本次使用的報名表 ───────────────────────────────────────────────────────
+const Sec3FormPreview: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="前置準備" />
+      <H2>本次使用的報名表</H2>
+      <TealBar />
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 0 }}>
+        <div style={{ background: white, borderRadius: 20, padding: '24px 32px', boxShadow: '0 28px 70px rgba(0,0,0,0.4)', display: 'flex', maxHeight: '100%', overflow: 'hidden' }}>
+          <img
+            src={sec3FormPreview}
+            alt="2026 嘉義縣教師專業成長研習報名表截圖"
+            style={{ display: 'block', width: 'auto', maxWidth: 1100, maxHeight: 620, objectFit: 'contain' }}
+          />
+        </div>
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 33c 今天的 AI 助教：Gemini ────────────────────────────────────────────────
+const Sec3GeminiIntro: Page = () => (
+  <BG>
+    <CA style={{ justifyContent: 'center', alignItems: 'center' }}>
+      <Eyebrow text="今天的 AI 助教" />
+      <div style={{ fontSize: 130, fontWeight: 900, color: teal, lineHeight: 1.1, marginTop: 8 }}>Google Gemini AI</div>
+      <TealBar />
+      <div style={{ fontSize: 48, color: white, textAlign: 'center', lineHeight: 1.5 }}>
+        把你的需求說給它聽，它幫你生出程式碼
+      </div>
+      <div style={{
+        background: white, borderRadius: 20, padding: '32px 40px',
+        boxShadow: '0 28px 70px rgba(0,0,0,0.4)', display: 'flex',
+        marginTop: 32,
+      }}>
+        <img
+          src={sec3GeminiIntro}
+          alt="Gemini 介面截圖"
+          style={{ display: 'block', width: 900, height: 'auto', objectFit: 'contain' }}
+        />
+      </div>
+      <div style={{ fontSize: 32, color: teal, opacity: 0.85, marginTop: 16 }}>
+        gemini.google.com/app
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 33e 如何請 Gemini 寫程式：步驟 ────────────────────────────────────────────
+const Sec3GeminiSteps: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="如何請 AI 幫你寫程式" />
+      <H2>兩步驟，讓 Gemini 幫你生出程式碼</H2>
+      <TealBar />
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 32 }}>
+        <Bullet n="1" title="上傳表單檔案，讓 AI 讀懂結構"
+          body="在 Gemini 對話框點「+」→ 加入雲端硬碟檔案 → 選取你的 Google 表單回覆試算表（CSV）" />
+        <Bullet n="2" title="貼上需求，叫它生出程式碼"
+          body="把提示詞貼進對話框 → 送出 → Gemini 會根據你的實際欄位名稱，直接寫好 GAS 程式碼" />
+      </div>
+      <KeyInsight text="不用自己查語法——把需求說清楚，讓 AI 幫你做第一版" />
+    </CA>
+  </BG>
+);
+
+// ── 33f 提示詞範本 ─────────────────────────────────────────────────────────────
+const Sec3GeminiPrompt: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="提示詞範本" />
+      <H2 style={{ fontSize: 72 }}>複製這段提示詞，貼給 Gemini</H2>
+      <TealBar />
+      <Code size={20} code={`我提供了一份 Google 表單回覆的 CSV 資料（如附檔），請幫我撰寫綁定於試算表的 Google Apps Script (GAS) 自動化腳本。
+
+【任務目標】
+當有人提交表單時，自動計算該報名場次的人數。若未滿額則寄出「報名成功」信件，若已滿額則寄出「候補狀態」信件。
+
+【核心邏輯】
+- 每場報名人數上限先設為 2 位（測試用）。
+- 必須針對使用者勾選的「每一個場次」獨立計算歷史報名人數，並在同一封信件中分別列出各場次的結果。
+
+【開發與除錯要求】
+1. 建立 Mock 測試：請撰寫一個獨立的 testOnFormSubmit()，提供假 e.namedValues 資料，讓我在 GAS 編輯器內直接執行測試，無需實際填寫表單。
+2. 全面 Log 追蹤：請在抓取資料、計算人數、判斷邏輯等每個關鍵斷點加上 console.log()。
+3. 防呆與錯誤處理：若 e 參數不存在或抓不到信箱/場次資料，請提早 return 並印出 console.error 提示。
+   寄發 Email 的段落請使用 try...catch 包覆，以便捕捉並記錄寄送失敗的原因。
+4. 欄位對應確認：請根據附上的試算表 CSV，確認程式碼中使用的欄位名稱與實際標題列完全一致，避免因欄位名稱不符導致抓不到資料。`} />
     </CA>
   </BG>
 );
@@ -1403,11 +1592,11 @@ export default [
   // 環節一
   TodayMap, Sec1, WhatIsAS, UsageExamples, OpenAS, VarLogger, Hands1, Hands2, AuthFlow, Troubleshoot, Sec1Recap,
   // 環節二
-  Break1, Sec2, Unlock1, MailThree, Hands3, Unlock2, Hands4, Hands5, EParam, SetTrigger, WhatTrigger, TimeTrigger, Sec2Recap, Break2,
+  Break1, Sec2, Unlock1, MailThree, Hands3, Unlock2, Hands4, Hands4Preview, Hands5, EParam, SetTrigger, WhatTrigger, TimeTrigger, Sec2Recap, Break2,
   // 環節三
-  Sec3, RealList, PrepCopy, DataSafety, IfMark, Hands6, HtmlPanel, ClassRecap, QnA,
-  // 附錄（備用加映）
-  SecApp, SlidesBase, PdfFlow, AppRecap,
+  Sec3, RealList, PrepCopy, DataSafety, Sec3Scenario, Sec3FormPreview, Sec3GeminiIntro, Sec3GeminiSteps, Sec3GeminiPrompt, IfMark, Hands6, HtmlPanel, ClassRecap, QnA,
+  // 附錄（備用加映）— 暫時隱藏 p41-44
+  // SecApp, SlidesBase, PdfFlow, AppRecap,
   // 結尾 CTA
   Survey, JourneyEnd,
 ] satisfies Page[];
