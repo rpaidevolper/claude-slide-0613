@@ -14,6 +14,8 @@ import triggerNewDialog from './assets/trigger-new-dialog.png';
 import hands4FormPreview from './assets/hands4-form-preview.png';
 import sec3FormPreview from './assets/sec3-form-preview.png';
 import sec3GeminiIntro from './assets/sec3-gemini-intro.png';
+import sec3GasCodeResult from './assets/sec3-gas-code-result.png';
+import sec3EmailResult from './assets/sec3-email-result.png';
 
 // ─── Design System ───────────────────────────────────────────────────────────
 export const design: DesignSystem = {
@@ -105,7 +107,7 @@ const Footer = () => {
 };
 
 const BG = ({ children }: { children: ReactNode }) => (
-  <div style={{ ...fill, background: GRAD }}>
+  <div style={{ ...fill, background: GRAD, fontSize: '46px' }}>
     <CircuitDeco /><RingDeco /><DotGrid side="left" /><DotGrid side="right" />
     {children}
     <Footer />
@@ -1219,7 +1221,7 @@ const Sec3FormPreview: Page = () => (
           <img
             src={sec3FormPreview}
             alt="2026 嘉義縣教師專業成長研習報名表截圖"
-            style={{ display: 'block', width: 'auto', maxWidth: 1100, maxHeight: 620, objectFit: 'contain' }}
+            style={{ display: 'block', width: 'auto', maxWidth: 1100, maxHeight: 620, objectFit: 'cover', backgroundColor: '#914646', objectPosition: '50% 50%', objectViewBox: 'inset(0% 0.03% 0% 0.02%)' }}
           />
         </div>
       </div>
@@ -1255,18 +1257,39 @@ const Sec3GeminiIntro: Page = () => (
   </BG>
 );
 
+// ── 33d GAS 程式碼截圖 ─────────────────────────────────────────────────────────
+const Sec3GasResult: Page = () => (
+  <BG>
+    <CA style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{
+        background: white, borderRadius: 20, padding: '20px 28px',
+        boxShadow: '0 28px 70px rgba(0,0,0,0.4)', display: 'flex',
+        overflow: 'hidden',
+      }}>
+        <img
+          src={sec3GasCodeResult}
+          alt="Gemini 生成的 GAS 程式碼截圖，顯示 Apps Script 編輯器與 onFormSubmit 函式"
+          style={{ display: 'block', width: 1560, height: 'auto', objectFit: 'contain' }}
+        />
+      </div>
+    </CA>
+  </BG>
+);
+
 // ── 33e 如何請 Gemini 寫程式：步驟 ────────────────────────────────────────────
 const Sec3GeminiSteps: Page = () => (
   <BG>
     <CA>
       <Eyebrow text="如何請 AI 幫你寫程式" />
-      <H2>兩步驟，讓 Gemini 幫你生出程式碼</H2>
+      <H2>讓 Gemini 幫你生出程式碼</H2>
       <TealBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 32 }}>
         <Bullet n="1" title="上傳表單檔案，讓 AI 讀懂結構"
-          body="在 Gemini 對話框點「+」→ 加入雲端硬碟檔案 → 選取你的 Google 表單回覆試算表（CSV）" />
-        <Bullet n="2" title="貼上需求，叫它生出程式碼"
-          body="把提示詞貼進對話框 → 送出 → Gemini 會根據你的實際欄位名稱，直接寫好 GAS 程式碼" />
+          body="在 Gemini 對話框點「+」→ 加入雲端硬碟檔案 → 選取你的 Google 問券" />
+        <Bullet n="2" title="上傳試算表檔案，讓 AI 讀懂結構"
+          body="在 Gemini 對話框點「+」→ 加入雲端硬碟檔案 → 選取你的 Google 試算表" />
+        <Bullet n="3" title="描述需求，請它產出 GAS 程式碼"
+          body="把提示詞寫入對話框 → 送出 → Gemini 會根據你的實際欄位名稱，直接寫好 GAS 程式碼" />
       </div>
       <KeyInsight text="不用自己查語法——把需求說清楚，讓 AI 幫你做第一版" />
     </CA>
@@ -1278,9 +1301,9 @@ const Sec3GeminiPrompt: Page = () => (
   <BG>
     <CA>
       <Eyebrow text="提示詞範本" />
-      <H2 style={{ fontSize: 72 }}>複製這段提示詞，貼給 Gemini</H2>
+      <H2 style={{ fontSize: 72 }}>一份全面的需求描述會像..</H2>
       <TealBar />
-      <Code size={20} code={`我提供了一份 Google 表單回覆的 CSV 資料（如附檔），請幫我撰寫綁定於試算表的 Google Apps Script (GAS) 自動化腳本。
+      <Code size={26} code={`我提供了一份 Google 表單回覆的 CSV 資料（如附檔），請幫我撰寫綁定於試算表的 Google Apps Script (GAS) 自動化腳本。
 
 【任務目標】
 當有人提交表單時，自動計算該報名場次的人數。若未滿額則寄出「報名成功」信件，若已滿額則寄出「候補狀態」信件。
@@ -1295,6 +1318,25 @@ const Sec3GeminiPrompt: Page = () => (
 3. 防呆與錯誤處理：若 e 參數不存在或抓不到信箱/場次資料，請提早 return 並印出 console.error 提示。
    寄發 Email 的段落請使用 try...catch 包覆，以便捕捉並記錄寄送失敗的原因。
 4. 欄位對應確認：請根據附上的試算表 CSV，確認程式碼中使用的欄位名稱與實際標題列完全一致，避免因欄位名稱不符導致抓不到資料。`} />
+    </CA>
+  </BG>
+);
+
+// ── 33g 寄出的信件成果 ─────────────────────────────────────────────────────────
+const Sec3EmailResult: Page = () => (
+  <BG>
+    <CA style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{
+        background: white, borderRadius: 20, padding: '20px 28px',
+        boxShadow: '0 28px 70px rgba(0,0,0,0.4)', display: 'flex',
+        overflow: 'hidden',
+      }}>
+        <img
+          src={sec3EmailResult}
+          alt="GAS 自動寄出的報名狀態通知信，顯示正取與候補場次"
+          style={{ display: 'block', width: 1560, height: 'auto', objectFit: 'contain' }}
+        />
+      </div>
     </CA>
   </BG>
 );
@@ -1594,7 +1636,7 @@ export default [
   // 環節二
   Break1, Sec2, Unlock1, MailThree, Hands3, Unlock2, Hands4, Hands4Preview, Hands5, EParam, SetTrigger, WhatTrigger, TimeTrigger, Sec2Recap, Break2,
   // 環節三
-  Sec3, RealList, PrepCopy, DataSafety, Sec3Scenario, Sec3FormPreview, Sec3GeminiIntro, Sec3GeminiSteps, Sec3GeminiPrompt, IfMark, Hands6, HtmlPanel, ClassRecap, QnA,
+  Sec3, RealList, PrepCopy, DataSafety, Sec3Scenario, Sec3FormPreview, Sec3GeminiIntro, Sec3GeminiSteps, Sec3GeminiPrompt, Sec3GasResult, Sec3EmailResult, ClassRecap, QnA,
   // 附錄（備用加映）— 暫時隱藏 p41-44
   // SecApp, SlidesBase, PdfFlow, AppRecap,
   // 結尾 CTA
