@@ -543,7 +543,7 @@ const Recap1: Page = () => (
       <Eyebrow text="上節回顧" />
       <H2>上節回顧</H2>
       <TealBar />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 8 }}>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'start', gap: 8 }}>
         <Bullet n="1" title="使用 Google Form 製作活動報名表" />
         <Bullet n="2" title="使用 Google Sheet 搭配公式分析並快速整理資料" />
         <Bullet n="3" title="使用 Google Sheet 製作儀表板" />
@@ -1430,15 +1430,15 @@ function 錄取候補(列號) {
 const ClassRecap: Page = () => (
   <BG>
     <CA>
-      <Eyebrow text="本堂收尾" />
-      <H2>從早上到現在，你做到了</H2>
+      <Eyebrow text="從表單到自動化——你已經有能力讓 Google 工具為你工作" />
+      <H2>兩堂課下來，你學會了</H2>
       <TealBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 12 }}>
-        <Bullet n="1" title="不再怕程式" body="會寫變數、會讓程式動手改試算表。" />
-        <Bullet n="2" title="會自動寄信" body="表單送出自動回信、指定時間自動發通知。" />
-        <Bullet n="3" title="會讓電腦判斷" body="只對該收信的人寄，還做出點一下就遞補的小工具。" />
+        <Bullet n="1" title="建立 Google 表單" body="設計報名表、設定欄位、收集 Email，讓資料自動流進試算表。" />
+        <Bullet n="2" title="操作 Google 試算表" body="用公式整理資料、建立儀表板，讓數字自己說話。" />
+        <Bullet n="3" title="寫出第一個自動化程式" body="用 Apps Script 讓程式抓資料、判斷名額、自動寄出通知信。" />
+        <Bullet n="4" title="讓 Gemini AI 當你的助手" body="把需求說清楚，AI 幫你生出公式和程式碼，不用自己查語法。" />
       </div>
-      <KeyInsight text="自動化＝把重複的事交給程式，把時間留給真正需要老師的人" />
     </CA>
   </BG>
 );
@@ -1551,12 +1551,6 @@ const Survey: Page = () => (
           <span style={{ color: teal }}>領取今日簡報 &amp; 教材</span>
         </H2>
         <TealBar />
-        <p style={{ fontSize: 46, color: white, margin: 0, fontWeight: 500, lineHeight: 1.5 }}>完成後取得：</p>
-        <div style={{ marginTop: 28, display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <DotBullet text="今日全部範本程式碼（六支動手 ＋ 兩段示範）" />
-          <DotBullet text="各環節操作步驟圖" />
-          <DotBullet text="報名表單與名單範本連結" />
-        </div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
         <ImagePlaceholder hint="課後問卷 QR code（每場更換 · 放 slides/gas-staff-l2/assets/）" width={380} height={380} style={{ borderRadius: 16 }} />
@@ -1577,11 +1571,11 @@ const JourneyEnd: Page = () => (
           決定好踏上自動化<br/>旅程了嗎？
         </h1>
         <div style={{ height: 4, width: 110, background: teal, borderRadius: 2, margin: '48px 0 36px' }} />
-        <p style={{ fontSize: 48, color: white, margin: 0, fontWeight: 500, lineHeight: 1.5 }}>
+        <p style={{ fontSize: 60, color: white, margin: 0, fontWeight: 500, lineHeight: 1.5 }}>
           讓我們一起由簡單開始，<span style={{ color: teal, fontWeight: 700 }}>成就不簡單！</span>
         </p>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 40, alignItems: 'center' }}>
+      {/* <div style={{ display: 'flex', flexDirection: 'column', gap: 40, alignItems: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
           <div style={{ padding: 16, borderRadius: 14, boxShadow: '0 12px 36px rgba(0,0,0,0.35)', backgroundColor: '#009bc7' }}>
             <img src={qrWebsite} alt="官方網站 QR code" style={{ width: 340, height: 340, display: 'block' }}/>
@@ -1594,7 +1588,7 @@ const JourneyEnd: Page = () => (
           </div>
           <span style={{ fontSize: 26, color: white, fontWeight: 700, letterSpacing: '0.08em', opacity: 0.9 }}>@RPAI_DIGITALTRANSFORMER</span>
         </div>
-      </div>
+      </div> */}
     </div>
   </BG>
 );
