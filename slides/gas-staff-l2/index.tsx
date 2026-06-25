@@ -518,11 +518,11 @@ const TodayMap: Page = () => (
       <TealBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 8 }}>
         <Bullet n="1" title="學會用 Google App Script 撰寫程式"
-          body="理解基礎：寫幾行字，讓它印出訊息、把文字寫進試算表" />
+          body="理解基礎：寫幾行字，讓它印出訊息、把文字寫進試算表、寄出信件" />
         <Bullet n="2" title="只要有人報名成功，系統自動寄出信件"
           body="運行自動化：從資料抓內容，表單一送出就自動回信" />
-        <Bullet n="3" title="指定時間一到，信件自動分類寄出"
-          body="設定排程：讓系統在你設定的時間，自動寄出信件通知。" />
+        <Bullet n="3" title="AI 輔助生成 Google Form 報名表"
+          body="借力 AI：用 AI ＋ Google Apps Script，不用一題題手刻，直接生出整份表單" />
       </div>
       <KeyInsight text="原來撰寫程式沒有想像中困難" />
     </CA>
@@ -732,7 +732,7 @@ const Sec1Recap: Page = () => (
 
 // ── 17 休息① ─────────────────────────────────────────────────────────────────
 const Break1: Page = () => (
-  <Break title="休息 10 分鐘" sub="等等：讓程式幫你寄信 —— 真的會寄到信箱喔" back="10:00 回來" />
+  <Break title="休息 10 分鐘" sub="等等：讓程式幫你寄信 —— 真的會寄到信箱喔" back="//" />
 );
 
 // ════════════════════════════════════════════════════════════════════════════
