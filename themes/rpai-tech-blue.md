@@ -12,7 +12,7 @@ The house style of the RPAI 數位優化器 workshop decks. A confident, slightl
 | Role        | Value                          | Notes                                            |
 | ----------- | ------------------------------ | ------------------------------------------------ |
 | bg          | `#1565c0`                      | base blue (the gradient's start)                 |
-| bgGradient  | `linear-gradient(135deg,#1565c0 0%,#0288d1 45%,#00acc1 100%)` | every page background |
+| bgGradient  | `linear-gradient(135deg,#1565c0 0%,#0288d1 45%,#00acc1 100%)` | the page-background gradient (kept for reference). The page BG must paint this as the `@assets/rpai/bg-gradient.png` raster (a 1920×1080 render of this exact gradient) via `url(...)`, **not** a CSS `gradient()` — PDF export strips CSS gradients but preserves `url()` image backgrounds. Use `#1565c0` as the solid fallback. |
 | text        | `#ffffff`                      | ALL copy is full white for readability           |
 | accent      | `#00e5c0`                      | teal — eyebrow, dividers, key numbers, insights  |
 | cardBg      | `rgba(0,15,55,0.70)`           | general dark navy glass card                     |
@@ -43,7 +43,7 @@ Decorative line art is always `white` at low opacity (0.05–0.28). Never introd
 - Canvas 1920 × 1080. Content padding: **120 px** sides for standard content (`CA`), **160 px** sides for centered cover / section pages.
 - Standard content area `CA`: `top:80, left:120, right:120, bottom:92` (clears the footer).
 - Footer is fixed on every page (via the `BG` wrapper): a hairline-topped bar at `bottom:20`, left brand label + right `NN / NN` page count.
-- Every page is composed as `<BG>…children…</BG>` — `BG` paints the gradient, drops the four decorative SVGs (circuit top-left, rings top-right, dots bottom-left & bottom-right) and the footer. Author only the content inside.
+- Every page is composed as `<BG>…children…</BG>` — `BG` paints the gradient (as the `@assets/rpai/bg-gradient.png` raster via `url(...)`, so PDF export preserves it), drops the four decorative SVGs (circuit top-left, rings top-right, dots bottom-left & bottom-right) and the footer. Author only the content inside.
 - Alignment: left-aligned content pages; centered cover & section dividers.
 
 ## Fixed components
@@ -121,6 +121,9 @@ const DotGrid = ({ side }: { side: 'left' | 'right' }) => (
 
 ```tsx
 import { useSlidePageNumber } from '@open-slide/core';
+// The page BG is a raster of the GRAD gradient so PDF export keeps it
+// (PDF export strips CSS gradient() but preserves url() image backgrounds).
+import bgGradient from '@assets/rpai/bg-gradient.png';
 
 const Footer = () => {
   const { current, total } = useSlidePageNumber();
@@ -141,7 +144,14 @@ const Footer = () => {
 };
 
 const BG = ({ children }: { children: ReactNode }) => (
-  <div style={{ ...fill, background: GRAD }}>
+  <div style={{
+    ...fill,
+    backgroundColor: '#1565c0',                  // solid fallback (= GRAD start)
+    backgroundImage: `url(${bgGradient})`,       // raster of GRAD — survives PDF export
+    backgroundSize: '1920px 1080px',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  }}>
     <CircuitDeco /><RingDeco /><DotGrid side="left" /><DotGrid side="right" />
     {children}
     <Footer />

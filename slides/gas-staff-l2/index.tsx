@@ -4,6 +4,7 @@ import { ImagePlaceholder, useSlidePageNumber } from '@open-slide/core';
 import yinAvatar from '@assets/rpai/yin-avatar.webp';
 import qrWebsite from '@assets/rpai/qr-website.png';
 import qrInstagram from '@assets/rpai/qr-instagram.png';
+import bgGradient from '@assets/rpai/bg-gradient.png';
 import appsScriptIntro from './assets/apps-script-intro.png';
 import hands1EditorLog from './assets/hands1-editor-log.png';
 import authNeed from './assets/auth-1-need.png';
@@ -110,7 +111,15 @@ const Footer = () => {
 };
 
 const BG = ({ children }: { children: ReactNode }) => (
-  <div style={{ ...fill, background: GRAD, fontSize: '46px' }}>
+  <div style={{
+    ...fill,
+    backgroundColor: '#1565c0',
+    backgroundImage: `url(${bgGradient})`,
+    backgroundSize: '1920px 1080px',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    fontSize: '46px',
+  }}>
     <CircuitDeco /><RingDeco /><DotGrid side="left" /><DotGrid side="right" />
     {children}
     <Footer />

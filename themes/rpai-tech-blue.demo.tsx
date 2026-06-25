@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react';
 import { type Page, type SlideTransition, useSlidePageNumber } from '@open-slide/core';
+import bgGradient from '@assets/rpai/bg-gradient.png';
 
 // ─── Tokens ──────────────────────────────────────────────────────────────────
 const GRAD  = 'linear-gradient(135deg,#1565c0 0%,#0288d1 45%,#00acc1 100%)';
@@ -77,7 +78,14 @@ const Footer = () => {
 };
 
 const BG = ({ children }: { children: ReactNode }) => (
-  <div style={{ ...fill, background: GRAD }}>
+  <div style={{
+    ...fill,
+    backgroundColor: '#1565c0',
+    backgroundImage: `url(${bgGradient})`,
+    backgroundSize: '1920px 1080px',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  }}>
     <CircuitDeco /><RingDeco /><DotGrid side="left" /><DotGrid side="right" />
     {children}
     <Footer />

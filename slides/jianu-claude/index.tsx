@@ -13,6 +13,7 @@ import qrWebsiteOrig from './assets/qr-website.orig.png';
 import accupassEvent from './assets/accupass-event.png';
 import accupassQr from './assets/accupass-qr.png';
 import surveyQr from './assets/survey-qr.png';
+import bgGradient from '@assets/rpai/bg-gradient.png';
 
 
 // ─── Design System ───────────────────────────────────────────────────────────
@@ -131,7 +132,14 @@ const Footer = () => {
 };
 
 const BG = ({ children }: { children: ReactNode }) => (
-  <div style={{ ...fill, background: GRAD }}>
+  <div style={{
+    ...fill,
+    backgroundColor: '#1565c0',
+    backgroundImage: `url(${bgGradient})`,
+    backgroundSize: '1920px 1080px',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  }}>
     <CircuitDeco /><RingDeco /><DotsBL /><DotsBR />
     {children}
     <Footer />
