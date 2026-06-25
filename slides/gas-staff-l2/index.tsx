@@ -18,6 +18,7 @@ import sec3GasCodeResult from './assets/sec3-gas-code-result.png';
 import sec3EmailResult from './assets/sec3-email-result.png';
 import geminiAskGas from './assets/gemini-ask-gas.png';
 import gasRunForm from './assets/gas-run-form.png';
+import surveyQr from './assets/survey-qr.png';
 
 // ─── Design System ───────────────────────────────────────────────────────────
 export const design: DesignSystem = {
@@ -1707,9 +1708,17 @@ const Survey: Page = () => (
         <TealBar />
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
-        <ImagePlaceholder hint="課後問卷 QR code（每場更換 · 放 slides/gas-staff-l2/assets/）" width={380} height={380} style={{ borderRadius: 16 }} />
+        <div style={{ background: white, borderRadius: 16, padding: 24, boxShadow: '0 20px 50px rgba(0,0,0,0.35)' }}>
+          <img src={surveyQr} alt="課後回饋問卷 QR code" style={{ display: 'block', width: 380, height: 380 }} />
+        </div>
         <div style={{ fontSize: 32, color: white, fontWeight: 800, letterSpacing: '0.08em' }}>掃描填寫問卷</div>
-        <div style={{ fontSize: 22, color: white, opacity: 0.75, letterSpacing: '0.02em' }}>forms.gle / Google 表單</div>
+        <div style={{
+          fontSize: 18, color: white, opacity: 0.85, lineHeight: 1.4,
+          maxWidth: 380, textAlign: 'center', wordBreak: 'break-all',
+          userSelect: 'text', fontFamily: mono,
+        }}>
+          https://docs.google.com/forms/d/e/1FAIpQLScyRp2razM7Sx2QRLzgyVXaTFyv0kaqyxiLZNCvUslJruHbjQ/viewform?usp=header
+        </div>
       </div>
     </div>
   </BG>
