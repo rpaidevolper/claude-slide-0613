@@ -16,6 +16,8 @@ import sec3FormPreview from './assets/sec3-form-preview.png';
 import sec3GeminiIntro from './assets/sec3-gemini-intro.png';
 import sec3GasCodeResult from './assets/sec3-gas-code-result.png';
 import sec3EmailResult from './assets/sec3-email-result.png';
+import geminiAskGas from './assets/gemini-ask-gas.png';
+import gasRunForm from './assets/gas-run-form.png';
 
 // ─── Design System ───────────────────────────────────────────────────────────
 export const design: DesignSystem = {
@@ -934,7 +936,7 @@ const EParam: Page = () => (
 const Hands5: Page = () => (
   <BG>
     <CA>
-      <H2 style={{ fontSize: 80 }}>【動手 4-2】完成自動寄信程式碼</H2>
+      <H2 style={{ fontSize: 80 }}>【動手 4-3】完成自動寄信程式碼</H2>
       <TealBar />
       <Code size={30} code={`
 function 報名後自動寄信(e) {
@@ -949,7 +951,37 @@ function 報名後自動寄信(e) {
   GmailApp.sendEmail(信箱, 主旨, 內容);
 }`} />
 <br />
-  <H2 style={{ fontSize: 40 }}>先別自己按執行 —— 沒有人送表單就沒有 e，會報錯，這很正常（下一頁設觸發器）</H2>
+  <H2 style={{ fontSize: 40 }}>點執行會報錯，這很正常。沒有人送表單就沒有 e (event)，</H2>
+    </CA>
+  </BG>
+);
+
+// ── 33d-2 測試技巧：不用填表單也能測寄信 ──────────────────────────────────────
+const Sec3MockTest: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="動手前 · 測試技巧" />
+      <H2 style={{ fontSize: 80 }}>【動手 4-2】完成測試程式碼</H2>
+      <TealBar />
+      <div style={{ fontSize: 34, color: white, opacity: 0.9, lineHeight: 1.45, marginBottom: 18 }}>
+        開發的重要觀念：撰寫測試！
+      </div>
+      <Code size={26} code={`
+function 測試報名寄信() {
+  const 模擬事件物件 = {
+    values: [
+      "2026/06/25 下午 8:50:00", // 回覆[0]: 時間戳記
+      "your_test_email@gmail.com", // 回覆[1]: 信箱 (請改成你自己的收信信箱測試)
+      "金城武",                   // 回覆[2]: 姓名
+      "男"                        // 回覆[3]: 性別
+    ]
+  };
+  // 2. 呼叫你的原本函式，並把模擬的資料傳進去
+  Logger.log("開始測試寄信函式...");
+  報名後自動寄信(模擬事件物件);
+  Logger.log("測試執行完畢，請檢查引導的信箱是否有收到信件。");
+}`} />
+      <KeyInsight text="在編輯器選「testOnFormSubmit」→ 按執行 → 驗證整套寄信邏輯" />
     </CA>
   </BG>
 );
@@ -958,7 +990,7 @@ function 報名後自動寄信(e) {
 const SetTrigger: Page = () => (
   <BG>
     <CA>
-      <H2 style={{ fontSize: 80 }}>【動手 4-3】設定觸發條件</H2>
+      <H2 style={{ fontSize: 80 }}>【動手 4-4】設定觸發條件</H2>
       <TealBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 4 }}>
         <Bullet n="1" title="左側時鐘圖示「觸發條件」→ 右下「新增觸發條件」" />
@@ -1059,6 +1091,105 @@ const Sec3: Page = () => (
   <SecDiv ghost="03" kicker="環節 三" title="實戰：嘉義縣教師專業成長研習報名通知自動化" sub="把學到的招，套到真的會用的場景" />
 );
 
+// ── 30a 上一堂回溫：請 AI 規劃問卷 ────────────────────────────────────────────
+const ReviewFormPrompt: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="上一堂回溫" />
+      <H2>讓 AI 幫我們規劃問卷</H2>
+      <TealBar />
+      <div style={{ fontSize: 36, color: white, opacity: 0.92, lineHeight: 1.45, marginBottom: 20 }}>
+        上一堂課，我們先請 AI 規劃整份報名問卷的題目，並一步步教我們怎麼設定表單。
+      </div>
+      <div style={{
+        background: cardBg, border: '1px solid rgba(255,255,255,0.12)', borderRadius: 18,
+        padding: '36px 56px 40px', position: 'relative',
+      }}>
+        <span style={{
+          position: 'absolute', top: 6, left: 28, fontSize: 130, fontWeight: 900,
+          color: teal, opacity: 0.85, lineHeight: 1, fontFamily: 'Georgia, serif',
+        }}>“</span>
+        <div style={{
+          fontSize: 44, fontWeight: 500, color: white, lineHeight: 1.6,
+          paddingLeft: 70, paddingTop: 12,
+        }}>
+          我將要承辦一個嘉義縣的教師成長研習活動，需要設計一份 Google Form 的問券給教職員做填寫進行報名。這次的研習活動會有許多場次，大家可以任選數場參與，但是每個場次上限是 10 位報名者。請你幫我設計這份 Google Form 表單題目，並一步一步教我如何設定表單。
+        </div>
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 30b 換個更快的做法：有，用 GAS ────────────────────────────────────────────
+const FasterWay: Page = () => (
+  <BG>
+    <CA style={{ justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+      <div style={{
+        background: 'transparent', borderRadius: 18,
+        padding: '0', maxWidth: 1380, position: 'relative',
+        display: 'flex', flexDirection: 'column', alignItems: 'center',
+      }}>
+        <div style={{
+          fontSize: 30, fontWeight: 800, color: teal, letterSpacing: '0.1em',
+          alignSelf: 'flex-start', marginBottom: 14,
+        }}>老師...</div>
+        <div style={{ fontWeight: 800, color: white, lineHeight: '1.85', letterSpacing: '-5px' }}>
+          <span style={{ color: white, fontWeight: '700', fontSize: '130px' }}>“有沒有更快做完問券的方法？”</span>{''}<span style={{ color: teal, fontWeight: 900 }}>{''}</span>
+        </div>
+        <div style={{ fontSize: 38, fontWeight: 500, color: white, opacity: 0.7, lineHeight: 1.4, marginTop: 18 }}>
+          自己動手一個一個做，也是好花時間…
+        </div>
+      </div>
+      <TealBar />
+      <div style={{ fontSize: 80, fontWeight: '800', color: teal, lineHeight: '1.15', marginTop: 24 }}>
+        用 AI + Google Apps Script 直接生成
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 30c 提示詞範本：把題目轉成 GAS 直接生表單 ────────────────────────────────
+const FormToGasPrompt: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="提示詞" />
+      <H2 style={{ fontSize: 68 }}>【動手 5】讓 AI 把設計好的題目轉成 GAS</H2>
+      <TealBar />
+      <div style={{ fontSize: 38, fontWeight: 500, color: white, opacity: 0.7, lineHeight: 1.4, marginTop: 18 }}>
+       把更多心力花在和 AI 討論問券題目！
+      </div>
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 0 }}>
+        <div style={{
+          background: white, borderRadius: 20, padding: '40px 48px',
+          boxShadow: '0 28px 70px rgba(0,0,0,0.4)', display: 'flex',
+          maxHeight: '100%', overflow: 'hidden',
+        }}>
+          <img
+            src={geminiAskGas}
+            alt="對 Gemini 說：問券題目都沒問題了，請提供 GAS 程式碼讓我直接生成問券"
+            style={{ display: 'block', width: 'auto', maxWidth: 1300, height: 'auto', objectFit: 'contain' }}
+          />
+        </div>
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 30d 動手時間：分段分頁 ────────────────────────────────────────────────────
+const HandsOnTime: Page = () => (
+  <BG>
+    <CA style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 14 }}>
+        <div style={{ fontSize: 36, color: teal, fontWeight: 700, letterSpacing: '0.24em' }}>HANDS ON</div>
+        <div style={{ fontSize: 150, fontWeight: 900, color: white, lineHeight: 1.05 }}>動手時間</div>
+        <div style={{ height: 5, width: 120, background: teal, borderRadius: 2, margin: '14px 0 24px' }} />
+        <div style={{ fontSize: 48, color: white, fontWeight: 600, lineHeight: 1.4, maxWidth: 1300 }}>
+        </div>
+      </div>
+    </CA>
+  </BG>
+);
+
 // ── 31 情境溫習：拿回上次做的報名檔 ──────────────────────────────────────────
 const RealList: Page = () => (
   <BG>
@@ -1133,7 +1264,7 @@ const Sec3Scenario: Page = () => (
   <BG>
     <CA>
       <Eyebrow text="自動化情境" />
-      <H2 style={{ fontSize: 88 }}>填完就收信：系統自動判斷並通知</H2>
+      <H2 style={{ fontSize: 88 }}>【動手 6】依照情境寄出不同通知信</H2>
       <TealBar />
 
       {/* 流程圖容器 */}
@@ -1258,6 +1389,9 @@ const Sec3GeminiIntro: Page = () => (
 );
 
 // ── 33d GAS 程式碼截圖 ─────────────────────────────────────────────────────────
+
+
+// ── 33d 程式碼成果展示 ─────────────────────────────────────────────────────────
 const Sec3GasResult: Page = () => (
   <BG>
     <CA style={{ alignItems: 'center', justifyContent: 'center' }}>
@@ -1269,6 +1403,26 @@ const Sec3GasResult: Page = () => (
         <img
           src={sec3GasCodeResult}
           alt="Gemini 生成的 GAS 程式碼截圖，顯示 Apps Script 編輯器與 onFormSubmit 函式"
+          style={{ display: 'block', width: 1560, height: 'auto', objectFit: 'contain' }}
+        />
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 30e 執行生成表單：貼上程式碼 → 執行 → 取得網址 ───────────────────────────
+const Sec3RunForm: Page = () => (
+  <BG>
+    <CA style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <Eyebrow text="執行 · 生成表單" />
+      <div style={{
+        background: white, borderRadius: 20, padding: '20px 28px',
+        boxShadow: '0 28px 70px rgba(0,0,0,0.4)', display: 'flex',
+        overflow: 'hidden', marginTop: 16,
+      }}>
+        <img
+          src={gasRunForm}
+          alt="Apps Script 編輯器：貼上 Gemini 程式碼 → 執行 → 從執行紀錄取得表單網址"
           style={{ display: 'block', width: 1560, height: 'auto', objectFit: 'contain' }}
         />
       </div>
@@ -1628,9 +1782,9 @@ export default [
   // 環節一
   TodayMap, Sec3GeminiIntro, Sec1, WhatIsAS, UsageExamples, OpenAS, VarLogger, Hands1, Hands2, AuthFlow, Troubleshoot,
   // 環節二
-  Sec1Recap, Break1, Sec2, Unlock1, MailThree, Hands3, Unlock2, Hands4, Hands4Preview, Hands5, EParam, SetTrigger, WhatTrigger, TimeTrigger, Sec2Recap,
+  Sec1Recap, Break1, Sec2, Unlock1, MailThree, Hands3, Unlock2, Hands4, Hands4Preview, Sec3MockTest, Hands5, EParam, SetTrigger, WhatTrigger, TimeTrigger,
   // 環節三
-  Break2, Sec3, Sec3Scenario, Sec3FormPreview, Sec3GeminiSteps, Sec3GeminiPrompt, Sec3GasResult, Sec3EmailResult, ClassRecap, QnA,
+  Sec2Recap, Break2, Sec3, ReviewFormPrompt, FasterWay, FormToGasPrompt, Sec3RunForm, HandsOnTime, Sec3Scenario, Sec3FormPreview, Sec3GeminiSteps, Sec3GeminiPrompt, Sec3GasResult, Sec3EmailResult, ClassRecap, QnA,
   // 附錄（備用加映）— 暫時隱藏 p41-44
   // SecApp, SlidesBase, PdfFlow, AppRecap,
   // 結尾 CTA
