@@ -290,7 +290,7 @@ const Cover: Page = () => (
         Google 工具行政力維新
       </h1>
       <p style={{ fontSize: 60, fontWeight: 500, color: white, margin: '24px 0 40px', lineHeight: 1.25 }}>
-        Session2：報名<span style={{ color: teal, fontWeight: 700 }}>通知流程自動化</span>
+        <span style={{ color: teal, fontWeight: 700 }}>Google 工具與 AI 自動化應用（二）</span>
       </p>
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 30 }}>
         {['Google Apps Script', 'Gmail', '試算表', '表單'].map((t) => (
