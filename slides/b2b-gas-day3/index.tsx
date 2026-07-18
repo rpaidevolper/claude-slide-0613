@@ -258,7 +258,7 @@ const BreakPage = ({ title, sub, back }: { title: string; sub: string; back: str
         <div style={{ fontSize: 36, color: teal, fontWeight: 700, letterSpacing: '0.24em' }}>BREAK</div>
         <div style={{ fontSize: 150, fontWeight: 900, color: white, lineHeight: 1.05 }}>{title}</div>
         <div style={{ height: 5, width: 120, background: teal, borderRadius: 2, margin: '14px 0 24px' }} />
-        <div style={{ fontSize: 48, color: white, fontWeight: 600, lineHeight: 1.4, maxWidth: 1300 }}>{sub}</div>
+        {sub && <div style={{ fontSize: 48, color: white, fontWeight: 600, lineHeight: 1.4, maxWidth: 1300 }}>{sub}</div>}
         <div style={{
           marginTop: 28, fontSize: 40, fontWeight: 800, color: teal,
           background: cardBg, border, borderLeft: accentEdge,
@@ -573,14 +573,14 @@ const TodayMap: Page = () => (
       <H2 style={{ fontSize: 84 }}>下課時，這四樣東西是你的——</H2>
       <TealBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 36 }}>
-        <S3MapRow n="1" title="掌握 Google App Scripts核心"
-          body="了解核心知識與操作方法" />
-        <S3MapRow n="2" title="讓程式碼控制Google工具"
-          body="Google Sheet、Gmail自動化工作流全掌握" />
-        <S3MapRow n="3" title="接上 Gemini AI 的自動週報"
-          body="時間一到，任務自動完成" />
-        <S3MapRow n="4" title="一個真正的網站"
-          body="擁有自己的專屬網站" />
+        <S3MapRow n="1" title="親手跑起來的第一支程式"
+          body="看懂 Apps Script 介面，程式碼從此聽得懂、改得動" />
+        <S3MapRow n="2" title="一套自己會動的工作流"
+          body="把需求說清楚，AI 寫程式幫你搞定 Sheet 與 Gmail" />
+        <S3MapRow n="3" title="接上 Gemini AI 的自動週報系統"
+          body="時間一到，AI 讀資料、寫摘要、寄進信箱" />
+        <S3MapRow n="4" title="一個真正上線的專屬網站"
+          body="不用買主機，一條網址隨時打得開、拿得出手" />
       </div>
     </CA>
   </BG>
@@ -752,8 +752,14 @@ const IAOCard = ({ letter, en, zh, q, body }: { letter: string; en: string; zh: 
       <span style={{ fontSize: 36, fontWeight: 800, color: white }}>{en}</span>
       <span style={{ fontSize: 30, fontWeight: 700, color: teal }}>{zh}</span>
     </div>
-    <div style={{ fontSize: 32, fontWeight: 700, color: white, opacity: 0.85, margin: '18px 0 14px' }}>{q}</div>
-    <div style={{ fontSize: 33, color: white, lineHeight: 1.5 }}>{body}</div>
+    <div style={{ fontSize: 38, fontWeight: 700, color: white, opacity: 0.85, margin: '18px 0 20px' }}>{q}</div>
+    <div style={{
+      marginTop: 'auto', background: 'rgba(0,229,192,0.08)',
+      border: '1px dashed rgba(0,229,192,0.45)', borderRadius: 10, padding: '18px 22px',
+    }}>
+      <div style={{ fontSize: 24, fontWeight: 800, color: teal, letterSpacing: '0.12em', marginBottom: 8 }}>範例</div>
+      <div style={{ fontSize: 40, color: white, lineHeight: 1.5 }}>{body}</div>
+    </div>
   </div>
 );
 
@@ -766,15 +772,15 @@ const MailThree: Page = () => (
       <div style={{ display: 'flex', alignItems: 'stretch', gap: 20, flex: 1, marginTop: 14, minHeight: 0 }}>
         <IAOCard letter="I" en="INPUT" zh="輸入層"
           q="什麼情況讓它啟動？資料從哪來？"
-          body="你按下「執行」；資料是試算表 A2 的姓名、B2 的自我介紹。" />
+          body="試算表 A2 的姓名、B2 的自我介紹" />
         <S3Arrow />
         <IAOCard letter="A" en="ACTION" zh="行動層"
-          q="機器人要做什麼？"
-          body="把姓名、介紹讀出來，組成信件的主旨和內容。" />
+          q="程式碼要做什麼？"
+          body="讀出這兩格資料，組成一封信" />
         <S3Arrow />
         <IAOCard letter="O" en="OUTPUT" zh="輸出層"
-          q="結果要去哪裡？"
-          body="一封信，寄進講師的 Gmail 信箱。" />
+          q="結果要產出什麼？"
+          body="把自我介紹寄進講師的信箱" />
       </div>
       <KeyInsight text="心法：動手前先問三個問題——I / A / O 各是什麼？" />
     </CA>
@@ -800,7 +806,7 @@ function 寄出自我介紹() {
   GmailApp.sendEmail(講師信箱, 主旨, 內容);
 }`} note="" />
 
-    <KeyInsight text="試算表 A2 填姓名、B2 填一句自我介紹 → 貼上程式碼 → 執行 → 送出信件" />
+    <KeyInsight text="從手冊上找到範例程式碼 → 貼上 → 修改 → 執行" />
 
     </CA>
 
@@ -866,7 +872,7 @@ const Troubleshoot: Page = () => (
 
 // ── 19 休息① ─────────────────────────────────────────────────────────────────
 const Break1: Page = () => (
-  <BreakPage title="休息 10 分鐘" sub="動手 3 沒收到信的同學，利用休息時間找講師個別排除" back="回來後：把需求說清楚，讓 AI 幫你寫" />
+  <BreakPage title="休息 10 分鐘" sub="" back="回來後：把需求說清楚，讓 AI 幫你寫" />
 );
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -1154,7 +1160,7 @@ const Result2b: Page = () => (
 
 // ── 33 段落分頁 ───────────────────────────────────────────────────────────────
 const Sec3: Page = () => (
-  <SecDiv ghost="03" kicker="環節 三" title="Google App Scripts × AI" sub="當自動化結合AI，讓系統自己思考" />
+  <SecDiv ghost="03" kicker="環節 三" title="Google App Scripts × AI" sub="把 Gemini 放進程式碼裡" />
 );
 
 // ── 34 網頁版 vs API ─────────────────────────────────────────────────────────
@@ -1288,14 +1294,14 @@ const Hands7: Page = () => (
 const WhatTrigger: Page = () => (
   <BG>
     <CA>
-      <H2>觸發器就是「幫你站崗的人」</H2>
+      <H2>認識 GAS 的觸發器</H2>
       <TealBar />
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 44, flex: 1, marginTop: 6, alignItems: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 14 }}>
           <Bullet n="?" title="時間型觸發"
-            body="到了你設定的時刻就動 —— 像鬧鐘：時間一到，它就叫。" />
-          <Bullet n="∞" title="它幫你 24 小時待命"
-            body="半夜、假日、你在開會，它都照常執行。" />
+            body="到了你設定的時刻就動 —— 像鬧鐘" />
+          <Bullet n="∞" title="事件型觸發"
+            body="檔案新增、更新，自動執行 —— 像門鈴" />
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 0 }}>
           <div style={{
@@ -1323,10 +1329,10 @@ const Hands8: Page = () => (
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 4 }}>
           <Bullet n="1" title="左側「觸發條件」（鬧鐘圖示）→ 新增觸發條件" />
           <Bullet n="2" title="函式選「AI業績週報」，活動來源選「時間驅動」" />
-          <Bullet n="3" title="週計時器 → 每週星期一 → 上午 8 點到 9 點" />
-          <Bullet n="4" title="儲存（可能再跳一次授權，照動手 3 允許）" />
+          <Bullet n="3" title="設定指定時間/頻率" />
+          <Bullet n="4" title="儲存" />
         </div>
-        <S3Shot text="截圖後補：新增觸發條件設定畫面（週計時器・每週一上午 8–9 點）" />
+        <S3Shot text="步驟可以查看課程手冊" />
       </div>
       <KeyInsight text="原則：先手動跑一次確認會動（動手 7 已驗證），再交給排程" />
     </CA>
@@ -1342,7 +1348,7 @@ const Result3: Page = () => (
         <div style={{ fontSize: 150, fontWeight: 900, color: white, lineHeight: 1.05 }}>你睡覺，它也在跑</div>
         <div style={{ height: 5, width: 120, background: teal, borderRadius: 2, margin: '14px 0 20px' }} />
         <div style={{ fontSize: 46, color: white, fontWeight: 600, lineHeight: 1.5, maxWidth: 1400 }}>
-          每週一早上，AI 寫好的業績週報自己寄進信箱——<br />
+          指定時間一到，AI 寫好的業績週報自己寄進信箱<br />
           <span style={{ color: teal, fontWeight: 800 }}>Gemini 已經裝進你的系統裡</span>
         </div>
         <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center', marginTop: 26 }}>
@@ -1357,7 +1363,7 @@ const Result3: Page = () => (
 
 // ── 43 休息③ ─────────────────────────────────────────────────────────────────
 const Break3: Page = () => (
-  <BreakPage title="休息 10 分鐘" sub="等等：GAS 做出網頁——部署你自己的 B2B 訂單後台" back="回來後：GAS 做出網頁" />
+  <BreakPage title="休息 10 分鐘" sub="" back="回來後：GAS 做出網頁" />
 );
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -1366,7 +1372,7 @@ const Break3: Page = () => (
 
 // ── 44 段落分頁 ───────────────────────────────────────────────────────────────
 const Sec4: Page = () => (
-  <SecDiv ghost="04" kicker="環節 四" title="打造自己的專屬網站" sub="GAS 不只會寄信，還能給你一個網頁" />
+  <SecDiv ghost="04" kicker="環節 四" title="打造自己的專屬網站" sub="很多GAS玩家也不知道，原來可以用它來寫網頁" />
 );
 
 // ─── S4 helpers ──────────────────────────────────────────────────────────────
@@ -1404,25 +1410,6 @@ const S4DeployStep = ({ n, title, sub }: { n: string; title: string; sub?: strin
   </div>
 );
 
-// 警示卡（Safety 用）
-const S4WarnCard = ({ n, title, body }: { n: string; title: string; body: string }) => (
-  <div style={{
-    background: cardBg, border, borderLeft: warnEdge,
-    borderRadius: 14, padding: '24px 32px', display: 'flex', gap: 24, alignItems: 'flex-start',
-  }}>
-    <div style={{
-      width: 54, height: 54, borderRadius: '50%', flexShrink: 0,
-      background: 'rgba(255,183,77,0.25)', border: '1px solid rgba(255,183,77,0.6)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      fontSize: 28, fontWeight: 800, color: warnText,
-    }}>{n}</div>
-    <div style={{ paddingTop: 2 }}>
-      <div style={{ fontSize: 40, fontWeight: 800, color: warnText, lineHeight: 1.25, marginBottom: 8 }}>{title}</div>
-      <div style={{ fontSize: 32, color: white, lineHeight: 1.45 }}>{body}</div>
-    </div>
-  </div>
-);
-
 // 四天閉環卡（E2E 用）
 const S4DayCard = ({ day, title, body, hi }: { day: string; title: string; body: string; hi?: boolean }) => (
   <div style={{
@@ -1455,16 +1442,13 @@ const WebAppConcept: Page = () => (
       <Eyebrow text="Web App 概念" />
       <H2 style={{ fontSize: 84 }}>GAS 也能做出「網站」</H2>
       <TealBar />
-      <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '1fr 700px', gap: 40, minHeight: 0 }}>
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 8 }}>
-          <Bullet n="1" title="有人打開網址，doGet() 就被叫醒"
-            body="它回傳一個網頁畫面給瀏覽器。" />
-          <Bullet n="2" title="按「部署」，Google 給你專屬網址"
-            body="不用主機、不用架站，Google 幫你扛。" />
-          <Bullet n="3" title="瀏覽器、手機都打得開"
-            body="這就是你的訂單後台。" />
-        </div>
-        <S3Shot text="截圖後補：部署完成的訂單後台畫面（訂單表格＋新增訂單表單）" />
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 8, minHeight: 0 }}>
+        <Bullet n="1" title="有人打開網址，doGet() 就被叫醒"
+          body="它回傳一個網頁畫面給瀏覽器。" />
+        <Bullet n="2" title="按「部署」，Google 給你專屬網址"
+          body="不用主機、不用架站，Google 幫你扛。" />
+        <Bullet n="3" title="瀏覽器、手機都打得開"
+          body="這就是你的訂單後台。" />
       </div>
       <KeyInsight text="GAS 不只會寄信，還能給你一個「真的網址」" />
     </CA>
@@ -1541,24 +1525,12 @@ const DeploySteps: Page = () => (
       <Eyebrow text="跟著點 · 一步都不跳" />
       <H2 style={{ fontSize: 84 }}>部署你的網頁應用程式</H2>
       <TealBar />
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 620px', gap: 50, flex: 1, marginTop: 6, alignItems: 'center' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
-          <S4DeployStep n="1" title="右上角「部署」→「新增部署作業」" />
-          <S4DeployStep n="2" title="齒輪選擇類型：「網頁應用程式」" />
-          <S4DeployStep n="3" title="執行身分：我　·　誰可以存取：只有我自己"
-            sub="課堂練習選這組最安全" />
-          <S4DeployStep n="4" title="按「部署」→ 跳授權就「進階 → 允許」" />
-          <S4DeployStep n="5" title="複製「網頁應用程式」的網址 → 開新分頁打開" />
-        </div>
-        <div style={{
-          background: white, borderRadius: 14, padding: 20,
-          boxShadow: '0 20px 50px rgba(0,0,0,0.4)',
-          height: 560, display: 'flex', alignItems: 'center', justifyContent: 'center',
-        }}>
-          <span style={{ fontSize: 36, fontWeight: 800, color: '#0a1c46', textAlign: 'center', lineHeight: 1.5 }}>
-            截圖後補：<br/>新增部署作業設定畫面<br/>（類型／執行身分／存取權）
-          </span>
-        </div>
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 22, flex: 1, marginTop: 6 }}>
+        <S4DeployStep n="1" title="右上角「部署」→「新增部署作業」" />
+        <S4DeployStep n="2" title="齒輪選擇類型：「網頁應用程式」" />
+        <S4DeployStep n="3" title="執行身分：我　·　誰可以存取：只有我自己" />
+        <S4DeployStep n="4" title="按「部署」→ 跳授權就「進階 → 允許」" />
+        <S4DeployStep n="5" title="複製「網頁應用程式」的網址 → 開新分頁打開" />
       </div>
     </CA>
   </BG>
@@ -1646,25 +1618,6 @@ const E2E: Page = () => (
   </BG>
 );
 
-// ── 52 安全紅線 ──────────────────────────────────────────────────────────────
-const Safety: Page = () => (
-  <BG>
-    <CA>
-      <Eyebrow text="今天的三個新能力，各有一條紅線" />
-      <H2 style={{ fontSize: 92 }}>安全紅線：三條不能踩</H2>
-      <TealBar />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 20 }}>
-        <S4WarnCard n="🔑" title="金鑰——API key 不外洩"
-          body="只放「指令碼屬性」——不寫進程式碼、不截圖、不貼到公開網頁。外洩被盜用，費用算在你頭上。" />
-        <S4WarnCard n="📊" title="資料——真實資料不隨便餵 AI"
-          body="今天的訂單、客戶都是虛構教材；回公司換成真資料前先去識別化——客戶名單、報價、個資不送免費層 AI。" />
-        <S4WarnCard n="📤" title="出手——系統自動出手前，人看最後一眼"
-          body="自動信先寄自己測、網頁存取權維持「只有我自己」——按下送出的判斷，永遠留給人。" />
-      </div>
-    </CA>
-  </BG>
-);
-
 // ── 53 課後問卷（QR 後補）────────────────────────────────────────────────────
 const Survey: Page = () => (
   <BG>
@@ -1706,11 +1659,11 @@ const JourneyEnd: Page = () => (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div style={{ fontSize: 36, fontWeight: 800, color: white, letterSpacing: '0.04em', marginBottom: 80, opacity: 0.92 }}>RPAI 數位優化器</div>
         <h1 style={{ fontSize: 120, fontWeight: 900, color: white, margin: 0, lineHeight: 1.18, letterSpacing: '-0.01em' }}>
-          今天，沉睡的訂單<br/>開口了
+         謝謝大家！
         </h1>
         <div style={{ height: 4, width: 110, background: teal, borderRadius: 2, margin: '48px 0 36px' }} />
         <p style={{ fontSize: 60, color: white, margin: 0, fontWeight: 500, lineHeight: 1.5 }}>
-          下週 Day 4：<span style={{ color: teal, fontWeight: 700 }}>把這一切做成人人能用的工具</span>
+          下週 Day 4：<span style={{ color: teal, fontWeight: 700 }}>Vibe Coding</span>
         </p>
       </div>
     </div>
@@ -1756,6 +1709,6 @@ export default [
   Sec3, ApiVsWeb, Hands6, Story3a, Sec3b, Story3b, Hands7, WhatTrigger, Hands8, Result3, Break3,
   // 環節四 9
   Sec4, WebAppConcept, BuildSteps, DeploySteps, Sec4b, ComboMap, Hands10,
-  // 收尾 4
-  E2E, Safety, Survey, JourneyEnd,
+  // 收尾 3
+  E2E, Survey, JourneyEnd,
 ] satisfies Page[];
