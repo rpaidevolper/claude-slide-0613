@@ -389,8 +389,7 @@ const Instructor: Page = () => {
 // ── 04 開場複習章節頁 ────────────────────────────────────────────────────────
 const SecRecap: Page = () => (
   <SecDiv ghost="00" kicker="開場複習 · RECAP"
-    title="先回到新創金屬"
-    sub="Day 1–2，我們幫採購小林做到了哪裡？" />
+    title="課程回顧" />
 );
 
 // 痛點頁的對比列（過去人工 vs PAD 加速後）
@@ -499,17 +498,17 @@ const Turning: Page = () => (
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 24 }}>
         <div style={{ flex: 1, background: cardBg, border, borderRadius: 16, padding: '34px 36px' }}>
           <div style={{ fontSize: 52, fontWeight: 800, color: white, marginBottom: 14 }}>看資料</div>
-          <div style={{ fontSize: 32, color: white, lineHeight: 1.5 }}>行情每天回到表上——誰在盯？還是小林。</div>
+          <div style={{ fontSize: 32, color: white, lineHeight: 1.5 }}>查看每日行情數據</div>
         </div>
         <S3Arrow />
         <div style={{ flex: 1, background: cardBg, border, borderRadius: 16, padding: '34px 36px' }}>
           <div style={{ fontSize: 52, fontWeight: 800, color: white, marginBottom: 14 }}>做判斷</div>
-          <div style={{ fontSize: 32, color: white, lineHeight: 1.5 }}>該不該詢價、該不該提醒客戶——還是小林。</div>
+          <div style={{ fontSize: 32, color: white, lineHeight: 1.5 }}>判斷該不該詢價或提醒客戶</div>
         </div>
         <S3Arrow />
         <div style={{ flex: 1, background: cardBg, border, borderRadius: 16, padding: '34px 36px' }}>
-          <div style={{ fontSize: 52, fontWeight: 800, color: white, marginBottom: 14 }}>寄出行動</div>
-          <div style={{ fontSize: 32, color: white, lineHeight: 1.5 }}>提醒信、預警信、週報——還是小林。</div>
+          <div style={{ fontSize: 52, fontWeight: 800, color: white, marginBottom: 14 }}>做出行動</div>
+          <div style={{ fontSize: 32, color: white, lineHeight: 1.5 }}>寄出提醒信、預警信、週報</div>
         </div>
       </div>
       <KeyInsight text="今天：把「看資料 → 判斷 → 行動」也自動化——讓雲端自己醒來做事" />
@@ -574,14 +573,14 @@ const TodayMap: Page = () => (
       <H2 style={{ fontSize: 84 }}>下課時，這四樣東西是你的——</H2>
       <TealBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 36 }}>
-        <S3MapRow n="1" title="第一段雲端程式"
-          body="打招呼 ・ 寫試算表 ・ 寄信" />
-        <S3MapRow n="2" title="兩封自動信"
-          body="詢價提醒 ・ 沉睡客戶預警" />
-        <S3MapRow n="3" title="接上 Gemini 的自動週報"
-          body="每週一自動寄進信箱" />
-        <S3MapRow n="4" title="一個真的網址"
-          body="自己部署的 B2B 訂單後台" />
+        <S3MapRow n="1" title="掌握 Google App Scripts核心"
+          body="了解核心知識與操作方法" />
+        <S3MapRow n="2" title="讓程式碼控制Google工具"
+          body="Google Sheet、Gmail自動化工作流全掌握" />
+        <S3MapRow n="3" title="接上 Gemini AI 的自動週報"
+          body="時間一到，任務自動完成" />
+        <S3MapRow n="4" title="一個真正的網站"
+          body="擁有自己的專屬網站" />
       </div>
     </CA>
   </BG>
@@ -593,7 +592,7 @@ const TodayMap: Page = () => (
 
 // ── 09 段落分頁 ───────────────────────────────────────────────────────────────
 const Sec1: Page = () => (
-  <SecDiv ghost="01" kicker="環節 一" title="GAS 第一次上手" sub="第一次，讓程式聽你的話" />
+  <SecDiv ghost="01" kicker="環節 一" title="掌握Google App Scripts" sub="學會用程式碼說話" />
 );
 
 // ── 10 Apps Script 是什麼 ─────────────────────────────────────────────────────
@@ -1480,7 +1479,7 @@ const BuildSteps: Page = () => (
       <H2 style={{ fontSize: 84 }}>程式碼 + 部署 = 網站</H2>
       <TealBar />
       <div style={{ display: 'flex', gap: 24, marginTop: 6, alignItems: 'stretch' }}>
-        <S4FileCard name="① Code.gs" role="程式（後端邏輯）"
+        <S4FileCard name="① 後台.gs" role="程式（後端邏輯）"
           note="doGet 回傳畫面；取得訂單、新增訂單兩支函式讀寫「歷史訂單」分頁。" />
         <S4FileCard name="① index.html" role="網頁畫面（前端）"
           note="訂單表格＋新增訂單表單——編輯器「＋」→ HTML → 命名 index。" />
@@ -1521,10 +1520,10 @@ const Hands9: Page = () => (
       <H2 style={{ fontSize: 84 }}>【動手 9】搭建出你的訂單後台</H2>
       <TealBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 4 }}>
-        <Bullet n="1" title="打開手冊「環節四｜動手 9」，複製範本 Code.gs"
-          body="整段貼進原本的程式碼檔（覆蓋掉也沒關係）" />
+        <Bullet n="1" title="編輯器「＋」→ 指令碼 → 命名「後台」→ 貼上手冊範本"
+          body="不要動原本的程式碼檔——動手 8 的排程還要用它" />
         <Bullet n="2" title="編輯器「＋」→ HTML → 命名 index → 貼上範本 index.html"
-          body="兩個檔案都要貼，存檔確認沒有紅字" />
+          body="先清空檔案預設內容再貼，存檔確認沒有紅字" />
         <Bullet n="3" title="照上一頁的五步完成部署，複製網址打開" />
         <Bullet n="4" title="驗證：新增一筆訂單 → 回 Sheet 看「歷史訂單」多了一列"
           body="畫面上的動作，改到了真資料——手機也開開看！" />
@@ -1533,6 +1532,7 @@ const Hands9: Page = () => (
     </CA>
   </BG>
 );
+
 
 // ── 48 部署逐步教學 ──────────────────────────────────────────────────────────
 const DeploySteps: Page = () => (
@@ -1607,7 +1607,7 @@ const Hands10: Page = () => (
         <Bullet n="1" title="想一個你想要的小功能"
           body="例：訂單表格多一欄「小計金額」（數量 × 單價）" />
         <Bullet n="2" title="照結構跟 Gemini 討論"
-          body="現況說明＋想要達成的目標＋輸出格式——把現有 Code.gs 和 index.html 貼給它" />
+          body="現況說明＋想要達成的目標＋輸出格式——把現有 後台.gs 和 index.html 貼給它" />
         <Bullet n="3" title="貼回改好的程式碼 → 部署「新版本」"
           body="部署 → 管理部署作業 → 編輯 → 版本選「新版本」——改版才會生效" />
         <Bullet n="4" title="重新整理你的網址，驗證新功能出現" />
