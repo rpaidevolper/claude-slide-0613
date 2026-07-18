@@ -7,7 +7,7 @@
 | 時長 | 六小時（環節間短休內含，不安排午休） |
 | 對象 | 零基礎成人（企業端採購、業務、主管） |
 | 教學工具 | Google Apps Script、Gmail、Google Sheet、Gemini（網頁版＋API）、AI Studio |
-| 學員教材 | 課程手冊（`handbook.md`，貼入 Notion 後發放）＋行情資料 Google Sheet「建立副本」連結 |
+| 學員教材 | 課程手冊（Notion，SSOT：https://app.notion.com/p/3a069c40ccdb80b69547ffa922ed6688）＋行情資料 Google Sheet「建立副本」連結 |
 | 講師收件信箱 | rpaidevolper@gmail.com |
 
 ### 與 Day 1-2 的劇情銜接
