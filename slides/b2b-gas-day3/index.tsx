@@ -393,7 +393,7 @@ const CourseFiles: Page = () => (
     <CA>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
         <div style={{ fontSize: 40, fontWeight: 800, color: teal, letterSpacing: '0.16em', marginBottom: 22 }}>今日課程檔案</div>
-        <div style={{ fontSize: 130, fontWeight: 900, color: white, lineHeight: 1.08 }}>練習檔案就在這</div>
+        <div style={{ fontSize: 130, fontWeight: 900, color: white, lineHeight: 1.08 }}>掃描打開課程手冊</div>
         <div style={{ height: 5, width: 130, background: teal, borderRadius: 2, margin: '24px 0 30px' }} />
       </div>
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 90, minHeight: 0 }}>
