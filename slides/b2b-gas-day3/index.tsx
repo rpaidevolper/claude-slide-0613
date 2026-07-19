@@ -13,6 +13,7 @@ import authConfirm from './assets/auth-3-confirm.png';
 import hands2WriteSheet from './assets/hands2-write-sheet.png';
 import triggerNewDialog from './assets/trigger-new-dialog.png';
 import sec3GeminiIntro from './assets/sec3-gemini-intro.png';
+import qrCourseFiles from './assets/qr-course-files.png';
 
 // ─── Design System ───────────────────────────────────────────────────────────
 export const design: DesignSystem = {
@@ -385,6 +386,44 @@ const Instructor: Page = () => {
     </BG>
   );
 };
+
+// ── 今日課程檔案 ──────────────────────────────────────────────────────────
+const CourseFiles: Page = () => (
+  <BG>
+    <CA>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+        <div style={{ fontSize: 40, fontWeight: 800, color: teal, letterSpacing: '0.16em', marginBottom: 22 }}>今日課程檔案</div>
+        <div style={{ fontSize: 130, fontWeight: 900, color: white, lineHeight: 1.08 }}>練習檔案就在這</div>
+        <div style={{ height: 5, width: 130, background: teal, borderRadius: 2, margin: '24px 0 30px' }} />
+      </div>
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 90, minHeight: 0 }}>
+        <div style={{
+          background: white, borderRadius: 24, padding: 26, flexShrink: 0,
+          boxShadow: '0 28px 70px rgba(0,0,0,0.4)',
+        }}>
+          <img src={qrCourseFiles} alt="今日課程手冊 QR code"
+            style={{ display: 'block', width: 440, height: 440, objectFit: 'contain' }} />
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 30, maxWidth: 900 }}>
+          <div style={{ fontSize: 52, color: white, fontWeight: 700, lineHeight: 1.35 }}>
+            <span style={{ color: teal }}>掃 QR code</span> 或打開下方連結，
+            拿到今天所有練習檔案與資訊
+          </div>
+          <div style={{
+            display: 'flex', flexDirection: 'column', gap: 12,
+            background: cardBg, border, borderLeft: accentEdge, borderRadius: 16,
+            padding: '28px 36px',
+          }}>
+            <div style={{ fontSize: 34, fontWeight: 800, color: teal }}>🔗 0722_B2B 訂單分析 Day 3 · 課程手冊</div>
+            <div style={{ fontSize: 30, fontFamily: mono, color: white, wordBreak: 'break-all', lineHeight: 1.45, opacity: 0.92 }}>
+              app.notion.com/p/0722_B2B-_-3a069c40ccdb80b69547ffa922ed6688
+            </div>
+          </div>
+        </div>
+      </div>
+    </CA>
+  </BG>
+);
 
 // ── 開場複習章節頁 ────────────────────────────────────────────────────────
 const SecRecap: Page = () => (
@@ -1426,7 +1465,7 @@ const Break3: Page = () => (
 );
 
 // ════════════════════════════════════════════════════════════════════════════
-// 環節四｜GAS 做出網頁：部署訂單後台
+// 環節四｜GAS 做出網頁：打造能管理資料的網站
 // ════════════════════════════════════════════════════════════════════════════
 
 // ── 段落分頁 ───────────────────────────────────────────────────────────────
@@ -1527,14 +1566,14 @@ const BuildSteps: Page = () => (
       <TealBar />
       <div style={{ display: 'flex', gap: 24, marginTop: 6, alignItems: 'stretch' }}>
         <S4FileCard name="① 後台.gs" role="程式（後端邏輯）"
-          note="doGet 回傳畫面；取得訂單、新增訂單兩支函式讀寫「歷史訂單」分頁。" />
+          note="doGet 回傳畫面，函式負責讀寫資料分頁——一套管理系統的後端就長這樣。" />
         <S4FileCard name="① index.html" role="網頁畫面（前端）"
-          note="訂單表格＋新增訂單表單——編輯器「＋」→ HTML → 命名 index。" />
+          note="資料表格畫面——編輯器「＋」→ HTML → 命名 index。" />
         <S4Arrow />
         <S4FileCard name="② 部署" role="變成真的網址"
           note="部署成「網頁應用程式」，Google 發給你一個專屬網址。" />
       </div>
-      <KeyInsight text="程式碼不用自己寫——範本在手冊，你的工作是把它放對地方" />
+      <KeyInsight text="你搭的不只是一個頁面，而是一套能管理資料的系統骨架" />
     </CA>
   </BG>
 );
@@ -1547,7 +1586,7 @@ const TryItWeb: Page = () => (
         <div style={{ fontSize: 44, fontWeight: 800, color: teal, letterSpacing: '0.12em' }}>小試身手</div>
         <div style={{ height: 5, width: 120, background: teal, borderRadius: 2 }} />
         <div style={{ fontSize: 100, fontWeight: 900, color: white, lineHeight: 1.35, maxWidth: 1500 }}>
-          把「新創金屬_行情資料」變成一個網站，方便隨時檢視資料
+          把「新創金屬_行情資料」變成一個能管理資料的網站
         </div>
       </div>
     </CA>
@@ -1556,19 +1595,19 @@ const TryItWeb: Page = () => (
 
 
 
-// ── 動手 9：章節練習——搭建出你的訂單後台 ────────────────────────────────
+// ── 動手 9：章節練習——打造能管理資料的網站 ────────────────────────────────
 const Hands9: Page = () => (
   <BG>
     <CA>
       <Eyebrow text="環節四 — 動手 9 · 章節練習" />
-      <H2 style={{ fontSize: 84 }}>【動手 9】搭建出你的訂單後台</H2>
+      <H2 style={{ fontSize: 84 }}>【動手 9】把行情資料，變成一個能管理的網站</H2>
       <TealBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 20 }}>
         <Bullet n="1" title="參考操作手冊步驟，完成程式碼" />
         <Bullet n="2" title="照上一頁的步驟完成部署" />
         <Bullet n="3" title="打開網址，查看你的網站" />
       </div>
-      <KeyInsight text="下課前，每個人都有一個自己的 B2B 訂單後台網址" />
+      <KeyInsight text="下課前，每個人都手握一套能管理資料的網站——這就是訂單系統的骨架" />
     </CA>
   </BG>
 );
@@ -1644,7 +1683,7 @@ const E2E: Page = () => (
           body="行情資料自己回到 Excel，40 分鐘抄價消失。" />
         <S4Arrow />
         <S4DayCard day="DAY 3" title="GAS × Gemini" hi
-          body="系統自己判斷、自己寄信、自己寫週報，還給了你一個後台。" />
+          body="系統自己判斷、自己寄信、自己寫週報，還給了你一個能管理資料的網站。" />
         <S4Arrow />
         <S4DayCard day="DAY 4" title="Vibe Coding"
           body="下週：把這一切做成人人能用的工具。" />
@@ -1735,8 +1774,8 @@ const coverTransition: SlideTransition = {
 Cover.transition = coverTransition;
 
 export default [
-  // 開場 9
-  Cover, Organizer, Instructor, SecRecap, Recap, Turning, WhatCanGAS, GeminiIntro, TodayMap,
+  // 開場 10
+  Cover, Organizer, Instructor, CourseFiles, SecRecap, Recap, Turning, WhatCanGAS, GeminiIntro, TodayMap,
   // 環節一 13
   Sec1, WhatIsAS, OpenAS, VarLogger, Hands1, Hands2, MailScenario, TryIt, MailThree, Hands3, AuthFlow, Troubleshoot, Break1,
   // 環節二 10
