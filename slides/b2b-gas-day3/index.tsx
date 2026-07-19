@@ -1181,15 +1181,7 @@ const Hands5: Page = () => (
         <Bullet n="1" title="照結構把空格填滿：現況說明／目標／輸出格式" />
         <Bullet n="2" title="貼給 Gemini → 產出的 GAS 貼回編輯器" />
         <Bullet n="3" title="信箱改成自己的 → 執行 → 收預警清單信" />
-        <div style={{
-          marginTop: 14, background: cardBg, border, borderLeft: warnEdge,
-          borderRadius: 12, padding: '20px 28px', fontSize: 36, fontWeight: 700,
-          color: white, lineHeight: 1.45,
-        }}>
-          驗收：名單裡一定要有超過 <span style={{ color: warnText, fontWeight: 800 }}>90 天</span>沒下單的沉睡客戶（例如
-          <span style={{ color: warnText, fontFamily: mono, fontWeight: 800 }}> C002</span>、
-          <span style={{ color: warnText, fontFamily: mono, fontWeight: 800 }}>C007</span>，實際天數以上課當天計算為準）
-        </div>
+        
       </div>
       <TaskStrip tag="環節二 — 動手 5" text="卡住了？手冊同段落有「參考解答提示詞」——先看提示，再看解答" />
     </CA>
@@ -1586,7 +1578,7 @@ const TryItWeb: Page = () => (
         <div style={{ fontSize: 44, fontWeight: 800, color: teal, letterSpacing: '0.12em' }}>小試身手</div>
         <div style={{ height: 5, width: 120, background: teal, borderRadius: 2 }} />
         <div style={{ fontSize: 100, fontWeight: 900, color: white, lineHeight: 1.35, maxWidth: 1500 }}>
-          把「新創金屬_行情資料」變成一個能管理資料的網站
+          把「新創金屬_行情資料」變成一個網站
         </div>
       </div>
     </CA>
@@ -1600,7 +1592,7 @@ const Hands9: Page = () => (
   <BG>
     <CA>
       <Eyebrow text="環節四 — 動手 9 · 章節練習" />
-      <H2 style={{ fontSize: 84 }}>【動手 9】把行情資料，變成一個能管理的網站</H2>
+      <H2 style={{ fontSize: 84 }}>【動手 9】把行情資料變成一個網站</H2>
       <TealBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 20 }}>
         <Bullet n="1" title="參考操作手冊步驟，完成程式碼" />
@@ -1775,7 +1767,7 @@ Cover.transition = coverTransition;
 
 export default [
   // 開場 10
-  Cover, Organizer, Instructor, CourseFiles, SecRecap, Recap, Turning, WhatCanGAS, GeminiIntro, TodayMap,
+  Cover, Instructor, CourseFiles, SecRecap, Recap, Turning, WhatCanGAS, GeminiIntro, TodayMap,
   // 環節一 13
   Sec1, WhatIsAS, OpenAS, VarLogger, Hands1, Hands2, MailScenario, TryIt, MailThree, Hands3, AuthFlow, Troubleshoot, Break1,
   // 環節二 10
