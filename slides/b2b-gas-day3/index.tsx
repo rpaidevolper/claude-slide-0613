@@ -686,6 +686,13 @@ const Hands2: Page = () => (
     <CA>
       <H2 style={{ fontSize: 84 }}>【動手 2】讓程式把資料寫進 Sheet</H2>
       <TealBar />
+      <div style={{
+        background: cardBg, border, borderLeft: warnEdge, borderRadius: 12,
+        padding: '14px 24px', marginBottom: 12, fontSize: 30, fontWeight: 700,
+        color: white, lineHeight: 1.4,
+      }}>
+        先切到（或新增）<span style={{ color: warnText, fontWeight: 800 }}>「練習」分頁</span>再執行，別停在「銅／歷史訂單」分頁，會蓋掉課堂資料。
+      </div>
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 0 }}>
         <div style={{
           background: white, borderRadius: 16, padding: 18, overflow: 'hidden',
@@ -887,7 +894,7 @@ const Troubleshoot: Page = () => (
 
 // ── 休息① ─────────────────────────────────────────────────────────────────
 const Break1: Page = () => (
-  <BreakPage title="休息 10 分鐘" back="回來後：學會使用 AI 撰寫程式碼的核心觀念" />
+  <BreakPage title="休息一下" back="回來後：學會使用 AI 撰寫程式碼的核心觀念" />
 );
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -1076,7 +1083,7 @@ const Hands4: Page = () => (
 
 // ── 休息② ─────────────────────────────────────────────────────────────────────
 const Break2: Page = () => (
-  <BreakPage title="休息 10 分鐘" back="回來後：換你自己說給 AI 聽" />
+  <BreakPage title="休息一下" back="回來後：換你自己說給 AI 聽" />
 );
 
 // ── 劇情二：讓沉睡的訂單開口 ──────────────────────────────────────────────
@@ -1140,8 +1147,9 @@ const Hands5: Page = () => (
           borderRadius: 12, padding: '20px 28px', fontSize: 36, fontWeight: 700,
           color: white, lineHeight: 1.45,
         }}>
-          驗收：名單裡一定要有 <span style={{ color: warnText, fontFamily: mono, fontWeight: 800 }}>C002</span>（沉睡約 137 天）和
-          <span style={{ color: warnText, fontFamily: mono, fontWeight: 800 }}> C007</span>（約 100 天）
+          驗收：名單裡一定要有超過 <span style={{ color: warnText, fontWeight: 800 }}>90 天</span>沒下單的沉睡客戶（例如
+          <span style={{ color: warnText, fontFamily: mono, fontWeight: 800 }}> C002</span>、
+          <span style={{ color: warnText, fontFamily: mono, fontWeight: 800 }}>C007</span>，實際天數以上課當天計算為準）
         </div>
       </div>
       <TaskStrip tag="環節二 — 動手 5" text="卡住了？手冊同段落有「參考解答提示詞」——先看提示，再看解答" />
@@ -1268,7 +1276,7 @@ const Story3a: Page = () => (
   <BG>
     <CA>
       <Eyebrow text="劇情 · 客製話術" />
-      <H2 style={{ fontSize: 84 }}>動手 5 的預警信，每個客戶收到都一樣</H2>
+      <H2 style={{ fontSize: 84 }}>客製化給客戶的預警信件內容</H2>
       <TealBar />
       <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, alignContent: 'center' }}>
         <S3Card tone="red" kicker="現在 · 死板模板" title="一句話打發所有人">
@@ -1289,7 +1297,7 @@ const Story3a: Page = () => (
 const Sec3b: Page = () => (
   <SecDiv ghost="03" kicker="環節 三 · 進入應用"
     title="鑰匙拿到了，讓 AI 上工"
-    sub="動手 7–8：AI 寫業績週報、每週自動寄出——都由系統自己來" />
+    sub="用程式碼控制 Gemini AI" />
 );
 
 // ── 劇情：每週業績週報 ────────────────────────────────────────────────────
@@ -1307,7 +1315,7 @@ const Story3b: Page = () => (
         <S3Arrow />
         <div style={{ flex: 1, background: cardBg, border, borderLeft: accentEdge, borderRadius: 16, padding: '30px 32px' }}>
           <div style={{ fontSize: 44, fontWeight: 800, color: teal, marginBottom: 12 }}>Gemini 寫白話</div>
-          <div style={{ fontSize: 30, color: white, lineHeight: 1.5 }}>套 Day 2 四要素：推什麼／推多少／為什麼是現在／怎麼開口。</div>
+          <div style={{ fontSize: 30, color: white, lineHeight: 1.5 }}>依照我要的語氣／風格撰寫信件內容。</div>
         </div>
         <S3Arrow />
         <div style={{ flex: 1, background: cardBg, border, borderRadius: 16, padding: '30px 32px' }}>
@@ -1396,11 +1404,11 @@ const Result3: Page = () => (
     <CA style={{ alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 14 }}>
         <div style={{ fontSize: 36, color: teal, fontWeight: 700, letterSpacing: '0.24em' }}>環節三 · 成果</div>
-        <div style={{ fontSize: 150, fontWeight: 900, color: white, lineHeight: 1.05 }}>你睡覺，它也在跑</div>
+        <div style={{ fontSize: 130, fontWeight: 900, color: white, lineHeight: 1.08 }}>你已經會用 AI 寫 GAS</div>
         <div style={{ height: 5, width: 120, background: teal, borderRadius: 2, margin: '14px 0 20px' }} />
         <div style={{ fontSize: 46, color: white, fontWeight: 600, lineHeight: 1.5, maxWidth: 1400 }}>
-          指定時間一到，AI 寫好的業績週報自己寄進信箱<br />
-          <span style={{ color: teal, fontWeight: 800 }}>Gemini 已經裝進你的系統裡</span>
+          從拿 API key、讓 Gemini 寫白話，到設定觸發器自動排程<br />
+          關鍵心法：<span style={{ color: teal, fontWeight: 800 }}>你不用會寫程式，把需求說清楚，讓 AI 幫你寫</span>
         </div>
         <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center', marginTop: 26 }}>
           <span style={{ fontSize: 28, color: white, fontWeight: 600, background: pill, border: '1px solid rgba(255,255,255,0.28)', borderRadius: 999, padding: '8px 24px' }}>動手 6 · API key</span>
@@ -1414,7 +1422,7 @@ const Result3: Page = () => (
 
 // ── 休息③ ─────────────────────────────────────────────────────────────────
 const Break3: Page = () => (
-  <BreakPage title="休息 10 分鐘" back="回來後：GAS 做出網頁" />
+  <BreakPage title="休息一下" back="回來後：GAS 做出網頁" />
 );
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -1447,16 +1455,20 @@ const S4Arrow = () => (
 
 // 部署步驟列（DeploySteps 用）
 const S4DeployStep = ({ n, title, sub }: { n: string; title: string; sub?: string }) => (
-  <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
+  <div style={{
+    display: 'flex', gap: 24, alignItems: 'center',
+    background: cardBg, border, borderLeft: accentEdge, borderRadius: 14,
+    padding: '20px 28px',
+  }}>
     <div style={{
-      width: 50, height: 50, borderRadius: '50%', flexShrink: 0,
-      background: pill, color: white,
+      width: 56, height: 56, borderRadius: '50%', flexShrink: 0,
+      background: pill, color: teal,
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      fontSize: 26, fontWeight: 800,
+      fontSize: 30, fontWeight: 900,
     }}>{n}</div>
-    <div style={{ paddingTop: 3 }}>
+    <div>
       <div style={{ fontSize: 38, fontWeight: 700, color: white, lineHeight: 1.25 }}>{title}</div>
-      {sub && <div style={{ fontSize: 29, color: white, opacity: 0.85, lineHeight: 1.4, marginTop: 4 }}>{sub}</div>}
+      {sub && <div style={{ fontSize: 28, color: white, opacity: 0.8, lineHeight: 1.4, marginTop: 4 }}>{sub}</div>}
     </div>
   </div>
 );
@@ -1491,7 +1503,7 @@ const WebAppConcept: Page = () => (
   <BG>
     <CA>
       <Eyebrow text="Web App 概念" />
-      <H2 style={{ fontSize: 84 }}>GAS 也能做出「網站」</H2>
+      <H2 style={{ fontSize: 84 }}>Google Apps Script 也能做出「網站」</H2>
       <TealBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 8, minHeight: 0 }}>
         <Bullet n="1" title="有人打開網址，doGet() 就被叫醒"
@@ -1499,7 +1511,7 @@ const WebAppConcept: Page = () => (
         <Bullet n="2" title="按「部署」，Google 給你專屬網址"
           body="不用主機、不用架站，Google 幫你扛。" />
         <Bullet n="3" title="瀏覽器、手機都打得開"
-          body="這就是你的訂單後台。" />
+          body="" />
       </div>
       <KeyInsight text="GAS 不只會寄信，還能給你一個「真的網址」" />
     </CA>
@@ -1527,25 +1539,22 @@ const BuildSteps: Page = () => (
   </BG>
 );
 
-// ── 劇情：B2B 訂單後台管理頁 ──────────────────────────────────────────────
-const Story4: Page = () => (
+// ── 小試身手：把行情資料變成網站 ──────────────────────────────────────────
+const TryItWeb: Page = () => (
   <BG>
-    <CA>
-      <Eyebrow text="劇情 · 今天最後一件事" />
-      <H2>小林想要一個「訂單後台」</H2>
-      <TealBar />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 10 }}>
-        <Bullet n="1" title="到目前為止，都是系統「寄信給你」"
-          body="但有時候小林想主動看：現在的 B2B 訂單長怎樣？" />
-        <Bullet n="2" title="打開網頁就能看訂單、直接改資料"
-          body="不用打開試算表、不用找分頁——一個網址搞定。" />
-        <Bullet n="3" title="每個人都要部署出自己的後台"
-          body="拿到一個真的網址，手機也打得開。" />
+    <CA style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 40 }}>
+        <div style={{ fontSize: 44, fontWeight: 800, color: teal, letterSpacing: '0.12em' }}>小試身手</div>
+        <div style={{ height: 5, width: 120, background: teal, borderRadius: 2 }} />
+        <div style={{ fontSize: 100, fontWeight: 900, color: white, lineHeight: 1.35, maxWidth: 1500 }}>
+          把「新創金屬_行情資料」變成一個網站，方便隨時檢視資料
+        </div>
       </div>
-      <KeyInsight text="每個人下課前，都會有一個自己的 B2B 訂單後台網址" />
     </CA>
   </BG>
 );
+
+
 
 // ── 動手 9：章節練習——搭建出你的訂單後台 ────────────────────────────────
 const Hands9: Page = () => (
@@ -1554,14 +1563,10 @@ const Hands9: Page = () => (
       <Eyebrow text="環節四 — 動手 9 · 章節練習" />
       <H2 style={{ fontSize: 84 }}>【動手 9】搭建出你的訂單後台</H2>
       <TealBar />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 4 }}>
-        <Bullet n="1" title="編輯器「＋」→ 指令碼 → 命名「後台」→ 貼上手冊範本"
-          body="不要動原本的程式碼檔——動手 8 的排程還要用它" />
-        <Bullet n="2" title="編輯器「＋」→ HTML → 命名 index → 貼上範本 index.html"
-          body="先清空檔案預設內容再貼，存檔確認沒有紅字" />
-        <Bullet n="3" title="照上一頁的五步完成部署，複製網址打開" />
-        <Bullet n="4" title="驗證：新增一筆訂單 → 回 Sheet 看「歷史訂單」多了一列"
-          body="畫面上的動作，改到了真資料——手機也開開看！（手機要登入跟電腦同一個 Google 帳號，不然會顯示沒有權限）" />
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 20 }}>
+        <Bullet n="1" title="參考操作手冊步驟，完成程式碼" />
+        <Bullet n="2" title="照上一頁的步驟完成部署" />
+        <Bullet n="3" title="打開網址，查看你的網站" />
       </div>
       <KeyInsight text="下課前，每個人都有一個自己的 B2B 訂單後台網址" />
     </CA>
@@ -1574,9 +1579,9 @@ const DeploySteps: Page = () => (
   <BG>
     <CA>
       <Eyebrow text="跟著點 · 一步都不跳" />
-      <H2 style={{ fontSize: 84 }}>部署你的網頁應用程式</H2>
+      <H2 style={{ fontSize: 84 }}>部署的步驟大綱</H2>
       <TealBar />
-      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 22, flex: 1, marginTop: 6 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 16, flex: 1, marginTop: 6 }}>
         <S4DeployStep n="1" title="右上角「部署」→「新增部署作業」" />
         <S4DeployStep n="2" title="齒輪選擇類型：「網頁應用程式」" />
         <S4DeployStep n="3" title="執行身分：我　·　誰可以存取：只有我自己" />
@@ -1620,26 +1625,6 @@ const ComboMap: Page = () => (
 );
 
 // ── 動手 10：組合拳實戰 ──────────────────────────────────────────────────
-const Hands10: Page = () => (
-  <BG>
-    <CA>
-      <Eyebrow text="環節四 — 動手 10 · 組合拳" />
-      <H2 style={{ fontSize: 84 }}>【動手 10】幫後台加一個新功能</H2>
-      <TealBar />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 4 }}>
-        <Bullet n="1" title="想一個你想要的小功能"
-          body="例：訂單表格多一欄「小計金額」（數量 × 單價）" />
-        <Bullet n="2" title="照結構跟 Gemini 討論"
-          body="現況說明＋想要達成的目標＋輸出格式——把現有 後台.gs 和 index.html 貼給它" />
-        <Bullet n="3" title="貼回改好的程式碼 → 部署「新版本」"
-          body="部署 → 管理部署作業 → 編輯 → 版本選「新版本」——改版才會生效" />
-        <Bullet n="4" title="重新整理你的網址，驗證新功能出現" />
-      </div>
-      <KeyInsight text="這一套，就是你以後面對每個需求的標準打法" />
-    </CA>
-  </BG>
-);
-
 // ════════════════════════════════════════════════════════════════════════════
 // 收尾
 // ════════════════════════════════════════════════════════════════════════════
@@ -1759,7 +1744,5 @@ export default [
   // 環節三 12
   Sec3, ApiVsWeb, Hands6, ApiSafety, Story3a, Sec3b, Story3b, Hands7, WhatTrigger, Hands8, Result3, Break3,
   // 環節四 9
-  Sec4, Story4, WebAppConcept, BuildSteps, DeploySteps, Hands9, Sec4b, ComboMap, Hands10,
-  // 收尾 3
-  E2E, Survey, JourneyEnd,
+  Sec4, WebAppConcept, BuildSteps, DeploySteps, Sec4b, ComboMap, TryItWeb, Hands9, E2E, Survey, JourneyEnd,
 ] satisfies Page[];
