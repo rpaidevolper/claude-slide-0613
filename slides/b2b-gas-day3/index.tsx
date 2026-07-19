@@ -251,7 +251,7 @@ const SecDiv = ({ ghost, kicker, title, sub }: { ghost: string; kicker: string; 
 );
 
 // ─── Break page ──────────────────────────────────────────────────────────────
-const BreakPage = ({ title, sub, back }: { title: string; sub: string; back: string }) => (
+const BreakPage = ({ title, sub, back }: { title: string; sub?: string; back: string }) => (
   <BG>
     <CA style={{ alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 14 }}>
@@ -270,10 +270,10 @@ const BreakPage = ({ title, sub, back }: { title: string; sub: string; back: str
 );
 
 // ════════════════════════════════════════════════════════════════════════════
-// 開場（頁 1–8）
+// 開場
 // ════════════════════════════════════════════════════════════════════════════
 
-// ── 01 封面 ───────────────────────────────────────────────────────────────────
+// ── 封面 ───────────────────────────────────────────────────────────────────
 const Cover: Page = () => (
   <BG>
     <div style={{ position: 'absolute', top: 0, bottom: 60, left: 0, right: 0,
@@ -282,10 +282,10 @@ const Cover: Page = () => (
         RPAI 數位優化器 · B2B 訂單分析與推薦 Day 3
       </div>
       <h1 style={{ fontSize: 130, fontWeight: 900, color: white, margin: 0, lineHeight: 1.08, letterSpacing: '-0.02em' }}>
-        自動追蹤：讓系統<br/>自己看資料、自己寄信
+        掌握 Google Apps Script
       </h1>
       <p style={{ fontSize: 60, fontWeight: 500, color: white, margin: '24px 0 40px', lineHeight: 1.25 }}>
-        <span style={{ color: teal, fontWeight: 700 }}>GAS × Gemini：讓沉睡的訂單自動開口</span>
+        <span style={{ color: teal, fontWeight: 700 }}>用 自動化 + AI 放大你的能力</span>
       </p>
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 30 }}>
         {['Google Apps Script', 'Gmail', 'Google Sheet', 'Gemini API'].map((t) => (
@@ -303,7 +303,7 @@ const Cover: Page = () => (
   </BG>
 );
 
-// ── 02 主辦單位 ──────────────────────────────────────────────────────────────
+// ── 主辦單位 ──────────────────────────────────────────────────────────────
 const Organizer: Page = () => (
   <BG>
     <CA>
@@ -341,7 +341,7 @@ const Organizer: Page = () => (
   </BG>
 );
 
-// ── 03 講師介紹 (Yin) ────────────────────────────────────────────────────────
+// ── 講師介紹 (Yin) ────────────────────────────────────────────────────────
 const Instructor: Page = () => {
   const projects = [
     '2026_科技業_企業雲端運算資源管理與平台化建置案',
@@ -386,10 +386,10 @@ const Instructor: Page = () => {
   );
 };
 
-// ── 04 開場複習章節頁 ────────────────────────────────────────────────────────
+// ── 開場複習章節頁 ────────────────────────────────────────────────────────
 const SecRecap: Page = () => (
   <SecDiv ghost="00" kicker="開場複習 · RECAP"
-    title="課程回顧" />
+    title="課程回顧" sub="" />
 );
 
 // 痛點頁的對比列（過去人工 vs PAD 加速後）
@@ -405,7 +405,7 @@ const RecapRow = ({ tag, tone, text }: { tag: string; tone: 'red' | 'teal'; text
   </div>
 );
 
-// ── 05 前情提要：小林的痛點 ──────────────────────────────────────────────────
+// ── 前情提要：小林的痛點 ──────────────────────────────────────────────────
 const Recap: Page = () => (
   <BG>
     <CA>
@@ -488,7 +488,7 @@ const S3Arrow = () => (
   <span style={{ fontSize: 52, fontWeight: 900, color: teal, flexShrink: 0, alignSelf: 'center' }}>→</span>
 );
 
-// ── 05 轉折：資料自己回來了，然後呢？ ────────────────────────────────────────
+// ── 轉折：資料自己回來了，然後呢？ ────────────────────────────────────────
 const Turning: Page = () => (
   <BG>
     <CA>
@@ -516,7 +516,7 @@ const Turning: Page = () => (
   </BG>
 );
 
-// ── 06 GAS 定位 ──────────────────────────────────────────────────────────────
+// ── GAS 定位 ──────────────────────────────────────────────────────────────
 const WhatCanGAS: Page = () => (
   <BG>
     <CA>
@@ -537,7 +537,7 @@ const WhatCanGAS: Page = () => (
   </BG>
 );
 
-// ── 07 今天的 AI 助教：Gemini ────────────────────────────────────────────────
+// ── 今天的 AI 助教：Gemini ────────────────────────────────────────────────
 const GeminiIntro: Page = () => (
   <BG>
     <CA style={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -565,7 +565,7 @@ const GeminiIntro: Page = () => (
   </BG>
 );
 
-// ── 08 今日地圖 ──────────────────────────────────────────────────────────────
+// ── 今日地圖 ──────────────────────────────────────────────────────────────
 const TodayMap: Page = () => (
   <BG>
     <CA>
@@ -587,15 +587,15 @@ const TodayMap: Page = () => (
 );
 
 // ════════════════════════════════════════════════════════════════════════════
-// 環節一｜GAS 第一次上手（頁 9–19）
+// 環節一｜GAS 第一次上手
 // ════════════════════════════════════════════════════════════════════════════
 
-// ── 09 段落分頁 ───────────────────────────────────────────────────────────────
+// ── 段落分頁 ───────────────────────────────────────────────────────────────
 const Sec1: Page = () => (
-  <SecDiv ghost="01" kicker="環節 一" title="掌握Google App Scripts" sub="學會用程式碼說話" />
+  <SecDiv ghost="01" kicker="環節 一" title="掌握 Google Apps Script" sub="學會用程式碼說話" />
 );
 
-// ── 10 Apps Script 是什麼 ─────────────────────────────────────────────────────
+// ── Apps Script 是什麼 ─────────────────────────────────────────────────────
 const WhatIsAS: Page = () => (
   <BG>
     <CA style={{ alignItems: 'center', justifyContent: 'center' }}>
@@ -610,7 +610,7 @@ const WhatIsAS: Page = () => (
   </BG>
 );
 
-// ── 11 打開 Apps Script 介面 ─────────────────────────────────────────────────
+// ── 打開 Apps Script 介面 ─────────────────────────────────────────────────
 const OpenAS: Page = () => (
   <BG>
     <CA>
@@ -634,7 +634,7 @@ const OpenAS: Page = () => (
   </BG>
 );
 
-// ── 12 變數與 Logger ──────────────────────────────────────────────────────────
+// ── 變數與 Logger ──────────────────────────────────────────────────────────
 const VarLogger: Page = () => (
   <BG>
     <CA>
@@ -659,7 +659,7 @@ const VarLogger: Page = () => (
   </BG>
 );
 
-// ── 13 【動手1】讓程式碼跟你打招呼 ────────────────────────────────────────────
+// ── 【動手1】讓程式碼跟你打招呼 ────────────────────────────────────────────
 const Hands1: Page = () => (
   <BG>
     <CA>
@@ -680,7 +680,7 @@ const Hands1: Page = () => (
   </BG>
 );
 
-// ── 14 【動手2】讓程式把資料寫進 Sheet ────────────────────────────────────────
+// ── 【動手2】讓程式把資料寫進 Sheet ────────────────────────────────────────
 const Hands2: Page = () => (
   <BG>
     <CA>
@@ -700,7 +700,7 @@ const Hands2: Page = () => (
   </BG>
 );
 
-// ── 15 現在的情境：名單在表上、信卻手寄 ──────────────────────────────────────
+// ── 現在的情境：名單在表上、信卻手寄 ──────────────────────────────────────
 const ScenarioCard = ({ title, body }: { title: string; body: string }) => (
   <div style={{
     flex: 1, minWidth: 0, background: cardBg, border,
@@ -741,7 +741,22 @@ const MailScenario: Page = () => (
   </BG>
 );
 
-// ── 16 用 Day 2 的 IAO 拆解：從試算表到寄信 ──────────────────────────────────
+// ── 小試身手：試算表 → 寄信給講師 ──────────────────────────────────────────
+const TryIt: Page = () => (
+  <BG>
+    <CA style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 40 }}>
+        <div style={{ fontSize: 44, fontWeight: 800, color: teal, letterSpacing: '0.12em' }}>小試身手</div>
+        <div style={{ height: 5, width: 120, background: teal, borderRadius: 2 }} />
+        <div style={{ fontSize: 100, fontWeight: 900, color: white, lineHeight: 1.35, maxWidth: 1500 }}>
+          從試算表找到填好的姓名與自我介紹，寄一封信給講師
+        </div>
+      </div>
+    </CA>
+  </BG>
+);
+
+// ── 用 Day 2 的 IAO 拆解：從試算表到寄信 ──────────────────────────────────
 const IAOCard = ({ letter, en, zh, q, body }: { letter: string; en: string; zh: string; q: string; body: string }) => (
   <div style={{
     flex: 1, minWidth: 0, background: cardBg, border, borderLeft: accentEdge,
@@ -767,7 +782,7 @@ const MailThree: Page = () => (
   <BG>
     <CA>
       <Eyebrow text="Day 2 複習 · 任何自動化，都拆成三層" />
-      <H2 style={{ fontSize: 84 }}>用 I → A → O 想一次：從試算表到寄信</H2>
+      <H2 style={{ fontSize: 84 }}>用 I → A → O 想一次</H2>
       <TealBar />
       <div style={{ display: 'flex', alignItems: 'stretch', gap: 20, flex: 1, marginTop: 14, minHeight: 0 }}>
         <IAOCard letter="I" en="INPUT" zh="輸入層"
@@ -787,7 +802,7 @@ const MailThree: Page = () => (
   </BG>
 );
 
-// ── 16 【動手3】寄一封自我介紹給講師 ─────────────────────────────────────────
+// ── 【動手3】寄一封自我介紹給講師 ─────────────────────────────────────────
 const Hands3: Page = () => (
   <BG>
     <CA>
@@ -804,7 +819,7 @@ function 寄出自我介紹() {
   const 內容 = \`老師好，我是 \${姓名}。\\n\\n\${自我介紹}\`;
 
   GmailApp.sendEmail(講師信箱, 主旨, 內容);
-}`} note="" />
+}`} />
 
     <KeyInsight text="從手冊上找到範例程式碼 → 貼上 → 修改 → 執行" />
 
@@ -813,7 +828,7 @@ function 寄出自我介紹() {
   </BG>
 );
 
-// ── 17 第一次寄信的授權流程 ──────────────────────────────────────────────────
+// ── 第一次寄信的授權流程 ──────────────────────────────────────────────────
 const AuthFlow: Page = () => {
   const AuthStep = ({ n, label, src, alt }: { n: string; label: string; src: string; alt: string }) => (
     <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -850,7 +865,7 @@ const AuthFlow: Page = () => {
   );
 };
 
-// ── 18 常見狀況排除 ──────────────────────────────────────────────────────────
+// ── 常見狀況排除 ──────────────────────────────────────────────────────────
 const Troubleshoot: Page = () => (
   <BG>
     <CA>
@@ -870,18 +885,18 @@ const Troubleshoot: Page = () => (
   </BG>
 );
 
-// ── 19 休息① ─────────────────────────────────────────────────────────────────
+// ── 休息① ─────────────────────────────────────────────────────────────────
 const Break1: Page = () => (
-  <BreakPage title="休息 10 分鐘" sub="" back="回來後：把需求說清楚，讓 AI 幫你寫" />
+  <BreakPage title="休息 10 分鐘" back="回來後：學會使用 AI 撰寫程式碼的核心觀念" />
 );
 
 // ════════════════════════════════════════════════════════════════════════════
-// 環節二｜把需求說清楚，讓 AI 幫你寫（頁 20–32）
+// 環節二｜把需求說清楚，讓 AI 幫你寫
 // ════════════════════════════════════════════════════════════════════════════
 
-// ── 20 段落分頁 ───────────────────────────────────────────────────────────────
+// ── 段落分頁 ───────────────────────────────────────────────────────────────
 const Sec2: Page = () => (
-  <SecDiv ghost="02" kicker="環節 二" title="把需求說清楚，讓 AI 幫你寫" sub="你不用會寫程式，但要會把需求說清楚" />
+  <SecDiv ghost="02" kicker="環節 二" title="用 AI 撰寫程式碼的核心觀念" sub="你不用會寫程式，但要會把需求說清楚" />
 );
 
 // ─── S2 helpers（環節二專用）─────────────────────────────────────────────────
@@ -945,12 +960,12 @@ const S2Sleeper = ({ code, days, note }: { code: string; days: string; note: str
   </div>
 );
 
-// ── 21 方法論迴路 ────────────────────────────────────────────────────────────
+// ── 方法論迴路 ────────────────────────────────────────────────────────────
 const Method: Page = () => (
   <BG>
     <CA>
       <Eyebrow text="今日方法論 · 全天都走這條路" />
-      <H2>你不用會寫程式，但要會把需求說清楚</H2>
+      <H2>核心流程</H2>
       <TealBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 28 }}>
         <div style={{ display: 'flex', gap: 14, alignItems: 'stretch' }}>
@@ -964,23 +979,18 @@ const Method: Page = () => (
           <S2Arrow />
           <S2FlowStep n="05" title="貼回執行" sub="看執行紀錄與信箱驗收" />
         </div>
-        <div style={{
-          display: 'flex', alignItems: 'center', gap: 20,
-          background: cardBg, border: '1px dashed rgba(0,229,192,0.5)',
-          borderRadius: 12, padding: '18px 30px',
-        }}>
-          <span style={{ fontSize: 40, fontWeight: 900, color: teal, flexShrink: 0 }}>↺</span>
-          <span style={{ fontSize: 32, color: white, lineHeight: 1.4 }}>
-            跑不動？把錯誤訊息貼回去請 Gemini 修——這個迴路，今天會走很多次
-          </span>
-        </div>
+        <span style={{ color: white, fontWeight: 900 }}>！ 產出程式碼時多要一句：要求 AI 加上清楚的執行紀錄</span>
+        <span style={{ color: white, fontWeight: 900 }}>！ 出錯時把Log資訊貼回去請 Gemini 修，這個迴路，今天會走很多次</span>
+
+       
+    
       </div>
       <KeyInsight text="說得清楚，AI 就寫得出來——這就是今天要練的事" />
     </CA>
   </BG>
 );
 
-// ── 22 劇情一：供給緊張 ──────────────────────────────────────────────────────
+// ── 劇情一：供給緊張 ──────────────────────────────────────────────────────
 const Story2a: Page = () => (
   <BG>
     <CA>
@@ -1011,7 +1021,7 @@ const Story2a: Page = () => (
   </BG>
 );
 
-// ── 23 我會這樣跟 AI 說 ──────────────────────────────────────────────────────
+// ── 我會這樣跟 AI 說 ──────────────────────────────────────────────────────
 const PromptRow = ({ tag, text }: { tag: string; text: ReactNode }) => (
   <div style={{ display: 'flex', gap: 26, alignItems: 'center' }}>
     <span style={{
@@ -1039,21 +1049,21 @@ const Prompt2a: Page = () => (
         <PromptRow tag="想要達成的目標"
           text="「我遇到的問題是：庫存下降又漲價時沒人提醒我。我希望條件成立就自動寄信給我。」" />
         <PromptRow tag="輸出格式"
-          text="「我希望你給我 GAS 程式碼，一段完整、可以直接貼上執行的。」" />
+          text="「我希望你給我一段完整、可以直接貼上執行的 GAS 程式碼，並在重要步驟加上清楚的執行紀錄，方便我確認執行狀態、也好除錯。」" />
       </div>
       <KeyInsight text="結構：現況說明 ＋ 想要達成的目標 ＋ 輸出格式——完整全文在手冊「環節二｜動手 4」" />
     </CA>
   </BG>
 );
 
-// ── 24 動手 4 ────────────────────────────────────────────────────────────────
+// ── 動手 4 ────────────────────────────────────────────────────────────────
 const Hands4: Page = () => (
   <BG>
     <CA>
       <H2 style={{ fontSize: 84 }}>【動手 4】供給緊張詢價提醒</H2>
       <TealBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 10 }}>
-        <Bullet n="1" title="把需求和google sheet提供給 Gemini，請他產出GAS程式碼" />
+        <Bullet n="1" title="把需求和 Google Sheet 提供給 Gemini，請它產出 GAS 程式碼" />
         <Bullet n="2" title="把 GAS 貼回編輯器" />
         <Bullet n="3" title="收件信箱改成自己的 → 按「執行」" />
         <Bullet n="4" title="打開自己的信箱：收「趁早詢價鎖價」提醒信" />
@@ -1064,7 +1074,12 @@ const Hands4: Page = () => (
 );
 
 
-// ── 28 劇情二：讓沉睡的訂單開口 ──────────────────────────────────────────────
+// ── 休息② ─────────────────────────────────────────────────────────────────────
+const Break2: Page = () => (
+  <BreakPage title="休息 10 分鐘" back="回來後：換你自己說給 AI 聽" />
+);
+
+// ── 劇情二：讓沉睡的訂單開口 ──────────────────────────────────────────────
 const Story2b: Page = () => (
   <BG>
     <CA>
@@ -1086,7 +1101,7 @@ const Story2b: Page = () => (
   </BG>
 );
 
-// ── 29 換你這樣跟 AI 說（留空版）─────────────────────────────────────────────
+// ── 換你這樣跟 AI 說（留空版）─────────────────────────────────────────────
 const Blank = ({ w = 6 }: { w?: number }) => (
   <span style={{ color: teal, fontWeight: 800 }}>{'＿'.repeat(w)}</span>
 );
@@ -1103,14 +1118,14 @@ const Prompt2b: Page = () => (
         <PromptRow tag="想要達成的目標"
           text={<>「我遇到的問題是：<Blank />。我希望超過 <Blank w={2} /> 天沒下單的客戶，<Blank />。」</>} />
         <PromptRow tag="輸出格式"
-          text="「我希望你給我 GAS 程式碼，一段完整、可以直接貼上執行的。」" />
+          text="「我希望你給我 GAS 程式碼，一段完整、可以直接貼上執行的，並在重要步驟加上清楚的執行紀錄，方便我確認執行狀態、也好除錯。」" />
       </div>
       <KeyInsight text="同一個結構：現況說明 ＋ 想要達成的目標 ＋ 輸出格式——填空提示在手冊「環節二｜動手 5」" />
     </CA>
   </BG>
 );
 
-// ── 30 動手 5 ────────────────────────────────────────────────────────────────
+// ── 動手 5 ────────────────────────────────────────────────────────────────
 const Hands5: Page = () => (
   <BG>
     <CA>
@@ -1134,7 +1149,7 @@ const Hands5: Page = () => (
   </BG>
 );
 
-// ── 32 成果：環節小結 ────────────────────────────────────────────
+// ── 成果：環節小結 ────────────────────────────────────────────
 const Result2b: Page = () => (
   <BG>
     <CA>
@@ -1155,15 +1170,15 @@ const Result2b: Page = () => (
 );
 
 // ════════════════════════════════════════════════════════════════════════════
-// 環節三｜把 Gemini 裝進系統（頁 33–43）
+// 環節三｜把 Gemini 裝進系統
 // ════════════════════════════════════════════════════════════════════════════
 
-// ── 33 段落分頁 ───────────────────────────────────────────────────────────────
+// ── 段落分頁 ───────────────────────────────────────────────────────────────
 const Sec3: Page = () => (
-  <SecDiv ghost="03" kicker="環節 三" title="Google App Scripts × AI" sub="把 Gemini 放進程式碼裡" />
+  <SecDiv ghost="03" kicker="環節 三" title="Google Apps Script × AI" sub="把 Gemini 放進程式碼裡" />
 );
 
-// ── 34 網頁版 vs API ─────────────────────────────────────────────────────────
+// ── 網頁版 vs API ─────────────────────────────────────────────────────────
 const ApiVsWeb: Page = () => (
   <BG>
     <CA>
@@ -1185,7 +1200,7 @@ const ApiVsWeb: Page = () => (
   </BG>
 );
 
-// ── 35 動手 6：申請 API key ──────────────────────────────────────────────────
+// ── 動手 6：申請 API key ──────────────────────────────────────────────────
 const Hands6: Page = () => (
   <BG>
     <CA>
@@ -1201,7 +1216,6 @@ const Hands6: Page = () => (
           <Bullet n="4" title="存進「指令碼屬性」"
             body="專案設定（齒輪）→ 指令碼屬性 → 名稱 GEMINI_API_KEY" />
         </div>
-        <S3Shot text="詳細步驟都在課程操作手冊！" />
       </div>
       <div style={{
         marginTop: 18, background: cardBg, border, borderLeft: warnEdge,
@@ -1213,7 +1227,43 @@ const Hands6: Page = () => (
   </BG>
 );
 
-// ── 36 劇情：預警信升級 AI 客製話術 ──────────────────────────────────────────
+// ── 保命頁：看到 429 別慌 ──────────────────────────────────────────────────
+// 本頁專用：與 Bullet 同構，但圓圈字縮小並鎖單行，避免 2 個中文字在 54px 圓內換行。
+const SafetyBullet = ({ n, title, body }: { n: string; title: string; body: string }) => (
+  <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start', marginBottom: 16 }}>
+    <div style={{
+      width: 54, height: 54, borderRadius: '50%', flexShrink: 0,
+      background: pill, color: white,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontSize: 24, fontWeight: 800, whiteSpace: 'nowrap', letterSpacing: '-0.02em',
+    }}>{n}</div>
+    <div style={{ paddingTop: 4 }}>
+      <span style={{ fontSize: 54, fontWeight: 700, color: white, lineHeight: 1.25 }}>{title}</span>
+      <div style={{ fontSize: 42, color: white, lineHeight: 1.45, marginTop: 4 }}>{body}</div>
+    </div>
+  </div>
+);
+
+const ApiSafety: Page = () => (
+  <BG>
+    <CA>
+      <Eyebrow text="環節三 · 保命頁" />
+      <H2 style={{ fontSize: 72 }}>看到「429」別慌，那不是你弄壞的</H2>
+      <TealBar />
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 10 }}>
+        <SafetyBullet n="429" title="手速太快而已"
+          body="免費額度每分鐘有上限，除錯時連按太多次會跳 429——不是程式壞掉，等一分鐘再按「執行」就好。" />
+        <SafetyBullet n="獨立" title="別人用不到你的"
+          body="每個人用自己的 key、自己的額度，互不影響，也不會被別人拖累。" />
+        <SafetyBullet n="資料" title="免費 API 的資料會被拿去訓練"
+          body="課堂用假資料沒差；但免費版 Gemini 的內容，Google 可能拿去訓練模型。掌管公司機敏資料要自己評估——正式上線請改用公司核可的付費／企業金鑰。" />
+      </div>
+      <KeyInsight text="跑不動先看「執行紀錄 log」——分清楚：紅字是程式錯、429 是額度滿，救法不一樣。" />
+    </CA>
+  </BG>
+);
+
+// ── 劇情：預警信升級 AI 客製話術 ──────────────────────────────────────────
 const Story3a: Page = () => (
   <BG>
     <CA>
@@ -1230,7 +1280,7 @@ const Story3a: Page = () => (
           各寫一段<span style={{ color: teal, fontWeight: 700 }}>專屬的補貨關心話術</span>。
         </S3Card>
       </div>
-      <KeyInsight text="「每次內容都不一樣」的工作，就該交給裝在系統裡的 AI" />
+      <KeyInsight text="你今天做完週報，手上的引擎跟這個一模一樣——回去換一批資料，這件事你自己就能做。" />
     </CA>
   </BG>
 );
@@ -1242,7 +1292,7 @@ const Sec3b: Page = () => (
     sub="動手 7–8：AI 寫業績週報、每週自動寄出——都由系統自己來" />
 );
 
-// ── 38 劇情：每週業績週報 ────────────────────────────────────────────────────
+// ── 劇情：每週業績週報 ────────────────────────────────────────────────────
 const Story3b: Page = () => (
   <BG>
     <CA>
@@ -1270,7 +1320,7 @@ const Story3b: Page = () => (
   </BG>
 );
 
-// ── 39 動手 7 ────────────────────────────────────────────────────────────────
+// ── 動手 7 ────────────────────────────────────────────────────────────────
 const Hands7: Page = () => (
   <BG>
     <CA>
@@ -1284,13 +1334,14 @@ const Hands7: Page = () => (
         <Bullet n="2" title="GAS 先彙總數字，再請 Gemini 寫 250 字白話週報"
           body="限制它只根據提供的數字，不要杜撰。" />
         <Bullet n="3" title="驗證：收到主旨「[新創金屬] AI 業績週報」的信" />
+        <Bullet n="4" title="記得請 AI 在程式碼加上執行紀錄，跑完看 log 就知道成不成功" />
       </div>
       <KeyInsight text="到這裡還差一步——現在還是你手動按「執行」" />
     </CA>
   </BG>
 );
 
-// ── 40 觸發器：讓它自己醒來 ──────────────────────────────────────────────────
+// ── 觸發器：讓它自己醒來 ──────────────────────────────────────────────────
 const WhatTrigger: Page = () => (
   <BG>
     <CA>
@@ -1318,7 +1369,7 @@ const WhatTrigger: Page = () => (
   </BG>
 );
 
-// ── 41 動手 8 ────────────────────────────────────────────────────────────────
+// ── 動手 8 ────────────────────────────────────────────────────────────────
 const Hands8: Page = () => (
   <BG>
     <CA>
@@ -1339,7 +1390,7 @@ const Hands8: Page = () => (
   </BG>
 );
 
-// ── 42 成果：「你睡覺它也在跑」──────────────────────────────────────────────
+// ── 成果：「你睡覺它也在跑」──────────────────────────────────────────────
 const Result3: Page = () => (
   <BG>
     <CA style={{ alignItems: 'center', justifyContent: 'center' }}>
@@ -1361,16 +1412,16 @@ const Result3: Page = () => (
   </BG>
 );
 
-// ── 43 休息③ ─────────────────────────────────────────────────────────────────
+// ── 休息③ ─────────────────────────────────────────────────────────────────
 const Break3: Page = () => (
-  <BreakPage title="休息 10 分鐘" sub="" back="回來後：GAS 做出網頁" />
+  <BreakPage title="休息 10 分鐘" back="回來後：GAS 做出網頁" />
 );
 
 // ════════════════════════════════════════════════════════════════════════════
-// 環節四｜GAS 做出網頁：部署訂單後台（頁 44–50）
+// 環節四｜GAS 做出網頁：部署訂單後台
 // ════════════════════════════════════════════════════════════════════════════
 
-// ── 44 段落分頁 ───────────────────────────────────────────────────────────────
+// ── 段落分頁 ───────────────────────────────────────────────────────────────
 const Sec4: Page = () => (
   <SecDiv ghost="04" kicker="環節 四" title="打造自己的專屬網站" sub="很多GAS玩家也不知道，原來可以用它來寫網頁" />
 );
@@ -1435,7 +1486,7 @@ const S4FileCard = ({ name, role, note }: { name: string; role: string; note: st
   </div>
 );
 
-// ── 45 Web App 概念：GAS 也能做出網站 ────────────────────────────────────────
+// ── Web App 概念：GAS 也能做出網站 ────────────────────────────────────────
 const WebAppConcept: Page = () => (
   <BG>
     <CA>
@@ -1455,7 +1506,7 @@ const WebAppConcept: Page = () => (
   </BG>
 );
 
-// ── 45b 拆解：寫程式 → 部署 ──────────────────────────────────────────────────
+// ── 拆解：寫程式 → 部署 ──────────────────────────────────────────────────
 const BuildSteps: Page = () => (
   <BG>
     <CA>
@@ -1476,7 +1527,7 @@ const BuildSteps: Page = () => (
   </BG>
 );
 
-// ── 46 劇情：B2B 訂單後台管理頁 ──────────────────────────────────────────────
+// ── 劇情：B2B 訂單後台管理頁 ──────────────────────────────────────────────
 const Story4: Page = () => (
   <BG>
     <CA>
@@ -1496,7 +1547,7 @@ const Story4: Page = () => (
   </BG>
 );
 
-// ── 47 動手 9：章節練習——搭建出你的訂單後台 ────────────────────────────────
+// ── 動手 9：章節練習——搭建出你的訂單後台 ────────────────────────────────
 const Hands9: Page = () => (
   <BG>
     <CA>
@@ -1510,7 +1561,7 @@ const Hands9: Page = () => (
           body="先清空檔案預設內容再貼，存檔確認沒有紅字" />
         <Bullet n="3" title="照上一頁的五步完成部署，複製網址打開" />
         <Bullet n="4" title="驗證：新增一筆訂單 → 回 Sheet 看「歷史訂單」多了一列"
-          body="畫面上的動作，改到了真資料——手機也開開看！" />
+          body="畫面上的動作，改到了真資料——手機也開開看！（手機要登入跟電腦同一個 Google 帳號，不然會顯示沒有權限）" />
       </div>
       <KeyInsight text="下課前，每個人都有一個自己的 B2B 訂單後台網址" />
     </CA>
@@ -1518,7 +1569,7 @@ const Hands9: Page = () => (
 );
 
 
-// ── 48 部署逐步教學 ──────────────────────────────────────────────────────────
+// ── 部署逐步教學 ──────────────────────────────────────────────────────────
 const DeploySteps: Page = () => (
   <BG>
     <CA>
@@ -1536,14 +1587,14 @@ const DeploySteps: Page = () => (
   </BG>
 );
 
-// ── 49 分隔：組合拳 ──────────────────────────────────────────────────────────
+// ── 分隔：組合拳 ──────────────────────────────────────────────────────────
 const Sec4b: Page = () => (
   <SecDiv ghost="04" kicker="環節 四 · 最終章"
     title="把今天學的全部串起來"
-    sub="Google Sheet ＋ Google App Scripts ＋ Gemini AI" />
+    sub="Google Sheet ＋ Google Apps Script ＋ Gemini AI" />
 );
 
-// ── 49b 四張牌組合 ───────────────────────────────────────────────────────────
+// ── 四張牌組合 ───────────────────────────────────────────────────────────
 const ComboMap: Page = () => (
   <BG>
     <CA>
@@ -1568,7 +1619,7 @@ const ComboMap: Page = () => (
   </BG>
 );
 
-// ── 49c 動手 10：組合拳實戰 ──────────────────────────────────────────────────
+// ── 動手 10：組合拳實戰 ──────────────────────────────────────────────────
 const Hands10: Page = () => (
   <BG>
     <CA>
@@ -1590,10 +1641,10 @@ const Hands10: Page = () => (
 );
 
 // ════════════════════════════════════════════════════════════════════════════
-// 收尾（頁 51–54）
+// 收尾
 // ════════════════════════════════════════════════════════════════════════════
 
-// ── 51 四天閉環回顧 ──────────────────────────────────────────────────────────
+// ── 四天閉環回顧 ──────────────────────────────────────────────────────────
 const E2E: Page = () => (
   <BG>
     <CA>
@@ -1618,7 +1669,7 @@ const E2E: Page = () => (
   </BG>
 );
 
-// ── 53 課後問卷（QR 後補）────────────────────────────────────────────────────
+// ── 課後問卷（QR 後補）────────────────────────────────────────────────────
 const Survey: Page = () => (
   <BG>
     <div style={{ position: 'absolute', inset: 0, padding: '100px 140px 110px', display: 'grid', gridTemplateColumns: '1fr 460px', gap: 80, alignItems: 'center' }}>
@@ -1652,7 +1703,7 @@ const Survey: Page = () => (
   </BG>
 );
 
-// ── 54 結尾 CTA ＋ Day 4 預告 ────────────────────────────────────────────────
+// ── 結尾 CTA ＋ Day 4 預告 ────────────────────────────────────────────────
 const JourneyEnd: Page = () => (
   <BG>
     <div style={{ position: 'absolute', inset: 0, padding: '120px 160px', display: 'grid', gridTemplateColumns: '1fr 420px', gap: 60, alignItems: 'center' }}>
@@ -1701,14 +1752,14 @@ Cover.transition = coverTransition;
 export default [
   // 開場 9
   Cover, Organizer, Instructor, SecRecap, Recap, Turning, WhatCanGAS, GeminiIntro, TodayMap,
-  // 環節一 12
-  Sec1, WhatIsAS, OpenAS, VarLogger, Hands1, Hands2, MailScenario, MailThree, Hands3, AuthFlow, Troubleshoot, Break1,
-  // 環節二 13
-  Sec2, Method, Story2a, Prompt2a, Hands4, Story2b, Prompt2b, Hands5, Result2b,
-  // 環節三 11
-  Sec3, ApiVsWeb, Hands6, Story3a, Sec3b, Story3b, Hands7, WhatTrigger, Hands8, Result3, Break3,
+  // 環節一 13
+  Sec1, WhatIsAS, OpenAS, VarLogger, Hands1, Hands2, MailScenario, TryIt, MailThree, Hands3, AuthFlow, Troubleshoot, Break1,
+  // 環節二 10
+  Sec2, Method, Story2a, Prompt2a, Hands4, Break2, Story2b, Prompt2b, Hands5, Result2b,
+  // 環節三 12
+  Sec3, ApiVsWeb, Hands6, ApiSafety, Story3a, Sec3b, Story3b, Hands7, WhatTrigger, Hands8, Result3, Break3,
   // 環節四 9
-  Sec4, WebAppConcept, BuildSteps, DeploySteps, Sec4b, ComboMap, Hands10,
+  Sec4, Story4, WebAppConcept, BuildSteps, DeploySteps, Hands9, Sec4b, ComboMap, Hands10,
   // 收尾 3
   E2E, Survey, JourneyEnd,
 ] satisfies Page[];
