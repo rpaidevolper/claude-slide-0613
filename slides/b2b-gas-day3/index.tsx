@@ -1578,7 +1578,7 @@ const TryItWeb: Page = () => (
         <div style={{ fontSize: 44, fontWeight: 800, color: teal, letterSpacing: '0.12em' }}>小試身手</div>
         <div style={{ height: 5, width: 120, background: teal, borderRadius: 2 }} />
         <div style={{ fontSize: 100, fontWeight: 900, color: white, lineHeight: 1.35, maxWidth: 1500 }}>
-          把「新創金屬_行情資料」變成一個網站
+          把「新創金屬_行情資料」<br/>變成一個網站
         </div>
       </div>
     </CA>
@@ -1775,5 +1775,5 @@ export default [
   // 環節三 12
   Sec3, ApiVsWeb, Hands6, ApiSafety, Story3a, Sec3b, Story3b, Hands7, WhatTrigger, Hands8, Result3, Break3,
   // 環節四 9
-  Sec4, WebAppConcept, BuildSteps, DeploySteps, Sec4b, ComboMap, TryItWeb, Hands9, E2E, Survey, JourneyEnd,
+  Sec4, WebAppConcept, BuildSteps, DeploySteps, Sec4b, ComboMap, TryItWeb, Hands9, E2E, JourneyEnd,
 ] satisfies Page[];
